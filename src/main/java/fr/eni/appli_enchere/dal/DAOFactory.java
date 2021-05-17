@@ -1,16 +1,16 @@
 package fr.eni.appli_enchere.dal;
 
-import fr.eni_ecole.appli_enchere.bll.UtilisateurDAO;
+import fr.eni.appli_enchere.dal.UtilisateurDAO;
 
 
 public abstract class DAOFactory {
 
 	private static UtilisateurDAO utilisateurDAO;
 	
-	public static utilisateurDAO getUtilisateurDAO()
+	public static UtilisateurDAO getUtilisateurDAO()
 	{
 		if(utilisateurDAO == null) {
-			utilisateurDAO =  new UserDAOjdbclmpl();
+			utilisateurDAO =  new UtilisateurDAOjdbcImpl();
 		}
 		return utilisateurDAO;
 	}

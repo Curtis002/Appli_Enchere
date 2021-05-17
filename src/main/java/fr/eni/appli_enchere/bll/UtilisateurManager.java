@@ -1,22 +1,22 @@
 package fr.eni.appli_enchere.bll;
 
-
-
-import fr.eni.appli_enchere.bo.ArticleVendu;
 import fr.eni.appli_enchere.bo.Utilisateur;
+import fr.eni.appli_enchere.dal.DALException;
+import fr.eni.appli_enchere.dal.DAOFactory;
+import fr.eni.appli_enchere.dal.UtilisateurDAO;
 
 
-public class utilisateurManager {
+public class UtilisateurManager {
 
 	private UtilisateurDAO utilisateurDAO;
 	
 	
 	public UtilisateurManager() {
-		utilisateurDAO = DAOFactory.getUserDAO();
+		utilisateurDAO = DAOFactory.getUtilisateurDAO();
 	}
 	
 	public 	Utilisateur selectUtilisateur( String email, String password) throws DALException{
-		return utilisateurDAO.selectUser(email, password);
+		return utilisateurDAO.selectUtilisateur(email, password);
 
 	};
 	public  Utilisateur selectPseudo( String pseudo) throws DALException{

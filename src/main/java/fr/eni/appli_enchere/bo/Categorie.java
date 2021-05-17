@@ -4,6 +4,8 @@ public class Categorie {
 	private int noCategorie;
 	private String libelle;
 	
+	private ArticleVendu noArticle;
+	
 	//Constructor
 	public Categorie(int noCategorie, String libelle) {
 		super();

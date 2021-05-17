@@ -17,6 +17,7 @@ public class ArticleVendu {
 	private Categorie categorie;
 	private Retrait LieuRetrait;
 	private Utilisateur achete;
+	private Utilisateur vend;
 	
 	
 	//constructeurs

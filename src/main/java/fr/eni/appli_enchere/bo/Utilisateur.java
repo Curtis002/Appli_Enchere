@@ -1,5 +1,7 @@
 package fr.eni.appli_enchere.bo;
 
+import java.util.List;
+
 public class Utilisateur {
 	// Déclaration des attributs
     private Integer no_utilisateur;
@@ -14,6 +16,10 @@ public class Utilisateur {
     private String mot_de_passe;
     private Integer credit;
     private boolean administrateur;
+
+    private List<ArticleVendu> acheteArticles;
+    private List<ArticleVendu> venteArticles;
+    private List<Enchere> utilisateurEncherit;
 
     // Constructeurs
     public Utilisateur() {
@@ -108,6 +114,18 @@ public class Utilisateur {
 
     public boolean isAdministrateur() {
         return administrateur;
+    }
+
+    public List<ArticleVendu> getAcheteArticles() {
+        return acheteArticles;
+    }
+
+    public List<ArticleVendu> getVenteArticles() {
+        return venteArticles;
+    }
+
+    public List<Enchere> getUtilisateurEncherit() {
+        return utilisateurEncherit;
     }
 
     // Setters

@@ -5,6 +5,8 @@ public class Retrait {
 	private String codePostal;
 	private String ville;
 	
+	private ArticleVendu noArticle;
+	
 	//Constructor
 	public Retrait(String rue, String codePostal, String ville) {
 		super();

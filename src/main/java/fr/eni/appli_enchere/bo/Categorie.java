@@ -1,8 +1,12 @@
 package fr.eni.appli_enchere.bo;
 
+import java.util.List;
+
 public class Categorie {
 	private int noCategorie;
 	private String libelle;
+	
+	private List<ArticleVendu> noArticle;
 	
 	//Constructor
 	public Categorie(int noCategorie, String libelle) {

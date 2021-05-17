@@ -116,6 +116,18 @@ public class Utilisateur {
         return administrateur;
     }
 
+    public List<ArticleVendu> getAcheteArticles() {
+        return acheteArticles;
+    }
+
+    public List<ArticleVendu> getVenteArticles() {
+        return venteArticles;
+    }
+
+    public List<Enchere> getUtilisateurEncherit() {
+        return utilisateurEncherit;
+    }
+
     // Setters
     public void setNo_utilisateur(Integer no_utilisateur) {
         this.no_utilisateur = no_utilisateur;

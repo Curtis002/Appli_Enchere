@@ -24,7 +24,9 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			PreparedStatement stmt=null;
 			ResultSet rs=null;
 			Utilisateur utilisateur = null;
-
+			
+			
+			//check nom du provider
 			cnx=ConnexionProvider.getConnection();
 			try{
 				stmt = cnx.prepareStatement(GETUSER);
@@ -49,6 +51,8 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			}catch (SQLException e){
 				throw new DALException("probleme methode lister()",e);
 			}finally{
+				
+				//check nom du provider
 				ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
 			return utilisateur;
@@ -60,7 +64,8 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			PreparedStatement stmt=null;
 			ResultSet rs=null;
 			Utilisateur utilisateur = null;
-		
+			
+			//check nom du provider
 			cnx=ConnexionProvider.getConnection();
 			try{
 				stmt = cnx.prepareStatement(GETPSEUDO);
@@ -73,6 +78,8 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			}catch (SQLException e){
 				throw new DALException("probleme methode selectPseudo()",e);
 			}finally{
+				
+				//check nom du provider
 				ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
 			return utilisateur;
@@ -83,7 +90,8 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			PreparedStatement stmt=null;
 			ResultSet rs=null;
 			Utilisateur utilisateur = null;
-		
+			
+			//check nom du provider
 			cnx=ConnexionProvider.getConnection();
 			try{
 				stmt = cnx.prepareStatement(GETPRENOM);
@@ -96,6 +104,8 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			}catch (SQLException e){
 				throw new DALException("probleme methode selectPrenom()",e);
 			}finally{
+				
+				//check nom du provider
 				ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
 			return utilisateur;

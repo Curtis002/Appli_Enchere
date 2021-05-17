@@ -12,6 +12,12 @@ public class ArticleVendu {
 	private int prixVente;
 	private int etatVente;
 	
+	private Enchere enchere;
+	private Categorie categorie;
+	private Retrait retrait;
+	private Utilisateur no_Utilisateur;
+	
+	
 	//constructeurs
 	
 	public ArticleVendu() {

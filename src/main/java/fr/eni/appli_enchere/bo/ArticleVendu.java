@@ -1,6 +1,7 @@
 package fr.eni.appli_enchere.bo;
 
 import java.util.Date;
+import java.util.List;
 
 public class ArticleVendu {
 	private Integer noArticle;
@@ -12,16 +13,108 @@ public class ArticleVendu {
 	private int prixVente;
 	private int etatVente;
 	
-	private Enchere enchere;
+	private List<Enchere> concerne;
 	private Categorie categorie;
-	private Retrait retrait;
-	private Utilisateur no_Utilisateur;
+	private Retrait LieuRetrait;
+	private Utilisateur achete;
 	
 	
 	//constructeurs
 	
 	public ArticleVendu() {
     }
+	
+	/**
+	 * @param noArticle
+	 * @param nomArticle
+	 * @param description
+	 * @param dateDebutEncheres
+	 * @param dateFinEncheres
+	 * @param miseAPrix
+	 * @param prixVente
+	 * @param etatVente
+	 * @param concerne
+	 * @param categorie
+	 * @param lieuRetrait
+	 * @param achete
+	 */
+	public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
+			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
+			Categorie categorie, Retrait lieuRetrait, Utilisateur achete) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.concerne = concerne;
+		this.categorie = categorie;
+		LieuRetrait = lieuRetrait;
+		this.achete = achete;
+	}
+	
+	
+	/**
+	 * @param noArticle
+	 * @param nomArticle
+	 * @param description
+	 * @param dateDebutEncheres
+	 * @param dateFinEncheres
+	 * @param miseAPrix
+	 * @param prixVente
+	 * @param etatVente
+	 * @param concerne
+	 * @param categorie
+	 */
+	public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
+			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
+			Categorie categorie) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.concerne = concerne;
+		this.categorie = categorie;
+	}
+
+	/**
+	 * @param noArticle
+	 * @param nomArticle
+	 * @param description
+	 * @param dateDebutEncheres
+	 * @param dateFinEncheres
+	 * @param miseAPrix
+	 * @param prixVente
+	 * @param etatVente
+	 * @param concerne
+	 * @param categorie
+	 * @param achete
+	 */
+	public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
+			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
+			Categorie categorie, Utilisateur achete) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.concerne = concerne;
+		this.categorie = categorie;
+		this.achete = achete;
+	}
+
 	/**
 	 * @param noArticle
 	 * @param nomArticle
@@ -44,6 +137,8 @@ public class ArticleVendu {
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
 	}
+	
+	
 	
 	
 	// getters et setters
@@ -98,7 +193,7 @@ public class ArticleVendu {
 	}
 	
 	
-	
+	// to string 
 	@Override
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
@@ -106,11 +201,6 @@ public class ArticleVendu {
 				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + "]";
 	}
 	
-	
-	
-	
-	
-	
-	
+
 	
 }

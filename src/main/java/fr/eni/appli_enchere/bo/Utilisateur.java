@@ -2,7 +2,7 @@ package fr.eni.appli_enchere.bo;
 
 public class Utilisateur {
 	// Déclaration des attributs
-    private int no_utilisateur;
+    private Integer no_utilisateur;
     private String pseudo;
     private String nom;
     private String prenom;
@@ -12,14 +12,14 @@ public class Utilisateur {
     private String code_postal;
     private String ville;
     private String mot_de_passe;
-    private int credit;
+    private Integer credit;
     private boolean administrateur;
 
     // Constructeurs
     public Utilisateur() {
     }
 
-    public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
+    public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, Integer credit, boolean administrateur) {
         this.pseudo = pseudo;
         this.nom = nom;
         this.prenom = prenom;
@@ -33,7 +33,7 @@ public class Utilisateur {
         this.administrateur = administrateur;
     }
 
-    public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
+    public Utilisateur(Integer no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, Integer credit, boolean administrateur) {
         this.no_utilisateur = no_utilisateur;
         this.pseudo = pseudo;
         this.nom = nom;
@@ -48,7 +48,7 @@ public class Utilisateur {
         this.administrateur = administrateur;
     }
 
-    public Utilisateur(String pseudo, String nom, String prenom, String email, String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
+    public Utilisateur(String pseudo, String nom, String prenom, String email, String rue, String code_postal, String ville, String mot_de_passe, Integer credit, boolean administrateur) {
         this.pseudo = pseudo;
         this.nom = nom;
         this.prenom = prenom;
@@ -62,7 +62,7 @@ public class Utilisateur {
     }
 
     // Définition des Getters et Setters
-    public int getNo_utilisateur() {
+    public Integer getNo_utilisateur() {
         return no_utilisateur;
     }
 
@@ -102,7 +102,7 @@ public class Utilisateur {
         return mot_de_passe;
     }
 
-    public int getCredit() {
+    public Integer getCredit() {
         return credit;
     }
 
@@ -111,7 +111,7 @@ public class Utilisateur {
     }
 
     // Setters
-    public void setNo_utilisateur(int no_utilisateur) {
+    public void setNo_utilisateur(Integer no_utilisateur) {
         this.no_utilisateur = no_utilisateur;
     }
 
@@ -151,7 +151,7 @@ public class Utilisateur {
         this.mot_de_passe = mot_de_passe;
     }
 
-    public void setCredit(int credit) {
+    public void setCredit(Integer credit) {
         this.credit = credit;
     }
 

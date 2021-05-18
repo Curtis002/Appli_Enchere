@@ -54,7 +54,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			}finally{
 
 				//check nom du provider
-				ConnexionProvider.seDeconnecter(stmt, cnx);
+				//ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
 			return utilisateur;
 		}
@@ -81,7 +81,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			}finally{
 				
 				//check nom du provider
-				ConnexionProvider.seDeconnecter(stmt, cnx);
+				//ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
 			return utilisateur;
 		}
@@ -107,7 +107,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			}finally{
 				
 				//check nom du provider
-				ConnexionProvider.seDeconnecter(stmt, cnx);
+				//ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
 			return utilisateur;
 		}

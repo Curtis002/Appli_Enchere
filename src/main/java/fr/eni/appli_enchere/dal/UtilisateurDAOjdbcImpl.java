@@ -15,7 +15,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 		  
 		private static final String GETUSER="SELECT no_utilisateur, pseudo, prenom, nom, pseudo,email,rue,telephone,code_postal,ville,mot_de_passe,credit FROM UTILISATEURS where email=? and mot_de_passe=?;";
 
-		private static final String GETPSEUDO="SELECT pseudo FROM UTILISATEURS where pseudo=?;";
+		private static final String GETPSEUDO="SELECT * FROM UTILISATEURS where pseudo=?;";
 		private static final String GETPRENOM="SELECT prenom FROM UTILISATEURS where prenom=?;";
 		private ConnectionProvider ConnexionProvider;
 
@@ -56,15 +56,16 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 				//check nom du provider
 				//ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
+			System.out.println("passe par SelectUtilisateur dans Impl");
 			return utilisateur;
 		}
 
 
-		public Utilisateur selectPseudo( String pseudo) throws DALException {
+		public Utilisateur selectPseudo(String pseudo) throws DALException {
 			Connection cnx=null;
 			PreparedStatement stmt=null;
 			ResultSet rs=null;
-			Utilisateur utilisateur = null;
+			Utilisateur utilisateur = new Utilisateur();
 			
 			//check nom du provider
 			try{
@@ -73,16 +74,28 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 				stmt.setString(1, pseudo);
 				rs=stmt.executeQuery();
 				if (rs.next()){
-					utilisateur = new Utilisateur();
-					utilisateur.setPrenom(rs.getString("pseudo"));
+					utilisateur.setPseudo(rs.getString("pseudo"));
+					utilisateur.setNo_utilisateur(rs.getInt("no_utilisateur"));
+					utilisateur.setPrenom(rs.getString("prenom"));
+					utilisateur.setNom(rs.getString("nom"));
+					utilisateur.setPseudo(rs.getString("pseudo"));
+					utilisateur.setEmail(rs.getString("email"));
+					utilisateur.setRue(rs.getString("rue"));
+					utilisateur.setTelephone(rs.getString("telephone"));
+					utilisateur.setCode_postal(rs.getString("code_postal"));
+					utilisateur.setVille(rs.getString("ville"));
+					utilisateur.setMot_de_passe(rs.getString("mot_de_passe"));
+					utilisateur.setCredit(rs.getInt("credit"));
+					System.out.println(utilisateur);
 				}
 			}catch (SQLException e){
 				throw new DALException("probleme methode selectPseudo()",e);
-			}finally{
+			} //finally{
 				
 				//check nom du provider
 				//ConnexionProvider.seDeconnecter(stmt, cnx);
-			}
+			//}
+			System.out.println("passe par SelectPseudo dans Impl");
 			return utilisateur;
 		}
 
@@ -109,6 +122,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 				//check nom du provider
 				//ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
+			System.out.println("passe par SelectPrenom dans Impl");
 			return utilisateur;
 		}
 	

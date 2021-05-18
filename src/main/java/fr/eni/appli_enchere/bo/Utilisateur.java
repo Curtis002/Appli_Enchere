@@ -3,7 +3,7 @@ package fr.eni.appli_enchere.bo;
 import java.util.List;
 
 public class Utilisateur {
-	// Déclaration des attributs
+	// Dï¿½claration des attributs
     private Integer no_utilisateur;
     private String pseudo;
     private String nom;
@@ -67,7 +67,16 @@ public class Utilisateur {
         this.administrateur = administrateur;
     }
 
-    // Définition des Getters et Setters
+    public Utilisateur(String pseudo, String mot_de_passe) {
+        this.pseudo = pseudo;
+        this.mot_de_passe = mot_de_passe;
+    }
+
+    public Utilisateur(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
+    // Dï¿½finition des Getters et Setters
     public Integer getNo_utilisateur() {
         return no_utilisateur;
     }
@@ -177,7 +186,7 @@ public class Utilisateur {
         this.administrateur = administrateur;
     }
 
-    // Méthodes
+    // Mï¿½thodes
     @Override
     public String toString() {
         return "Utilisateur ["

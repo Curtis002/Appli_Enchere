@@ -15,14 +15,14 @@
 </head>
 <body>
     <div class="container">
-        <form action="/ConnectServlet" method="post">
+        <form action="/appli_enchere/ConnectServlet" method="post">
             <div class="input">
-                <label for="identifiant">
+                <label for="pseudo">
                     <c:if test="${hasErrors}">
                         <span class='error'>* </span>
                     </c:if>Username:
                 </label>
-                <input type="text" id="identifiant" name="identifiant" />
+                <input type="text" id="pseudo" name="pseudo" />
             </div>
 
             <div class="input">
@@ -39,7 +39,7 @@
         </form>
         <p id="links">
             Créer un compte
-            <a href="register.jsp">here</a>.
+            <a href="creer_compte.jsp">ici</a>.
         </p>
     </div>
 </body>

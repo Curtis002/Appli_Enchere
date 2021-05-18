@@ -17,8 +17,9 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 
 		private static final String GETPSEUDO="SELECT pseudo FROM UTILISATEURS where pseudo=?;";
 		private static final String GETPRENOM="SELECT prenom FROM UTILISATEURS where prenom=?;";
+		private ConnectionProvider ConnexionProvider;
 
-		
+
 		public Utilisateur selectUtilisateur( String email, String password) throws DALException {
 			Connection cnx=null;
 			PreparedStatement stmt=null;
@@ -27,8 +28,8 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			
 			
 			//check nom du provider
-			cnx=ConnexionProvider.getConnection();
 			try{
+				cnx=ConnexionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETUSER);
 				stmt.setString(1, email);
 				stmt.setString(2, password);
@@ -46,12 +47,12 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 					utilisateur.setCode_postal(rs.getString("code_postal"));
 					utilisateur.setVille(rs.getString("ville"));
 					utilisateur.setMot_de_passe(rs.getString("mot_de_passe"));
-	        utilisateur.setCredit(rs.getInt("credit"));						
+	        		utilisateur.setCredit(rs.getInt("credit"));
 				}
 			}catch (SQLException e){
 				throw new DALException("probleme methode lister()",e);
 			}finally{
-				
+
 				//check nom du provider
 				ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
@@ -66,8 +67,8 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			Utilisateur utilisateur = null;
 			
 			//check nom du provider
-			cnx=ConnexionProvider.getConnection();
 			try{
+				cnx=ConnexionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETPSEUDO);
 				stmt.setString(1, pseudo);
 				rs=stmt.executeQuery();
@@ -92,8 +93,8 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			Utilisateur utilisateur = null;
 			
 			//check nom du provider
-			cnx=ConnexionProvider.getConnection();
 			try{
+				cnx=ConnexionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETPRENOM);
 				stmt.setString(1, prenom);
 				rs=stmt.executeQuery();

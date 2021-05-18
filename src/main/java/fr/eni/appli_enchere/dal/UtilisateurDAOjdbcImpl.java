@@ -183,9 +183,10 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 			try{
 				
 				utilisateur = new Utilisateur();
-				
+			
 				cnx=ConnectionProvider.getConnection();
-				stmt = cnx.prepareStatement(REGISTERUTILISATEUR);
+				
+				stmt = cnx.prepareStatement(REGISTERUTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS);
 				stmt.setString(1, pseudo);
 				stmt.setString(2, nom);
 				stmt.setString(3, nom);
@@ -198,6 +199,13 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 				stmt.setInt(10, credit);
 				stmt.setBoolean(11, administrateur);
 				
+				int nbRows = stmt.executeUpdate();
+				if( nbRows == 1){
+					ResultSet rs = stmt.getGeneratedKeys();
+					if(rs.next()){
+						utilisateur.setNo_utilisateur(rs.getInt(1));
+					}
+				}
 			}catch(SQLException e){
 				throw new DALException("probleme methode ajouter utilisateur()",e);
 			}finally{

@@ -52,6 +52,7 @@ public class ConnectServlet extends HttpServlet {
                 System.out.println("passe par deuxième if");
                 session.setAttribute("erreur", "erreur mot de passe");
                 response.sendRedirect("login.jsp");
+              
             }
         } catch (DALException e) {
             e.printStackTrace();

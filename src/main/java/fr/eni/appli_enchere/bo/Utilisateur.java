@@ -191,15 +191,15 @@ public class Utilisateur {
     public String toString() {
         return "Utilisateur ["
                 + "pseudo= " + this.pseudo
-                + "nom= " + this.nom
-                + "prenom= " + this.prenom
-                + "email= " + this.email
-                + "rue= " + this.rue
-                + "code postal= " + this.code_postal
-                + "ville= " + this.ville
-                + "mot de passe= " + this.mot_de_passe
-                + "credit= " + this.credit
-                + "admin= " + this.administrateur
+                + ", nom= " + this.nom
+                + ", prenom= " + this.prenom
+                + ", email= " + this.email
+                + ", rue= " + this.rue
+                + ", code postal= " + this.code_postal
+                + ", ville= " + this.ville
+                + ", mot de passe= " + this.mot_de_passe
+                + ", credit= " + this.credit
+                + ", admin= " + this.administrateur
                 ;
     }
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%--
   Created by IntelliJ IDEA.
   User: Caro
@@ -15,17 +14,3 @@
     <h1>Test ok</h1>
 </body>
 </html>
-=======
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Liste Encheres</title>
-</head>
-<body>
-	<h1>Voici la liste des Encheres</h1>
-</body>
-</html>
->>>>>>> 3e3dedb676f34ebb55ff28136b513a77e3cf478c

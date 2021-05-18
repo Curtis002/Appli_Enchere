@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import fr.eni.appli_enchere.bo.Utilisateur;
-import fr.eni.appli_enchere.dal.DALException;
-import fr.eni.appli_enchere.dal.UtilisateurDAO;
+
 
 
 	
@@ -17,7 +16,11 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 		private static final String GETPSEUDO="SELECT * FROM UTILISATEURS where pseudo=?;";
 		private static final String GETEMAIL="SELECT * FROM UTILISATEURS where email=?;";
 		private static final String GETPRENOM="SELECT prenom FROM UTILISATEURS where prenom=?;";
-		private ConnectionProvider ConnexionProvider;
+		
+		// nouvel utilisateur
+		private static final String REGISTERUTILISATEUR="INSERT INTO UTILISATEURS (pseudo, prenom, nom, pseudo,email,rue,telephone,code_postal,ville,mot_de_passe,credit, administrateur)"+"VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
+		
+		private ConnectionProvider ConnectionProvider;
 
 
 		public Utilisateur selectUtilisateur( String email, String password) throws DALException {
@@ -29,7 +32,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			
 			//check nom du provider
 			try{
-				cnx=ConnexionProvider.getConnection();
+				cnx=ConnectionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETUSER);
 				stmt.setString(1, email);
 				stmt.setString(2, password);
@@ -69,7 +72,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			
 			//check nom du provider
 			try{
-				cnx=ConnexionProvider.getConnection();
+				cnx=ConnectionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETPSEUDO);
 				stmt.setString(1, pseudo);
 				rs=stmt.executeQuery();
@@ -108,7 +111,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 
 			//check nom du provider
 			try{
-				cnx=ConnexionProvider.getConnection();
+				cnx=ConnectionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETEMAIL);
 				stmt.setString(1, pseudo);
 				rs=stmt.executeQuery();
@@ -146,7 +149,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			
 			//check nom du provider
 			try{
-				cnx=ConnexionProvider.getConnection();
+				cnx=ConnectionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETPRENOM);
 				stmt.setString(1, prenom);
 				rs=stmt.executeQuery();
@@ -162,6 +165,47 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 				//ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
 			System.out.println("passe par SelectPrenom dans Impl");
+			return utilisateur;
+		}
+
+
+		@Override
+		public Utilisateur registerUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+				String rue, String codePostal, String ville, String mdp, int credit, boolean administrateur)
+				throws DALException {
+			
+			Connection cnx=null;
+			PreparedStatement stmt=null;
+			Utilisateur utilisateur=null;
+			
+			
+			//check nom du provider
+			try{
+				
+				utilisateur = new Utilisateur();
+				
+				cnx=ConnectionProvider.getConnection();
+				stmt = cnx.prepareStatement(REGISTERUTILISATEUR);
+				stmt.setString(1, pseudo);
+				stmt.setString(2, nom);
+				stmt.setString(3, nom);
+				stmt.setString(4, nom);
+				stmt.setString(5, nom);
+				stmt.setString(6, nom);
+				stmt.setString(7, nom);
+				stmt.setString(8, codePostal);
+				stmt.setString(9, ville);
+				stmt.setInt(10, credit);
+				stmt.setBoolean(11, administrateur);
+				
+			}catch(SQLException e){
+				throw new DALException("probleme methode ajouter utilisateur()",e);
+			}finally{
+
+				//check nom du provider
+				//ConnexionProvider.seDeconnecter(stmt, cnx);
+			}
+			System.out.println("passe par registerUtilisateur dans Impl");
 			return utilisateur;
 		}
 	

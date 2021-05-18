@@ -6,18 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import fr.eni.appli_enchere.bo.Utilisateur;
-import fr.eni.appli_enchere.dal.DALException;
-import fr.eni.appli_enchere.dal.UtilisateurDAO;
+
 
 
 	
 	public class UtilisateurDAOjdbcImpl implements UtilisateurDAO {
 		  
 		private static final String GETUSER="SELECT no_utilisateur, pseudo, prenom, nom, pseudo,email,rue,telephone,code_postal,ville,mot_de_passe,credit FROM UTILISATEURS where email=? and mot_de_passe=?;";
-
 		private static final String GETPSEUDO="SELECT pseudo FROM UTILISATEURS where pseudo=?;";
 		private static final String GETPRENOM="SELECT prenom FROM UTILISATEURS where prenom=?;";
-		private ConnectionProvider ConnexionProvider;
+		
 
 
 		public Utilisateur selectUtilisateur( String email, String password) throws DALException {
@@ -29,7 +27,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			
 			//check nom du provider
 			try{
-				cnx=ConnexionProvider.getConnection();
+				cnx=ConnectionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETUSER);
 				stmt.setString(1, email);
 				stmt.setString(2, password);
@@ -68,7 +66,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			
 			//check nom du provider
 			try{
-				cnx=ConnexionProvider.getConnection();
+				cnx=ConnectionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETPSEUDO);
 				stmt.setString(1, pseudo);
 				rs=stmt.executeQuery();
@@ -94,7 +92,7 @@ import fr.eni.appli_enchere.dal.UtilisateurDAO;
 			
 			//check nom du provider
 			try{
-				cnx=ConnexionProvider.getConnection();
+				cnx=ConnectionProvider.getConnection();
 				stmt = cnx.prepareStatement(GETPRENOM);
 				stmt.setString(1, prenom);
 				rs=stmt.executeQuery();

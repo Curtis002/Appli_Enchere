@@ -15,22 +15,14 @@
 </head>
 <body>
     <div class="container">
-        <form action="/ConnectServlet" method="post">
+        <form action="/appli_enchere/ConnectServlet" method="post">
             <div class="input">
-                <label for="identifiant">
-                    <c:if test="${hasErrors}">
-                        <span class='error'>* </span>
-                    </c:if>Username:
-                </label>
-                <input type="text" id="identifiant" name="identifiant" />
+                <label for="pseudo">Pseudo :</label>
+                <input type="text" id="pseudo" name="pseudo" />
             </div>
 
             <div class="input">
-                <label for="mdp">
-                    <c:if test="${hasErrors}">
-                        <span class='error'>* </span>
-                    </c:if> Password:
-                </label>
+                <label for="mdp">Mot de passe :</label>
                 <input type="password" id="mdp" name="mdp" />
             <div class="inputSubmit">
                 <input type="submit" value="Connexion" />
@@ -39,7 +31,7 @@
         </form>
         <p id="links">
             Créer un compte
-            <a href="register.jsp">here</a>.
+            <a href="creer_compte.jsp">ici</a>.
         </p>
     </div>
 </body>

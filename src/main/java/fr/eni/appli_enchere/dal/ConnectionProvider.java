@@ -24,6 +24,7 @@ public class ConnectionProvider {
     }
 
     public static Connection getConnection() throws SQLException {
+        System.out.println("passe par getConnection");
         return ConnectionProvider.dataSource.getConnection();
     }
 }

@@ -6,5 +6,6 @@ public interface UtilisateurDAO {
 
 	Utilisateur selectUtilisateur( String email, String password) throws DALException;
 	Utilisateur selectPseudo( String pseudo) throws DALException;
+	Utilisateur selectEmail( String pseudo) throws DALException;
 	Utilisateur selectPrenom( String prenom) throws DALException;
 }

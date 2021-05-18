@@ -1,6 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set scope="session" var="isConnected" value="${sessionScope['isConnected']}" />
-<c:set scope="session" var="hasErrors" value="${sessionScope['hasErrors']}" />
 <%--
   Created by IntelliJ IDEA.
   User: Caro
@@ -24,6 +22,12 @@
             <div class="input">
                 <label for="mdp">Mot de passe :</label>
                 <input type="password" id="mdp" name="mdp" />
+                <div>
+                <c:if test="${not empty requestScope.error}">
+                    <!-- Show the error div with message-->
+                    <div>Mot de passe ou identifiant invalide</div>
+                </c:if>
+                </div>
             <div class="inputSubmit">
                 <input type="submit" value="Connexion" />
             </div>
@@ -31,7 +35,7 @@
         </form>
         <p id="links">
             Créer un compte
-            <a href="creer_compte.jsp">ici</a>.
+            <a href="register.jsp">ici</a>.
         </p>
     </div>
 </body>

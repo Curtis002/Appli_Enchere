@@ -8,6 +8,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(name = "ConnectServlet", urlPatterns = "/ConnectServlet")
 public class ConnectServlet extends HttpServlet {
@@ -43,15 +46,20 @@ public class ConnectServlet extends HttpServlet {
         UtilisateurManager utilisateurManager = new UtilisateurManager();
         Utilisateur utilisateur;
         try {
-            utilisateur = utilisateurManager.selectPseudo(pseudo);
+            if (pseudo.contains("@")) {
+                utilisateur = utilisateurManager.selectEmail(pseudo);
+            } else {
+                utilisateur = utilisateurManager.selectPseudo(pseudo);
+            }
             if (utilisateur != null && mot_de_passe.equals(utilisateur.getMot_de_passe())) {
                 System.out.println("passe par premier if");
                 session.setAttribute("ConnectedUser", pseudo);
                 response.sendRedirect("listeEncheres.jsp");
-            } else {
+            } else if(utilisateur == null || !mot_de_passe.equals(utilisateur.getMot_de_passe())) {
                 System.out.println("passe par deuxième if");
-                session.setAttribute("erreur", "erreur mot de passe");
-                response.sendRedirect("login.jsp");
+                request.setAttribute("error", "Erreur mot de passe");
+                RequestDispatcher rd=request.getRequestDispatcher("/login.jsp");
+                rd.forward(request, response);
             }
         } catch (DALException e) {
             e.printStackTrace();

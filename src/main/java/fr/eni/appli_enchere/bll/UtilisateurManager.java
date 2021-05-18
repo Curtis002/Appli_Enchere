@@ -22,6 +22,9 @@ public class UtilisateurManager {
 	public Utilisateur selectPseudo(String pseudo) throws DALException{
 		return this.utilisateurDAO.selectPseudo(pseudo);
 	}
+	public Utilisateur selectEmail(String pseudo) throws DALException{
+		return this.utilisateurDAO.selectEmail(pseudo);
+	}
 	public  Utilisateur selectPrenom( String prenom) throws DALException{
 		return utilisateurDAO.selectPrenom(prenom);
 	}

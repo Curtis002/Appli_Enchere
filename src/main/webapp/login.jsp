@@ -17,20 +17,12 @@
     <div class="container">
         <form action="/appli_enchere/ConnectServlet" method="post">
             <div class="input">
-                <label for="pseudo">
-                    <c:if test="${hasErrors}">
-                        <span class='error'>* </span>
-                    </c:if>Username:
-                </label>
+                <label for="pseudo">Pseudo :</label>
                 <input type="text" id="pseudo" name="pseudo" />
             </div>
 
             <div class="input">
-                <label for="mdp">
-                    <c:if test="${hasErrors}">
-                        <span class='error'>* </span>
-                    </c:if> Password:
-                </label>
+                <label for="mdp">Mot de passe :</label>
                 <input type="password" id="mdp" name="mdp" />
             <div class="inputSubmit">
                 <input type="submit" value="Connexion" />

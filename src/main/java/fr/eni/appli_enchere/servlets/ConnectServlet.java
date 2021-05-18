@@ -9,7 +9,12 @@ import java.io.IOException;
 
 @WebServlet(name = "ConnectServlet", urlPatterns = "/ConnectServlet")
 public class ConnectServlet extends HttpServlet {
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {

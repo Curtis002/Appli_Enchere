@@ -7,6 +7,7 @@ import fr.eni.appli_enchere.dal.DALException;
 import fr.eni.appli_enchere.dal.DAOFactory;
 import fr.eni.appli_enchere.dal.UtilisateurDAO;
 
+import java.util.List;
 
 
 public class UtilisateurManager {

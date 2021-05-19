@@ -4,6 +4,8 @@ import java.util.List;
 
 import fr.eni.appli_enchere.bo.Utilisateur;
 
+import java.util.List;
+
 
 public interface UtilisateurDAO {
 
@@ -11,7 +13,7 @@ public interface UtilisateurDAO {
 	Utilisateur selectPseudo( String pseudo) throws DALException;
 	Utilisateur selectEmail( String pseudo) throws DALException;
 	Utilisateur selectPrenom( String prenom) throws DALException;
-	
+
 	// nouvel utilisateur
 	void registerUtilisateur(Utilisateur utilisateur) throws DALException;
 	

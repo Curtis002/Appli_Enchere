@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
 
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
         Matcher matcher = pattern.matcher(pseudo);
-        
+
         List<String> allPseudo = null;
 		try {
 			allPseudo = utilisateurManager.selectAllPseudo();
@@ -61,10 +61,7 @@ public class RegisterServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-       
-        
-        
+
         if (!matcher.matches() || allPseudo.contains(pseudo)) {
             request.setAttribute("errorPseudo", "Veuillez renseigner un pseudo valide");
             System.out.println("passe pseudo");

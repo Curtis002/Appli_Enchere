@@ -9,9 +9,6 @@ import java.util.List;
 
 import fr.eni.appli_enchere.bo.Utilisateur;
 
-
-
-	
 	public class UtilisateurDAOjdbcImpl implements UtilisateurDAO {
 		  
 		private static final String GETUSER="SELECT no_utilisateur, pseudo, prenom, nom, pseudo,email,rue,telephone,code_postal,ville,mot_de_passe,credit FROM UTILISATEURS where email=? and mot_de_passe=?;";
@@ -269,5 +266,4 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 			}
 			System.out.println("passe par registerUtilisateur dans Impl");
 		}
-	
 }

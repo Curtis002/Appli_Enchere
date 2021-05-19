@@ -10,44 +10,37 @@
 </head>
 <body>
 <h1>Accueil connecté</h1>
-<nav>
-	<span>ENI ENCHERES</span>  
-	<a href=""></a>
-	<span id="links">
-		<a href="Enchères.jsp">Enchères</a>
-	</span>
-	<span id="links">
-		<a href="article.jsp">Vendre un article</a>
-	</span>
-	<span id="links">
-		<a href="profil.jsp">Mon profil</a>
-	</span>
-	<span id="links">
-		<a href="/Appli_Enchere/LogoutServlet">Déconnexion</a>
-	</span>
-</nav>
+	<nav class="nav">
+	<span class="nav nav-item">ENI-ENCHERES</span>  
+	</nav>
+	<nav class="container">
+	<ul class="nav justify-content-end">
+		<li class="nav-item" id="links"><a class="nav-link" href="Enchères.jsp">Enchères</a></li>
+		<li class="nav-item" id="links"><a class="nav-link" href="article.jsp">Vendre un article</a></li>
+		<li class="nav-item" id="links"><a class="nav-link" href="profil.jsp">Mon profil</a></li>
+		<li class="nav-item" id="links"><a class="nav-link" href="/Appli_Enchere/LogoutServlet">Déconnexion</a></li>
+	</ul>
+	</nav>
 <h2>Liste des enchères</h2>
 <div>
-	<div>
 		<div>
-		<label for="site-search">Filtres :</label>
-		<input type="search" id="site-search" name="q"
-	       aria-label="Search through site content">
-	    </div>
-	    <div>
-		<label for="categorie-select">Categorie :</label>
-			<select name="categorie" id="categorie-select">
-			    <option value="">Choisissez une categorie</option>
-			    <option value="Informatique">Informatique</option>
-			    <option value="cat">Ameublement</option>
-			    <option value="hamster">Vêtement</option>
-			    <option value="parrot">Sports&Loisirs</option>
-			</select>
+			<div>
+				<label for="site-search">Filtres :</label>
+				<input type="search" id="site-search" name="q"
+			       aria-label="Search through site content">
+		    </div>
+		    <div>
+			<label for="categorie-select">Categorie :</label>
+				<select name="categorie" id="categorie-select">
+				    <option value="">Choisissez une categorie</option>
+				    <option value="Informatique">Informatique</option>
+				    <option value="cat">Ameublement</option>
+				    <option value="hamster">Vêtement</option>
+				    <option value="parrot">Sports&Loisirs</option>
+				</select>
+			</div>
 		</div>
-	</div>
-	<div>
-		<button>Rechercher</button>
-	</div>
+		
 	<div class="form-check-inline">
 		<ul class="form-check ">
 	        <input class="form-check-input" type="radio" name="radio" id="radio1" value="o1">
@@ -76,7 +69,7 @@
 	        <input class="form-check-input" type="checkbox" value="c1" id="ck1">
 	        <label class="form-check-label" for="ck1">mes ventes en cours</label>
 	      </li>
-      <li class="form-check">
+      	<li class="form-check">
         <input class="form-check-input" type="checkbox" value="c2" id="ck2">
         <label class="form-check-label" for="ck2">ventes non débutées</label>
        </li>
@@ -85,7 +78,11 @@
         <label class="form-check-label" for="ck2">ventes terminées</label>
       </li>
      </ul>
-     </div>
+    </div>
+    	<div>
+			<button>Rechercher</button>
+		</div>
+   </div>
 </div>
 <div>
 	<div>
@@ -101,7 +98,7 @@
 	</div>
 	<div>
 	<img src="img/Rocket_stove.jpg">
-		<h4>PC Gamer pour travailler<a href ="ficheproduit.jsp"></a></h4>
+		<h4>Rocket stove pour riz<a href ="ficheproduit.jsp"></a></h4>
 		<span>Prix : 210 points</span>
 		
 		<span>Fin de l'enchère : 10/08/2018</span>

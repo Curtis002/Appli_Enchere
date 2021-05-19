@@ -64,6 +64,38 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 		}
 
 
+		//CHECK PSEUDO EMAIL
+		public Utilisateur selectCheckUtilisateur( String email, String pseudo) throws DALException {
+			Connection cnx=null;
+			PreparedStatement stmt=null;
+			ResultSet rs=null;
+			Utilisateur utilisateur = null;
+			
+			
+			//check nom du provider
+			try{
+				cnx=ConnectionProvider.getConnection();
+				stmt = cnx.prepareStatement(GETUSER);
+				stmt.setString(1, email);
+				stmt.setString(2, pseudo);
+				rs=stmt.executeQuery();
+				if (rs.next()){
+					utilisateur = new Utilisateur();
+					utilisateur.setPseudo(rs.getString("pseudo"));
+					utilisateur.setEmail(rs.getString("email"));
+					
+				}
+			}catch (SQLException e){
+				throw new DALException("probleme methode selectCheckUtilisateur()",e);
+			}finally{
+
+				//check nom du provider
+				//ConnexionProvider.seDeconnecter(stmt, cnx);
+			}
+			System.out.println("passe par selectCheckUtilisateur dans Impl");
+			return utilisateur;
+		}
+		
 		public Utilisateur selectPseudo(String pseudo) throws DALException {
 			Connection cnx=null;
 			PreparedStatement stmt=null;

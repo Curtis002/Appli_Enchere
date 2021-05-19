@@ -12,5 +12,8 @@ public interface UtilisateurDAO {
 	
 	// nouvel utilisateur
 	void registerUtilisateur(Utilisateur utilisateur) throws DALException;
+	
+	//check pseudo email
+	Utilisateur selectCheckUtilisateur( String email, String pseudo) throws DALException;
 
 }

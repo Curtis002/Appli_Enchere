@@ -33,4 +33,12 @@ public class UtilisateurManager {
 		System.out.println("passe par Manager registerUtilisateur");
 		utilisateurDAO.registerUtilisateur(utilisateur);
 	}
+	
+	//check pseudo email
+	public Utilisateur selectCheckUtilisateur( String email, String pseudo) throws DALException{
+		System.out.println("passe par Manager selectCheckUtilisateur");
+		return utilisateurDAO.selectUtilisateur(email, pseudo);
+	}
+	
+	
 }

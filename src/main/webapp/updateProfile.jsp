@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="style/register.css">
-		<title>Insert title here</title>
+		<title>Modification de profile</title>
 	</head>
 	
 	<body>
@@ -94,12 +94,7 @@
             	<div class="col">
             	<button  class="btn-secondary my-2 py-2 mx-auto" type="button"> Supprimer </button>
             	</div>
-            	            
-	          
 	        </div>
-	   		</form>
-	       
-		
-		
+	   	</form>	
 	</body>
 </html>

@@ -54,7 +54,7 @@ public class ConnectServlet extends HttpServlet {
             if (utilisateur != null && mot_de_passe.equals(utilisateur.getMot_de_passe())) {
                 System.out.println("passe par premier if");
                 session.setAttribute("ConnectedUser", pseudo);
-                response.sendRedirect("listeEncheres.jsp");
+                response.sendRedirect("accueilConnect.jsp");
             } else if(utilisateur == null || !mot_de_passe.equals(utilisateur.getMot_de_passe())) {
                 System.out.println("passe par deuxième if");
                 request.setAttribute("error", "Erreur mot de passe");

@@ -17,8 +17,8 @@
 	<ul class="nav justify-content-end">
 		<li class="nav-item" id="links"><a class="nav-link" href="Enchères.jsp">Enchères</a></li>
 		<li class="nav-item" id="links"><a class="nav-link" href="article.jsp">Vendre un article</a></li>
-		<li class="nav-item" id="links"><a class="nav-link" href="profil.jsp">Mon profil</a></li>
-		<li class="nav-item" id="links"><a class="nav-link" href="/Appli_Enchere/LogoutServlet">Déconnexion</a></li>
+		<li class="nav-item" id="links"><a class="nav-link" href="profile.jsp">Mon profil</a></li>
+		<li class="nav-item" id="links"><a class="nav-link" href="<%=request.getContextPath() %>/LogoutServlet">Déconnexion</a></li>
 	</ul>
 	</nav>
 <h2>Liste des enchères</h2>

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LogoutServlet
  */
-@WebServlet(name = "RegisterServlet", urlPatterns = "/LogoutServlet")
+@WebServlet(name = "LogoutServlet", urlPatterns = "/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
     /**
     * 
@@ -27,7 +27,7 @@ public class LogoutServlet extends HttpServlet {
             System.out.println("passe par if LogoutServlet");
             session.removeAttribute("identifiant");
             session.invalidate();
-            RequestDispatcher rd = request.getRequestDispatcher("/listeEncheres.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
             rd.forward(request,response);
         }
     }

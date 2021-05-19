@@ -16,7 +16,7 @@
 	
 	
 	<span id="links">
-		<a href="/login.jsp">Se connecter - S'inscrire</a>
+		<a href="login.jsp">Se connecter - S'inscrire</a>
 	</span>
 </nav>
 <h2>Liste des enchères</h2>

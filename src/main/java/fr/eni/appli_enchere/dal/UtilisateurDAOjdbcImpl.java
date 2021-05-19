@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.appli_enchere.bo.Utilisateur;
 
@@ -14,6 +16,8 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 		  
 		private static final String GETUSER="SELECT no_utilisateur, pseudo, prenom, nom, pseudo,email,rue,telephone,code_postal,ville,mot_de_passe,credit FROM UTILISATEURS where email=? and mot_de_passe=?;";
 		private static final String GETPSEUDO="SELECT * FROM UTILISATEURS where pseudo=?;";
+		private static final String GETALLPSEUDO="SELECT pseudo FROM UTILISATEURS ";
+		private static final String GETALLEMAIL="SELECT email FROM UTILISATEURS ";
 		private static final String GETEMAIL="SELECT * FROM UTILISATEURS where email=?;";
 		private static final String GETPRENOM="SELECT prenom FROM UTILISATEURS where prenom=?;";
 		
@@ -63,7 +67,64 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 			return utilisateur;
 		}
 
+		public List<String> selectAllPseudo() throws DALException{
+			
+			List<String> listePseudo = new ArrayList<>();
+			Connection cnx=null;
+			PreparedStatement stmt=null;
+			ResultSet rs=null;
+		
+			
+			try{
+				cnx=ConnectionProvider.getConnection();
+				stmt = cnx.prepareStatement(GETALLPSEUDO);
+				
+				rs=stmt.executeQuery();
+				while (rs.next()){
+					listePseudo.add(rs.getString("pseudo"));
+					
+				}
+			}catch (SQLException e){
+				throw new DALException("probleme methode selectAllPseudo()",e);
+			}finally{
 
+				//check nom du provider
+				//ConnexionProvider.seDeconnecter(stmt, cnx);
+			}
+			System.out.println("passe par selectAllPseudo dans Impl");
+			return listePseudo;
+		}
+		
+		
+			public List<String> selectAllEmail() throws DALException{
+			
+			List<String> listeEmail = new ArrayList<>();
+			Connection cnx=null;
+			PreparedStatement stmt=null;
+			ResultSet rs=null;
+		
+			
+			try{
+				cnx=ConnectionProvider.getConnection();
+				stmt = cnx.prepareStatement(GETALLEMAIL);
+				
+				rs=stmt.executeQuery();
+				while (rs.next()){
+					listeEmail.add(rs.getString("email"));
+					
+				}
+			}catch (SQLException e){
+				throw new DALException("probleme methode selectAllEmail()",e);
+			}finally{
+
+				//check nom du provider
+				//ConnexionProvider.seDeconnecter(stmt, cnx);
+			}
+			System.out.println("passe par selectAllEmail dans Impl");
+			return listeEmail;
+		}
+			
+		
 		//CHECK PSEUDO EMAIL
 		public Utilisateur selectCheckUtilisateur( String email, String pseudo) throws DALException {
 			Connection cnx=null;

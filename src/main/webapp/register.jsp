@@ -12,13 +12,13 @@
 		<h1>Page de création de compte</h1>
 		
 		<div class="container">
-		 <form action="/appli_enchere/RegisterServlet" method="post">
+		 <form action="/Appli_Enchere/RegisterServlet" method="post">
 		
             	<div class="input">
 	                <label for="pseudo">Pseudo :</label>
 	                <input type="text" id="pseudo" name="pseudo"/>
 	              <c:if test="${not empty requestScope.errorPseudo}">
-                    <div>Ce pseudo est invalide.</div>
+                    <div>Ce pseudo est invalide / ou nonexistant.</div>
                 </c:if>
 	            </div>
 	            <div class="input">
@@ -33,7 +33,7 @@
 	                <label for="mail">Email :</label>
 	                <input type="text" id="mail" name="mail" required/>
 	                 <c:if test="${not empty requestScope.errorEmail}">
-                     <div>Renseigner un email valide.</div>
+                     <div>Renseigner un email valide / ou existant.</div>
                 </c:if>
 	            </div>
 	            <div class="input">

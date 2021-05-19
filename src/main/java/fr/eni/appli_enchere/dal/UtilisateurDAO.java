@@ -1,5 +1,7 @@
 package fr.eni.appli_enchere.dal;
 
+import java.util.List;
+
 import fr.eni.appli_enchere.bo.Utilisateur;
 
 
@@ -16,4 +18,8 @@ public interface UtilisateurDAO {
 	//check pseudo email
 	Utilisateur selectCheckUtilisateur( String email, String pseudo) throws DALException;
 
+	//check pseudo 
+	public List<String> selectAllPseudo() throws DALException;
+	//check email 
+	public List<String> selectAllEmail() throws DALException;
 }

@@ -9,12 +9,18 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @WebServlet(name = "RegisterServlet", urlPatterns = "/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
         rd.forward(request, response);
@@ -39,12 +45,31 @@ public class RegisterServlet extends HttpServlet {
 
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
         Matcher matcher = pattern.matcher(pseudo);
-
-        if (!matcher.matches()) {
+        
+        List<String> allPseudo = null;
+		try {
+			allPseudo = utilisateurManager.selectAllPseudo();
+		} catch (DALException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		List<String> allEmail = null;
+		try {
+			allEmail = utilisateurManager.selectAllEmail();
+		} catch (DALException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+       
+        
+        
+        if (!matcher.matches() || allPseudo.contains(pseudo)) {
             request.setAttribute("errorPseudo", "Veuillez renseigner un pseudo valide");
             System.out.println("passe pseudo");
 //            rd.forward(request, response);
-        } else if (!email.contains("@")) {
+        } else if (!email.contains("@")|| allEmail.contains(email)) {
             request.setAttribute("errorEmail", "Veuillez renseigner un email valide");
             System.out.println("passe email");
 //          rd.forward(request, response);

@@ -1,5 +1,7 @@
 package fr.eni.appli_enchere.bll;
 
+import java.util.List;
+
 import fr.eni.appli_enchere.bo.Utilisateur;
 import fr.eni.appli_enchere.dal.DALException;
 import fr.eni.appli_enchere.dal.DAOFactory;
@@ -40,5 +42,15 @@ public class UtilisateurManager {
 		return utilisateurDAO.selectUtilisateur(email, pseudo);
 	}
 	
+	public List<String> selectAllPseudo() throws DALException {
+		System.out.println("passe par Manager selectAllPseudo");
+		return utilisateurDAO.selectAllPseudo();
+		
+	}
 	
+	public List<String> selectAllEmail() throws DALException {
+		System.out.println("passe par Manager selectAllEmail");
+		return utilisateurDAO.selectAllEmail();
+		
+	}
 }

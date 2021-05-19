@@ -16,7 +16,7 @@
 	
 		<h1>Mon Profile</h1>
 		
-		<form action="/Appli_Enchere/updateProfile.jsp" method="post">
+		<form action="<%=request.getContextPath() %>/updateProfile.jsp" method="post">
 			<div class="container">
 				<div >
 					<div>

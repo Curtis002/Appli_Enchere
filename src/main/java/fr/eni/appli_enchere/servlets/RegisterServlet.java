@@ -9,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,6 +40,7 @@ public class RegisterServlet extends HttpServlet {
 
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
         Matcher matcher = pattern.matcher(pseudo);
+
 
         if (!matcher.matches()) {
             request.setAttribute("errorPseudo", "Veuillez renseigner un pseudo valide");

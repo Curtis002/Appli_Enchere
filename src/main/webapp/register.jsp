@@ -18,7 +18,7 @@
 	                <label for="pseudo">Pseudo :</label>
 	                <input type="text" id="pseudo" name="pseudo"/>
 	              <c:if test="${not empty requestScope.errorPseudo}">
-                    <div>Ce pseudo est invalide.</div>
+                    <div>Ce pseudo est invalide ou existe déjà.</div>
                 </c:if>
 	            </div>
 	            <div class="input">
@@ -33,7 +33,7 @@
 	                <label for="mail">Email :</label>
 	                <input type="text" id="mail" name="mail" required/>
 	                 <c:if test="${not empty requestScope.errorEmail}">
-                     <div>Renseigner un email valide.</div>
+                     <div>Cet email est incorrect ou existe déjà.</div>
                 </c:if>
 	            </div>
 	            <div class="input">

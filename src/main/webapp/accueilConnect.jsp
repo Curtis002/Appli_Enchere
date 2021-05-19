@@ -80,37 +80,36 @@
      </ul>
     </div>
     	<div>
-			<button>Rechercher</button>
+			<button class="btn-lg mb-2">Rechercher</button>
 		</div>
    </div>
-</div>
-<div>
-	<div>
-	<img src="img/meilleur-pc-gamer.jpg">
-		<h4>PC Gamer pour travailler<a href ="ficheproduit.jsp"></a></h4>
-		<span>Prix : 210 points</span>
-		
-		<span>Fin de l'enchère : 10/08/2018</span>
-		
-		<span>Vendeur :</span><a href ="fichevendeur.jsp"></a>
-		
-	
+<div class="row align-items-start custom-line">
+	<div class="col">
+		<img src="img/meilleur-pc-gamer.jpg" alt="image" height="100" width="100">
+		<div>
+			<h4>PC Gamer pour travailler<a href ="ficheproduit.jsp"></a></h4>
+			<span>Prix : 210 points</span>
+			
+			<span>Fin de l'enchère : 10/08/2018</span>
+			
+			<span>Vendeur :</span><a href ="fichevendeur.jsp">jojo44</a>
+		</div>
 	</div>
-	<div>
-	<img src="img/Rocket_stove.jpg">
-		<h4>Rocket stove pour riz<a href ="ficheproduit.jsp"></a></h4>
-		<span>Prix : 210 points</span>
-		
-		<span>Fin de l'enchère : 10/08/2018</span>
-		
-		<span>Vendeur :</span><a href ="fichevendeur.jsp"></a>
-		
 	
+	<div class="col">
+		<img src="img/Rocket_stove.jpg" alt="image" height="100" width="100">
+		<div>
+			<h4>Rocket stove pour riz<a href ="ficheproduit.jsp"></a></h4>
+			<span>Prix : 210 points</span>
+			
+			<span>Fin de l'enchère : 10/08/2018</span>
+			
+			<span>Vendeur :</span><a href ="fichevendeur.jsp">Jiji56</a>
+			
+		
+		</div>
 	</div>
-
-
-</div>
-        
+  </div>  
 
 </body>
 </html>

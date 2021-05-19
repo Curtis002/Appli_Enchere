@@ -70,11 +70,11 @@
 	         </div>
 	         <div class="form-row"> 
 	            <div class="input col">
-	                <label for="mdp">Mot de passe :</label>
+	                <label for="mdp">Mot de passe:</label>
                		<input class="form-control" type="password" id="mdp" name="mdp" required/>
 	            </div>
 	           	<div class="input col">
-	                <label for="confirmMdp">Confirmation :</label>
+	                <label for="confirmMdp">Confirmation:</label>
                		<input class="form-control" type="password" id="confirmMdp" name="confirmMdp" required/>
 	            
 					 <c:if test="${not empty requestScope.error}">
@@ -90,11 +90,12 @@
             	</div>
             	<div class="col">
             	<button  class="btn-secondary my-2 py-2 mx-auto" type="button"> Annuler </button>
-            	</div>
-            	            
-	          
+            	<a href ="Accueil.jsp">  </a>
+            	</div>  
 	        </div>
-	   		</form>
+	   	</form>
+	   </div>
+	   
 	       
   </body>
 </html>

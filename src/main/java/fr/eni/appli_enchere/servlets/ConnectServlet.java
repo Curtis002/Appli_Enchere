@@ -60,7 +60,6 @@ public class ConnectServlet extends HttpServlet {
                 request.setAttribute("error", "Erreur mot de passe");
                 RequestDispatcher rd=request.getRequestDispatcher("/login.jsp");
                 rd.forward(request, response);
-
             }
         } catch (DALException e) {
             e.printStackTrace();

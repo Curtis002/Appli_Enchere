@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -15,11 +16,10 @@
 		
             	<div class="input">
 	                <label for="pseudo">Pseudo :</label>
-	                <input type="text" id="pseudo" name="pseudo" required/>
-	              <!--    <c:if test="${not empty requestScope.error}">
-                   Show the error div with message
-                    <div>Ce pseudo est déjà utilisé.</div>
-                </c:if> -->
+	                <input type="text" id="pseudo" name="pseudo"/>
+	              <c:if test="${not empty requestScope.errorPseudo}">
+                    <div>Ce pseudo est invalide.</div>
+                </c:if>
 	            </div>
 	            <div class="input">
 	                <label for="nom">Nom :</label>
@@ -32,14 +32,16 @@
 	            <div class="input">
 	                <label for="mail">Email :</label>
 	                <input type="text" id="mail" name="mail" required/>
-	              <!--   <c:if test="${not empty requestScope.error}"> 
-                     Show the error div with message
-                     <div>Cette email est déjà utilisé.</div> 
-                </c:if>   -->
+	                 <c:if test="${not empty requestScope.errorEmail}">
+                     <div>Renseigner un email valide.</div>
+                </c:if>
 	            </div>
 	            <div class="input">
 	                <label for="telephone">Téléphone :</label>
 	                <input type="text" id="telephone" name="telephone" required/>
+					<c:if test="${not empty requestScope.errorTel}">
+						<div>Renseigner un téléphone valide.</div>
+					</c:if>
 	            </div>
 	            <div class="input">
 	                <label for="rue">Rue :</label>
@@ -52,6 +54,9 @@
 	            <div class="input">
 	                <label for="codePostale">Code postal :</label>
 	                <input type="text" id="codePostale" name="codePostale" required/>
+					<c:if test="${not empty requestScope.errorcp}">
+						<div>Renseigner un code postal valide.</div>
+					</c:if>
 	            </div>
 	            <div class="input">
 	                <label for="mdp">Mot de passe :</label>
@@ -61,6 +66,10 @@
 	                <label for="confirmMdp">Confirmation :</label>
                		<input type="password" id="confirmMdp" name="confirmMdp" required/>
 	            </div>
+					 <c:if test="${not empty requestScope.error}">
+						 Show the error div with message
+						 <div>Mots de passe non identiques.</div>
+					 </c:if>
             	<div class="inputSubmit">
                 	<input type="submit" value="Créer" />
                 	<a href ="login.jsp"> <button type="button"> Annuler </button> </a> 

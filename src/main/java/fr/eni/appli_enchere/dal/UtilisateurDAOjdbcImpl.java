@@ -18,7 +18,7 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 		private static final String GETPRENOM="SELECT prenom FROM UTILISATEURS where prenom=?;";
 		
 		// nouvel utilisateur
-		private static final String REGISTERUTILISATEUR="INSERT INTO UTILISATEURS (pseudo, prenom, nom, pseudo,email,rue,telephone,code_postal,ville,mot_de_passe,credit, administrateur)"+"VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
+		private static final String REGISTERUTILISATEUR="INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 		
 		private ConnectionProvider ConnectionProvider;
 
@@ -170,42 +170,35 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 
 
 		@Override
-		public Utilisateur registerUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
-				String rue, String codePostal, String ville, String mdp, int credit, boolean administrateur)
-				throws DALException {
-			
+		public void registerUtilisateur(Utilisateur utilisateur) throws DALException {
 			Connection cnx=null;
 			PreparedStatement stmt=null;
-			Utilisateur utilisateur=null;
-			
-			
+			System.out.println("Passe par UtilisateurDAOJdbcImpl dans registerUtilisateur");
 			//check nom du provider
 			try{
-				
-				utilisateur = new Utilisateur();
-			
 				cnx=ConnectionProvider.getConnection();
 				
 				stmt = cnx.prepareStatement(REGISTERUTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS);
-				stmt.setString(1, pseudo);
-				stmt.setString(2, nom);
-				stmt.setString(3, prenom);
-				stmt.setString(4, email);
-				stmt.setString(5, telephone);
-				stmt.setString(6, rue);
-				stmt.setString(7, codePostal);
-				stmt.setString(8, ville);
-				stmt.setString(9, mdp);
-				stmt.setInt(10, credit);
-				stmt.setBoolean(11, administrateur);
-				
-				int nbRows = stmt.executeUpdate();
-				if( nbRows == 1){
-					ResultSet rs = stmt.getGeneratedKeys();
-					if(rs.next()){
-						utilisateur.setNo_utilisateur(rs.getInt(1));
-					}
+				stmt.setString(1, utilisateur.getPseudo());
+				stmt.setString(2, utilisateur.getNom());
+				stmt.setString(3, utilisateur.getPrenom());
+				stmt.setString(4, utilisateur.getEmail());
+				stmt.setString(5, utilisateur.getTelephone());
+				stmt.setString(6, utilisateur.getRue());
+				stmt.setString(7, utilisateur.getCode_postal());
+				stmt.setString(8, utilisateur.getVille());
+				stmt.setString(9, utilisateur.getMot_de_passe());
+				stmt.setInt(10, utilisateur.getCredit());
+				stmt.setBoolean(11, utilisateur.isAdministrateur());
+				stmt.executeUpdate();
+				ResultSet rs = stmt.getGeneratedKeys();
+
+				if(rs.next()){
+					utilisateur.setNo_utilisateur(rs.getInt(1));
 				}
+				rs.close();
+				stmt.close();
+
 			}catch(SQLException e){
 				throw new DALException("probleme methode ajouter utilisateur()",e);
 			}finally{
@@ -214,7 +207,6 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 				//ConnexionProvider.seDeconnecter(stmt, cnx);
 			}
 			System.out.println("passe par registerUtilisateur dans Impl");
-			return utilisateur;
 		}
 	
 }

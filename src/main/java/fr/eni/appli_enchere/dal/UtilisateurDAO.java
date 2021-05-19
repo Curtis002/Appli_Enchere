@@ -11,7 +11,6 @@ public interface UtilisateurDAO {
 	Utilisateur selectPrenom( String prenom) throws DALException;
 	
 	// nouvel utilisateur
-	Utilisateur registerUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String mdp, int Credit, boolean Administrateur) throws DALException;
+	void registerUtilisateur(Utilisateur utilisateur) throws DALException;
 
 }

@@ -28,10 +28,9 @@ public class UtilisateurManager {
 	public  Utilisateur selectPrenom( String prenom) throws DALException{
 		return utilisateurDAO.selectPrenom(prenom);
 	}
-	
 	// nouvel utilisateur
-	public 	Utilisateur registerUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String mdp, int credit, boolean administrateur) throws DALException{
-		return utilisateurDAO.registerUtilisateur(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, mdp, credit, administrateur);
+	public void registerUtilisateur(Utilisateur utilisateur) throws DALException{
+		System.out.println("passe par Manager registerUtilisateur");
+		utilisateurDAO.registerUtilisateur(utilisateur);
 	}
 }

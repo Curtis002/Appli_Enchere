@@ -19,7 +19,7 @@
 			<div class="form-row">
             	<div class="input col">
 	                <label for="pseudo">Pseudo :</label>
-	                <input class="form-control" type="text" id="pseudo" name="pseudo"/>
+	                <input class="form-control" type="text" id="pseudo" name="pseudo" required/>
 	            	<c:if test="${not empty requestScope.errorPseudo}">
                     <div>Ce pseudo est invalide / ou nonexistant.</div>
                 	</c:if>

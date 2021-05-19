@@ -15,7 +15,7 @@
 		<h1>Page de création de compte</h1>
 		
 		<div class="container">
-		 <form action="/Appli_Enchere/RegisterServlet" method="post">
+		 <form action="<%=request.getContextPath() %>/RegisterServlet" method="post">
 			<div class="form-row">
             	<div class="input col">
 	                <label for="pseudo">Pseudo :</label>

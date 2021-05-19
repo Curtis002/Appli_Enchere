@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
 		<h1>Modification de mon Profile</h1>
 		
 		<div class="container">
-		 <form action="/Appli_Enchere/ServletUpdateProfile" method="post">
+		 <form action="<%=request.getContextPath() %>/ServletUpdateProfile" method="post">
 			<div class="form-row">
             	<div class="input col">
 	                <label for="pseudo">Pseudo :</label>

@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="/appli_enchere/ConnectServlet" method="post">
+        <form action="<%=request.getContextPath() %>/ConnectServlet" method="post">
             <div class="input">
                 <label for="pseudo">Pseudo :</label>
                 <input type="text" id="pseudo" name="pseudo" />

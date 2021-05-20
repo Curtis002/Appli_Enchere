@@ -10,18 +10,17 @@
 </head>
 <body>
 <h1>Accueil</h1>
-<nav>
-	<span>ENI ENCHERES</span>  
-	
-	
-	
-	<span id="links">
-		<a href="login.jsp">Se connecter - S'inscrire</a>
-	</span>
-</nav>
-<h2>Liste des enchères</h2>
-<div>
+<nav class="navbar">
 	<div>
+	  <span>ENI-ENCHERES</span>
+	</div>
+	<ul class="nav justify-content-end">
+		<li class="nav-item" id="links"><a class="nav-link" href="login.jsp">Se connecter - S'inscrire</a></li>
+	</ul>
+	</nav>
+<h2 class="text-center">Liste des enchères</h2>
+<div class="container row m-3">
+	<div class="col" >
 		<div>
 		<label for="site-search">Filtres :</label>
 		<input type="search" id="site-search" name="q"
@@ -38,31 +37,38 @@
 			</select>
 		</div>
 	</div>
-	<div>
-		<button>Rechercher</button>
+	
+     <div class="col">
+		<button class="form-check btn-lg mb-2 py-3 ml-5">Rechercher</button>
 	</div>
 	
 </div>
-<div>
-	<div>
-	<img src="img/meilleur-pc-gamer.jpg">
-		<h4>PC Gamer pour travailler<a href ="ficheproduit.jsp"></a></h4>
-		<span>Prix : 210 points</span>
-		
-		<span>Fin de l'enchère : 10/08/2018</span>
-		
-		<span>Vendeur :</span><a href ="fichevendeur.jsp"></a>
+<div class="border-primary row align-items-start custom-line  mx-1 my-4 ">
+	<div class="col row mx-5 py-2 ml-1 border mt-2 rounded border-secondary">
+		<img class="rounded p-2 mx-1" src="img/meilleur-pc-gamer.jpg" alt="image" height="150px" width="150px">
+		<div class="col flex-col ">
+			<h4><a href ="ficheproduit.jsp">PC Gamer pour travailler</a></h4>
+			<span class="row mx-1">Prix : 210 points</span>
+			
+			<span class="row mx-1 my-1">Fin de l'enchère : 10/08/2018</span>
+			
+			<span class="row mx-1 ">Vendeur : <a href ="fichevendeur.jsp"> jojo44</a></span>
+		</div>
 	</div>
 	
-	<div>
-	<img src="img/Rocket_stove.jpg">
-		<h4>PC Gamer pour travailler<a href ="ficheproduit.jsp"></a></h4>
-		<span>Prix : 210 points</span>
+	<div class="col row mx-5 py-2 ml-1 border mt-2 rounded border-secondary">
+		<img class="rounded p-2 mx-1" src="img/Rocket_stove.jpg" alt="image" height="150px" width="150px">
+		<div class="col flex-col">
+			<h4 class=""><a href ="ficheproduit.jsp">Rocket stove pour riz</a></h4>
+			<span class="row mx-1" >Prix : <a> 210 points</a></span>
+			
+			<span class="row mx-1 my-1" >Fin de l'enchère : <a> 10/08/2018</a></span>
+			
+			<span class="row mx-1">Vendeur : <a href ="fichevendeur.jsp"> Jiji56</a></span>
+			
 		
-		<span>Fin de l'enchère : 10/08/2018</span>
-		
-		<span>Vendeur :</span><a href ="fichevendeur.jsp"></a>
+		</div>
 	</div>
-</div>
+  </div>  
 </body>
 </html>

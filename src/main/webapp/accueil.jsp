@@ -8,7 +8,7 @@
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <title>Accueil</title>
 </head>
-<body>
+<body class="container">
 <h1>Accueil</h1>
 <nav class="navbar">
 	<div>
@@ -44,7 +44,7 @@
 	
 </div>
 <div class="border-primary row align-items-start custom-line  mx-1 my-4 ">
-	<div class="col row mx-5 py-2 ml-1 border mt-2 rounded border-secondary">
+	<div class="col row mx-2 py-2 ml-1 border mt-2 rounded border-secondary">
 		<img class="rounded p-2 mx-1" src="img/meilleur-pc-gamer.jpg" alt="image" height="150px" width="150px">
 		<div class="col flex-col ">
 			<h4><a href ="ficheproduit.jsp">PC Gamer pour travailler</a></h4>
@@ -56,7 +56,7 @@
 		</div>
 	</div>
 	
-	<div class="col row mx-5 py-2 ml-1 border mt-2 rounded border-secondary">
+	<div class="col row mx-2 py-2 ml-1 border mt-2 rounded border-secondary">
 		<img class="rounded p-2 mx-1" src="img/Rocket_stove.jpg" alt="image" height="150px" width="150px">
 		<div class="col flex-col">
 			<h4 class=""><a href ="ficheproduit.jsp">Rocket stove pour riz</a></h4>

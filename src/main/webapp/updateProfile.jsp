@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<%--		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
 		<link rel="stylesheet" href="style/register.css">
 		<title>Insert title here</title>
 	</head>
@@ -18,7 +18,10 @@
 		<div class="container">
 		 <form action="<%=request.getContextPath() %>/UpdateProfileServlet" method="post">
 			<div class="form-row">
-            	<div class="input col">
+				<c:if test="${sessionScope.noUser != null}">
+					<input type="hidden" id="id" name="id" value="<c:out value='${sessionScope.noUser}' />" />
+				</c:if>
+				<div class="input col">
 	                <label for="pseudo">Pseudo :</label>
 	                <input class="form-control" type="text" id="pseudo" name="pseudo" value="${sessionScope.pseudo}" required/>
 	            	<c:if test="${not empty requestScope.errorPseudo}">
@@ -72,16 +75,16 @@
 	          <div class="form-row"> 
 	            <div class="input col">
 	                <label for="mdp">Ancien Mot de passe :</label>
-               		<input class="form-control" type="password" id="mdp" name="mdp" value="${sessionScope.mot_de_passe}" required/>
+               		<input class="form-control" type="password" id="mdp" name="mdp" required/>
 	            </div>
 	         <div class="form-row"> 
 	            <div class="input col">
 	                <label for="mdpNew">Nouveau mot de passe :</label>
-               		<input class="form-control" type="password" id="mdpNew" name="mdpNew" required/>
+               		<input class="form-control" type="password" id="mdpNew" name="mdpNew"/>
 	            </div>
 	           	<div class="input col">
 	                <label for="confirmMdp">Confirmation mot de passe:</label>
-               		<input class="form-control" type="password" id="confirmMdp" name="confirmMdp" required/>
+               		<input class="form-control" type="password" id="confirmMdp" name="confirmMdp"/>
 	            
 					 <c:if test="${not empty requestScope.error}">
 						<!--  Show the error div with message -->

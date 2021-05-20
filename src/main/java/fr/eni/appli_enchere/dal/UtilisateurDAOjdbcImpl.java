@@ -267,7 +267,6 @@ public class UtilisateurDAOjdbcImpl implements UtilisateurDAO {
 		try {
 			cnx=ConnectionProvider.getConnection();
 			stmt = cnx.prepareStatement(UPDATEUTILISATEUR);
-			stmt.setInt(10,utilisateur.getNo_utilisateur());
 			stmt.setString(1,utilisateur.getPseudo());
 			stmt.setString(2, utilisateur.getNom());
 			stmt.setString(3, utilisateur.getPrenom());
@@ -277,6 +276,7 @@ public class UtilisateurDAOjdbcImpl implements UtilisateurDAO {
 			stmt.setString(7, utilisateur.getCode_postal());
 			stmt.setString(8, utilisateur.getVille());
 			stmt.setString(9, utilisateur.getMot_de_passe());
+			stmt.setInt(10,utilisateur.getNo_utilisateur());
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {

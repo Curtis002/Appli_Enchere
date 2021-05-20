@@ -54,6 +54,7 @@ public class ConnectServlet extends HttpServlet {
             if (utilisateur != null && mot_de_passe.equals(utilisateur.getMot_de_passe())) {
                 System.out.println("passe par premier if");
                 session.setAttribute("pseudo", pseudo);
+                session.setAttribute("noUser", utilisateur.getNo_utilisateur());
                 session.setAttribute("nom", utilisateur.getNom());
                 session.setAttribute("prenom", utilisateur.getPrenom());
                 session.setAttribute("email", utilisateur.getEmail());

@@ -21,10 +21,9 @@ public class LogoutServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("passe par doGet LogoutServlet");
-       HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
+
         if (session != null) {
-            System.out.println("passe par if LogoutServlet");
             session.removeAttribute("pseudo");
             session.removeAttribute("nom");
             session.removeAttribute("prenom");
@@ -36,8 +35,8 @@ public class LogoutServlet extends HttpServlet {
             session.removeAttribute("mot_de_passe");
             session.removeAttribute("credit");
             session.invalidate();
+        }
             RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
             rd.forward(request,response);
         }
     }
-}

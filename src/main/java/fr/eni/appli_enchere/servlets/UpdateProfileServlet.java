@@ -3,6 +3,7 @@ package fr.eni.appli_enchere.servlets;
 import fr.eni.appli_enchere.bll.UtilisateurManager;
 import fr.eni.appli_enchere.bo.Utilisateur;
 import fr.eni.appli_enchere.dal.DALException;
+import fr.eni.appli_enchere.dal.UtilisateurDAO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -22,8 +23,9 @@ public class UpdateProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute("ConnectedUser");
+        Utilisateur userbdd = new Utilisateur();
 
+        int id = Integer.parseInt(request.getParameter("id"));
         String pseudo = request.getParameter("pseudo");
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
@@ -33,6 +35,8 @@ public class UpdateProfileServlet extends HttpServlet {
         String codepostal = request.getParameter("codePostale");
         String ville = request.getParameter("ville");
         String mdp = request.getParameter("mdp");
+        System.out.println("print de mdp " + mdp);
+        System.out.println("print userbdd mdp " + userbdd.getMot_de_passe());
         String mdpNew = request.getParameter("mdpNew");
         String confirmMdp = request.getParameter("confirmMdp");
 
@@ -57,7 +61,7 @@ public class UpdateProfileServlet extends HttpServlet {
 
         if (!matcher.matches() || allPseudo.contains(pseudo)) {
             request.setAttribute("errorPseudo", "Veuillez renseigner un pseudo valide");
-        } else if (!email.contains("@")|| allEmail.contains(email)) {
+        } else if (!email.contains("@") || allEmail.contains(email)) {
             request.setAttribute("errorEmail", "Veuillez renseigner un email valide");
         } else if (telephone.length() != 10) {
             request.setAttribute("errorTel", "Veuillez renseigner un téléphone valide");
@@ -65,27 +69,44 @@ public class UpdateProfileServlet extends HttpServlet {
             request.setAttribute("errorcp", "Veuillez renseigner un code postal valide");
         }
 
-        utilisateur.setPseudo(pseudo);
-        utilisateur.setNom(nom);
-        utilisateur.setPrenom(prenom);
-        utilisateur.setEmail(email);
-        utilisateur.setTelephone(telephone);
-        utilisateur.setRue(rue);
-        utilisateur.setCode_postal(codepostal);
-        utilisateur.setVille(ville);
-
-        if (mdp.equals(utilisateur.getMot_de_passe()) && mdpNew.equals(confirmMdp)) {
-            utilisateur.setMot_de_passe(mdpNew);
-        }
+        if (mdpNew.equals(confirmMdp) && ((mdpNew.equals("") && confirmMdp.equals("")))) {
+            Utilisateur utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, codepostal, ville, mdpNew);
             try {
+                System.out.println("passe par premier if");
                 utilisateurManager.updateUtilisateur(utilisateur);
-                session.setAttribute("ConnectedUser", utilisateur);
-                RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
-                rd.forward(request,response);
-
+                session.setAttribute("pseudo", pseudo);
+                session.setAttribute("nom", nom);
+                session.setAttribute("prenom", prenom);
+                session.setAttribute("email", email);
+                session.setAttribute("telephone", telephone);
+                session.setAttribute("rue", rue);
+                session.setAttribute("ville", ville);
+                session.setAttribute("code_postal", codepostal);
+                session.setAttribute("mot_de_passe", mdpNew);
+                response.sendRedirect("profile.jsp");
+            } catch (DALException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Utilisateur utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, codepostal, ville,mdp);
+            try {
+                System.out.println("passe par deuxieme if");
+                utilisateurManager.updateUtilisateur(utilisateur);
+                session.setAttribute("pseudo", pseudo);
+                session.setAttribute("nom", nom);
+                session.setAttribute("prenom", prenom);
+                session.setAttribute("email", email);
+                session.setAttribute("telephone", telephone);
+                session.setAttribute("rue", rue);
+                session.setAttribute("ville", ville);
+                session.setAttribute("code_postal", codepostal);
+                session.setAttribute("mot_de_passe", mdp);
+                response.sendRedirect("profile.jsp");
             } catch (DALException e) {
                 e.printStackTrace();
             }
         }
     }
+}
+
 

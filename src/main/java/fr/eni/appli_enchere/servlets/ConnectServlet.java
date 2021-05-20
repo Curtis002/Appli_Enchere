@@ -30,8 +30,14 @@ public class ConnectServlet extends HttpServlet {
             }
         }
         System.out.println("passe dans doGet");
-        RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-        rd.forward(request, response);
+        if (request.getSession().getAttribute("pseudo") != null ) {
+        	RequestDispatcher rd = request.getRequestDispatcher("accueilConnect.jsp");
+            rd.forward(request, response);
+        	
+        }else if(request.getSession().getAttribute("pseudo") == null ) {
+        	RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+            rd.forward(request, response);
+        }
     }
 
     @Override

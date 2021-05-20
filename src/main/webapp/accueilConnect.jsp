@@ -109,7 +109,7 @@
 			
 			<span class="row mx-1 my-1" >Fin de l'enchère : <a> 10/08/2018</a></span>
 			
-			<span class="row mx-1">Vendeur : <a href ="fichevendeur.jsp"> Jiji56</a></span>
+			<span class="row mx-1">Vendeur : <a href ="fichevendeur.jsp"><c:out value="${sessionScope.pseudo}" /></a></span>
 			
 		
 		</div>

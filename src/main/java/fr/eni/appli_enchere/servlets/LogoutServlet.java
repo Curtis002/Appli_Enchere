@@ -39,4 +39,9 @@ public class LogoutServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
             rd.forward(request,response);
         }
+
     }
+
+
+
+

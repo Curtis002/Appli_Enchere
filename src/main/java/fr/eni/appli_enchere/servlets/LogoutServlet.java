@@ -25,7 +25,16 @@ public class LogoutServlet extends HttpServlet {
        HttpSession session = request.getSession();
         if (session != null) {
             System.out.println("passe par if LogoutServlet");
-            session.removeAttribute("identifiant");
+            session.removeAttribute("pseudo");
+            session.removeAttribute("nom");
+            session.removeAttribute("prenom");
+            session.removeAttribute("email");
+            session.removeAttribute("telephone");
+            session.removeAttribute("rue");
+            session.removeAttribute("code_postal");
+            session.removeAttribute("ville");
+            session.removeAttribute("mot_de_passe");
+            session.removeAttribute("credit");
             session.invalidate();
             RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
             rd.forward(request,response);

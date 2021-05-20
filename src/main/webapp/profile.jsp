@@ -1,4 +1,5 @@
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="fr.eni.appli_enchere.bo.Utilisateur" %><%--
   Created by IntelliJ IDEA.
   User: Caro
   Date: 18/05/2021
@@ -13,35 +14,35 @@
     <title>Profile</title>
 </head>
 	<body>
-	
-		<h1>Mon Profile</h1>
+
+		<h1>Mon Profil</h1>
 		
 		<form action="<%=request.getContextPath() %>/updateProfile.jsp" method="post">
 			<div class="container">
 				<div >
 					<div>
-						<label for="pseudo">Pseudo : </label> 
+						<p>Pseudo : <c:out value="${sessionScope.pseudo}" /></p>
 					</div>
 					<div>
-						<label for="nom">Nom :  </label>
+						<p>Nom : <c:out value="${sessionScope.nom}" /></p>
 					</div>
 					<div>
-						<label for="prenom">Prénom :  </label>
+						<p>Prénom : <c:out value="${sessionScope.prenom}" /></p>
 					</div>
 					<div>
-						<label for="mail">Email :  </label>
+						<p>Email : <c:out value="${sessionScope.email}" /></p>
 					</div>
 					<div>
-						<label for="telephone">Téléphone :  </label>
+						<p>Téléphone : <c:out value="${sessionScope.telephone}" /></p>
 					</div>
 					<div>
-						<label for="rue">Rue :  </label>
+						<p>Rue : <c:out value="${sessionScope.rue}" /></p>
 					</div>
 					<div>
-						<label for="codePostale">Code postal :  </label>
+						<p>Code postal : <c:out value="${sessionScope.code_postal}" /></p>
 					</div>
 					<div>
-						<label for="ville">Ville :  </label>
+						<p>Ville : <c:out value="${sessionScope.ville}" /></p>
 					</div>
 					<div>
 						<input class="btn-secondary my-2 py-2 mx-auto" type="submit" value="Modifier" />

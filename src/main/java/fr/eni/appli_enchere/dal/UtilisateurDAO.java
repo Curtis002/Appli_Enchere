@@ -16,10 +16,12 @@ public interface UtilisateurDAO {
 
 	// nouvel utilisateur
 	void registerUtilisateur(Utilisateur utilisateur) throws DALException;
-	
 
 	//check pseudo 
-	public List<String> selectAllPseudo() throws DALException;
+	List<String> selectAllPseudo() throws DALException;
 	//check email 
-	public List<String> selectAllEmail() throws DALException;
+	List<String> selectAllEmail() throws DALException;
+
+	void updateUtilisateur(Utilisateur utilisateur) throws DALException;
+
 }

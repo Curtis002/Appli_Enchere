@@ -46,6 +46,10 @@ public class UtilisateurManager {
 	public List<String> selectAllEmail() throws DALException {
 		System.out.println("passe par Manager selectAllEmail");
 		return utilisateurDAO.selectAllEmail();
-		
+	}
+
+	public void updateUtilisateur(Utilisateur utilisateur) throws DALException {
+		System.out.println("passe par Manager updateUtilisateur");
+		utilisateurDAO.updateUtilisateur(utilisateur);
 	}
 }

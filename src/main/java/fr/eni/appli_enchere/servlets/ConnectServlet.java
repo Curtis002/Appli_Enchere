@@ -53,7 +53,16 @@ public class ConnectServlet extends HttpServlet {
             }
             if (utilisateur != null && mot_de_passe.equals(utilisateur.getMot_de_passe())) {
                 System.out.println("passe par premier if");
-                session.setAttribute("ConnectedUser", pseudo);
+                session.setAttribute("pseudo", pseudo);
+                session.setAttribute("nom", utilisateur.getNom());
+                session.setAttribute("prenom", utilisateur.getPrenom());
+                session.setAttribute("email", utilisateur.getEmail());
+                session.setAttribute("telephone", utilisateur.getTelephone());
+                session.setAttribute("rue", utilisateur.getRue());
+                session.setAttribute("code_postal", utilisateur.getCode_postal());
+                session.setAttribute("ville", utilisateur.getVille());
+                session.setAttribute("mot_de_passe", utilisateur.getMot_de_passe());
+                session.setAttribute("credit", utilisateur.getCredit());
                 response.sendRedirect("accueilConnect.jsp");
             } else if(utilisateur == null || !mot_de_passe.equals(utilisateur.getMot_de_passe())) {
                 System.out.println("passe par deuxième if");

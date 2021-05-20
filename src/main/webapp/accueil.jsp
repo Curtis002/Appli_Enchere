@@ -15,7 +15,7 @@
 	  <span>ENI-ENCHERES</span>
 	</div>
 	<ul class="nav justify-content-end">
-		<li class="nav-item" id="links"><a class="nav-link" href="login.jsp">Se connecter - S'inscrire</a></li>
+		<li class="nav-item" id="links"><a class="nav-link" href="ConnectServlet">Se connecter - S'inscrire</a></li>
 	</ul>
 	</nav>
 <h2 class="text-center">Liste des enchères</h2>

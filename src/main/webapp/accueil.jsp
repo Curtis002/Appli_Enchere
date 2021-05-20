@@ -43,9 +43,9 @@
 	</div>
 	
 </div>
-<div class="row align-items-start custom-line my-5">
-	<div class="col row">
-		<img class="p-2 mx-3" src="img/meilleur-pc-gamer.jpg" alt="image" height="150px" width="150px">
+<div class="border-primary row align-items-start custom-line  mx-1 my-4 ">
+	<div class="col row mx-5 py-2 ml-1 border mt-2 rounded border-secondary">
+		<img class="rounded p-2 mx-1" src="img/meilleur-pc-gamer.jpg" alt="image" height="150px" width="150px">
 		<div class="col flex-col ">
 			<h4><a href ="ficheproduit.jsp">PC Gamer pour travailler</a></h4>
 			<span class="row mx-1">Prix : 210 points</span>
@@ -56,19 +56,19 @@
 		</div>
 	</div>
 	
-	<div class="container col row">
-		<img class="p-2 mx-3" src="img/Rocket_stove.jpg" alt="image" height="150px" width="150px">
+	<div class="col row mx-5 py-2 ml-1 border mt-2 rounded border-secondary">
+		<img class="rounded p-2 mx-1" src="img/Rocket_stove.jpg" alt="image" height="150px" width="150px">
 		<div class="col flex-col">
-			<h4><a href ="ficheproduit.jsp">Rocket stove pour riz</a></h4>
-			<span class="row mx-1" >Prix : 210 points</span>
+			<h4 class=""><a href ="ficheproduit.jsp">Rocket stove pour riz</a></h4>
+			<span class="row mx-1" >Prix : <a> 210 points</a></span>
 			
-			<span class="row mx-1 my-1" >Fin de l'enchère : 10/08/2018</span>
+			<span class="row mx-1 my-1" >Fin de l'enchère : <a> 10/08/2018</a></span>
 			
 			<span class="row mx-1">Vendeur : <a href ="fichevendeur.jsp"> Jiji56</a></span>
 			
 		
 		</div>
 	</div>
-  </div>
+  </div>  
 </body>
 </html>

@@ -15,10 +15,6 @@ import java.util.regex.Pattern;
 
 @WebServlet(name = "UpdateProfileServlet", value = "/UpdateProfileServlet")
 public class UpdateProfileServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -69,44 +65,58 @@ public class UpdateProfileServlet extends HttpServlet {
             request.setAttribute("errorcp", "Veuillez renseigner un code postal valide");
         }
 
-        if (mdpNew.equals(confirmMdp) && ((mdpNew.equals("") && confirmMdp.equals("")))) {
-            Utilisateur utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, codepostal, ville, mdpNew);
-            try {
-                System.out.println("passe par premier if");
-                utilisateurManager.updateUtilisateur(utilisateur);
-                session.setAttribute("pseudo", pseudo);
-                session.setAttribute("nom", nom);
-                session.setAttribute("prenom", prenom);
-                session.setAttribute("email", email);
-                session.setAttribute("telephone", telephone);
-                session.setAttribute("rue", rue);
-                session.setAttribute("ville", ville);
-                session.setAttribute("code_postal", codepostal);
-                session.setAttribute("mot_de_passe", mdpNew);
-                response.sendRedirect("profile.jsp");
-            } catch (DALException e) {
-                e.printStackTrace();
+        // mettre une erreur quand nouveau mdp et confirmation mdp est pas ok
+
+        // Si le mdp est égal au mdp en bdd
+        if (session.getAttribute("mot_de_passe").equals(mdp)) {
+            // Si nouveau mdp = confirmation mdp et que les deux sont remplis
+            if (mdpNew.equals(confirmMdp) && ((!mdpNew.equals("") && !confirmMdp.equals("")))) {
+                Utilisateur utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, codepostal, ville, mdpNew);
+                try {
+                    utilisateurManager.updateUtilisateur(utilisateur);
+                    session.setAttribute("pseudo", pseudo);
+                    session.setAttribute("nom", nom);
+                    session.setAttribute("prenom", prenom);
+                    session.setAttribute("email", email);
+                    session.setAttribute("telephone", telephone);
+                    session.setAttribute("rue", rue);
+                    session.setAttribute("ville", ville);
+                    session.setAttribute("code_postal", codepostal);
+                    session.setAttribute("mot_de_passe", mdpNew);
+                    response.sendRedirect("profile.jsp");
+                } catch (DALException e) {
+                    e.printStackTrace();
+                }
+            } else if (!mdpNew.equals(confirmMdp)) {
+                request.setAttribute("errorNewMdp", "Veuillez renseigner un mdp valide");
+                RequestDispatcher rd = request.getRequestDispatcher("/updateProfile.jsp");
+                rd.forward(request,response);
+                // sinon si nouveau mdp ou confirmation est vide
+            } else if ((mdpNew.equals("") || mdpNew == null) && (confirmMdp.equals("") || confirmMdp == null)) {
+                Utilisateur utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, codepostal, ville, mdp);
+                try {
+                    utilisateurManager.updateUtilisateur(utilisateur);
+                    session.setAttribute("pseudo", pseudo);
+                    session.setAttribute("nom", nom);
+                    session.setAttribute("prenom", prenom);
+                    session.setAttribute("email", email);
+                    session.setAttribute("telephone", telephone);
+                    session.setAttribute("rue", rue);
+                    session.setAttribute("ville", ville);
+                    session.setAttribute("code_postal", codepostal);
+                    session.setAttribute("mot_de_passe", mdp);
+                    response.sendRedirect("profile.jsp");
+                } catch (DALException e) {
+                    e.printStackTrace();
+                }
             }
         } else {
-            Utilisateur utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, codepostal, ville,mdp);
-            try {
-                System.out.println("passe par deuxieme if");
-                utilisateurManager.updateUtilisateur(utilisateur);
-                session.setAttribute("pseudo", pseudo);
-                session.setAttribute("nom", nom);
-                session.setAttribute("prenom", prenom);
-                session.setAttribute("email", email);
-                session.setAttribute("telephone", telephone);
-                session.setAttribute("rue", rue);
-                session.setAttribute("ville", ville);
-                session.setAttribute("code_postal", codepostal);
-                session.setAttribute("mot_de_passe", mdp);
-                response.sendRedirect("profile.jsp");
-            } catch (DALException e) {
-                e.printStackTrace();
-            }
+            request.setAttribute("errorMdp", "Veuillez renseigner un mdp valide");
+            RequestDispatcher rd = request.getRequestDispatcher("/updateProfile.jsp");
+            rd.forward(request, response);
         }
     }
 }
+
 
 

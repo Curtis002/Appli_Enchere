@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-<%--		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="style/register.css">
 		<title>Insert title here</title>
 	</head>
@@ -76,6 +76,9 @@
 	            <div class="input col">
 	                <label for="mdp">Ancien Mot de passe :</label>
                		<input class="form-control" type="password" id="mdp" name="mdp" required/>
+					<c:if test="${not empty requestScope.errorMdp}">
+						<div>Le mot de passe renseigné n'est pas bon.</div>
+					</c:if>
 	            </div>
 	         <div class="form-row"> 
 	            <div class="input col">
@@ -86,7 +89,7 @@
 	                <label for="confirmMdp">Confirmation mot de passe:</label>
                		<input class="form-control" type="password" id="confirmMdp" name="confirmMdp"/>
 	            
-					 <c:if test="${not empty requestScope.error}">
+					 <c:if test="${not empty requestScope.errorNewMdp}">
 						<!--  Show the error div with message -->
 						 <div>Mots de passe non identiques.</div>
 					 </c:if>

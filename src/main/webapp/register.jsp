@@ -77,8 +77,7 @@
 	                <label for="confirmMdp">Confirmation:</label>
                		<input class="form-control" type="password" id="confirmMdp" name="confirmMdp" required/>
 	            
-					 <c:if test="${not empty requestScope.error}">
-						 Show the error div with message
+					 <c:if test="${not empty requestScope.errormdp}">
 						 <div>Mots de passe non identiques.</div>
 					 </c:if>
 				</div>

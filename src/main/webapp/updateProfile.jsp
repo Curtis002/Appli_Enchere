@@ -29,8 +29,8 @@
 					<label for="pseudo">Pseudo :</label> <input class="form-control"
 						type="text" id="pseudo" name="pseudo"
 						value="${sessionScope.pseudo}" required />
-					<c:if test="${not empty requestScope.errorPseudo}">
-						<div class="text-danger">Ce pseudo est invalide / ou nonexistant.</div>
+					<c:if test="${not empty requestScope.errorPseudoDejaUtilise}">
+						<div class="text-danger">Ce pseudo est invalide ou déjà utilisé.</div>
 					</c:if>
 				</div>
 				<div class="input col">
@@ -49,8 +49,8 @@
 					<label for="mail">Email :</label> <input class="form-control"
 						type="text" id="mail" name="mail" value="${sessionScope.email}"
 						required />
-					<c:if test="${not empty requestScope.errorEmail}">
-						<div class="text-danger">Renseigner un email valide / ou existant.</div>
+					<c:if test="${not empty requestScope.errorEmailDejaUtilise}">
+						<div class="text-danger">Cet email est invalide ou déjà utilisé.</div>
 					</c:if>
 				</div>
 			</div>

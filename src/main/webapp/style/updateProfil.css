@@ -10,6 +10,18 @@ html {
   min-height: 100%;
 }
 
+.c:if.div{
+	
+	color:red;
+	font-weight:bold;
+}
+
+.alerte{
+	color:red;
+	font-weight:bold;
+}
+
+
 section {
   margin-top: 30px;
 }
@@ -71,20 +83,18 @@ input:checked + .side-label::after {
 
 .how-other-disclosure {
   display: none;
-  margin: 10px 0 0 35px;
+  margin: 10px 0 0 0px;
 }
 
 #how-other:checked ~ .how-other-disclosure {
-  display: block;
+  display: flex;
 }
 
 #permitted:checked ~ .blocked {
   display: none;
 }
 
-#permitted:checked ~ button {
-  display: block;
-}
+
 
 
 

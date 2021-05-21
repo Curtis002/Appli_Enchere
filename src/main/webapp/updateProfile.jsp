@@ -4,38 +4,22 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
 <head>
 <meta charset="UTF-8">
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style/updateProfil.css">
-<title>Insert title here</title>
+<title>Modification de mon Profile</title>
 </head>
-
+	
 <body>
-	<%
+<%
 	Utilisateur utilisateur = (Utilisateur) session.getAttribute("ConnectedUser");
 	%>
-	<h1>Modification de mon Profile</h1>
-
-	<div class="container">
-		<form action="<%=request.getContextPath()%>/UpdateProfileServlet"
-			method="post">
-=======
-	<head>
-		<meta charset="UTF-8">
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="style/register.css">
-		<title>Insert title here</title>
-	</head>
-	
-	<body>
-	<%  Utilisateur utilisateur = (Utilisateur) session.getAttribute("ConnectedUser"); %>
 		<h1>Modification de mon Profile</h1>
 		
 		<div class="container">
 		 <form action="<%=request.getContextPath() %>/UpdateProfileServlet" method="post">
->>>>>>> origin/main
+
 			<div class="form-row">
 				<c:if test="${sessionScope.noUser != null}">
 					<input type="hidden" id="id" name="id"
@@ -46,7 +30,7 @@
 						type="text" id="pseudo" name="pseudo"
 						value="${sessionScope.pseudo}" required />
 					<c:if test="${not empty requestScope.errorPseudo}">
-						<div>Ce pseudo est invalide / ou nonexistant.</div>
+						<div class="text-danger">Ce pseudo est invalide / ou nonexistant.</div>
 					</c:if>
 				</div>
 				<div class="input col">
@@ -66,7 +50,7 @@
 						type="text" id="mail" name="mail" value="${sessionScope.email}"
 						required />
 					<c:if test="${not empty requestScope.errorEmail}">
-						<div>Renseigner un email valide / ou existant.</div>
+						<div class="text-danger">Renseigner un email valide / ou existant.</div>
 					</c:if>
 				</div>
 			</div>
@@ -76,7 +60,7 @@
 						class="form-control" type="text" id="telephone" name="telephone"
 						value="${sessionScope.telephone}" required />
 					<c:if test="${not empty requestScope.errorTel}">
-						<div>Renseigner un téléphone valide.</div>
+						<div class="text-danger">Renseigner un téléphone valide.</div>
 					</c:if>
 				</div>
 				<div class="input col">
@@ -96,76 +80,46 @@
 						class="form-control" type="text" id="codePostale"
 						name="codePostale" value="${sessionScope.code_postal}" required />
 					<c:if test="${not empty requestScope.errorcp}">
-						<div>Renseigner un code postal valide.</div>
+						<div class="text-danger">Renseigner un code postal valide.</div>
 					</c:if>
-<<<<<<< HEAD
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="input col">
 					<label for="mdp">Ancien Mot de passe :</label> <input
 						class="form-control" type="password" id="mdp" name="mdp" required />
-				</div>
-				<%-- <div class="form-row">
-
-						<div class="input col">
-=======
-	            </div>
-	         </div>
-	          <div class="form-row"> 
-	            <div class="input col">
-	                <label for="mdp">Ancien Mot de passe :</label>
-               		<input class="form-control" type="password" id="mdp" name="mdp" required/>
 					<c:if test="${not empty requestScope.errorMdp}">
-						<div>Le mot de passe renseigné n'est pas bon.</div>
+						<div class="text-danger">Le mot de passe renseigné n'est pas bon.</div>
 					</c:if>
-	            </div>
-	         <div class="form-row"> 
-	            <div class="input col">
-	                <label for="mdpNew">Nouveau mot de passe :</label>
-               		<input class="form-control" type="password" id="mdpNew" name="mdpNew"/>
-	            </div>
-	           	<div class="input col">
->>>>>>> origin/main
-	                <label for="confirmMdp">Confirmation mot de passe:</label>
-               		<input class="form-control" type="password" id="confirmMdp" name="confirmMdp"/>
-	            
-					 <c:if test="${not empty requestScope.errorNewMdp}">
-						<!--  Show the error div with message -->
-						 <div>Mots de passe non identiques.</div>
-					 </c:if>
 				</div>
-				</div> --%>
-				<!-- <div class="form-row">
-            	<div class="inputSubmit col">
-                	<input class="btn-secondary my-2 py-2 mx-auto" type="submit" value="Modifier" />
-            	</div>
-            	<div class="col">
-            	<button  class="btn-secondary my-2 py-2 mx-auto" type="button"> Supprimer </button>
-            	</div>
-			</div> -->
 				<div class="container">
+				
 					<input class="" id="how-other" name="how" type="checkbox">
-					<label for="how-other" class="">Cliquez pour changer votre
+					<label for="how-other my-2" class="">Cliquez pour changer votre
 						mot de passe ?</label>
-
-					<div class="form-row how-other-disclosure ">
+						<c:if test="${not empty requestScope.errorNewMdp}">
+						<!--  Show the error div with message -->
+						 <div class="text-danger">Nouveau Mot de passe et Confirmation non identiques..</div>
+					 </c:if>
+			
+					<div class="form-row how-other-disclosure">
 						<div class="input col">
 							<label for="mdp">Nouveau Mot de passe :</label> <input
-								class="form-control" type="password" id="newMdp" name="newMdp"
-								required />
+								class="form-control" type="password" id="mdpNew" name="mdpNew"
+								/>
 						</div>
 						<div class="input col">
 							<label for="how-other-explain" class="">Confirmez votre
-								nouveau mot de passe</label> <input class="form-control" type="password"
+								nouveau mot de passe</label> 
+							<input class="form-control" type="password"
 								id="confirmMdp" name="confirmMdp" />
-							<c:if test="${not empty requestScope.error}">
+							<c:if test="${not empty requestScope.errorNewMdp}">
 								<!--  Show the error div with message -->
-								<div>Mots de passe non identiques.</div>
-							</c:if>
+						 		<div class="text-danger">Nouveau Mot de passe et Confirmation non identiques.</div>
+					 		</c:if>
 						</div>
 					</div>
-					<div for="" class="form-row ">
+					<div  class="form-row ">
 						<div class="inputSubmit col text-center ">
 							<input class="btn-secondary my-2 py-2 " type="submit"
 								value="Modifier" />

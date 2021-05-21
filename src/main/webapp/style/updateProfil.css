@@ -10,6 +10,11 @@ html {
   min-height: 100%;
 }
 
+h1{
+  text-align: center;
+  margin-bottom: 58px;
+}
+
 .top-label {
   display: block;
   margin: 10px 0;
@@ -64,7 +69,6 @@ input:checked + .side-label::after {
 #how-other:checked ~ .how-other-disclosure {
   display: flex;
 }
-
 
 
 

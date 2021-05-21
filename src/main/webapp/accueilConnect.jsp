@@ -9,23 +9,11 @@
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <title>Accueil online</title>
 </head>
-<body class="container">
-<h1>Accueil connecté</h1>
-	<nav class="navbar">
-	<div>
-	  <span>ENI-ENCHERES</span>
-	</div>
-	<div class=""> 
-	<ul class="nav justify-content-end">
-		<li class="nav-item" id="links"><a class="nav-link" href="Enchères.jsp">Enchères</a></li>
-		<li class="nav-item" id="links"><a class="nav-link" href="article.jsp">Vendre un article</a></li>
-		<li class="nav-item" id="links"><a class="nav-link" href="profile.jsp">Mon profil</a></li>
-		<li class="nav-item " id="links"><a class="nav-link" href="<%=request.getContextPath() %>/LogoutServlet">Déconnexion</a></li>
-	</ul>
-	</div>
-	</nav>
-<h2 class="text-center">Liste des enchères</h2>
-<div>
+<body>
+<jsp:include page="headerConnecte.jsp"/>
+
+<h2 class="text-center">Liste des enchères (connecté)</h2>
+<div class="container">
 		<div>
 			<div>
 				<label for="site-search">Filtres :</label>
@@ -88,8 +76,8 @@
 	
    </div>
 </div>
-<div class="border-primary row align-items-start custom-line  mx-1 my-4 ">
-	<div class="col row mx-2 py-2 ml-1 border mt-2 rounded border-secondary">
+<div class="border-primary row custom-line  mx-1 my-4 d-flex justify-content-center">
+	<div class="col row mx-2 py-2 ml-1 border mt-2 rounded border-secondary" style="max-width: 540px;">
 		<img class="rounded p-2 mx-1" src="img/meilleur-pc-gamer.jpg" alt="image" height="150px" width="150px">
 		<div class="col flex-col ">
 			<h4><a href ="ficheproduit.jsp">PC Gamer pour travailler</a></h4>
@@ -100,8 +88,8 @@
 			<span class="row mx-1 ">Vendeur : <a href ="fichevendeur.jsp"> jojo44</a></span>
 		</div>
 	</div>
-	
-	<div class="col row mx-2 py-2 ml-1 border mt-2 rounded border-secondary">
+
+	<div class="col row mx-2 py-2 ml-1 border mt-2 rounded border-secondary" style="max-width: 540px;">
 		<img class="rounded p-2 mx-1" src="img/Rocket_stove.jpg" alt="image" height="150px" width="150px">
 		<div class="col flex-col">
 			<h4 class=""><a href ="ficheproduit.jsp">Rocket stove pour riz</a></h4>

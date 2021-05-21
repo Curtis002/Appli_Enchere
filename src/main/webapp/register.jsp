@@ -12,7 +12,8 @@
 	<title>Register</title>
 </head>
 	<body>
-		<h1>Page de création de compte</h1>
+	<jsp:include page="headerConnecte.jsp"/>
+		<h1>Créer un compte</h1>
 		
 		<div class="container">
 		 <form action="<%=request.getContextPath() %>/RegisterServlet" method="post">

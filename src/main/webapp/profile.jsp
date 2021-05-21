@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="fr.eni.appli_enchere.bo.Utilisateur" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Caro
   Date: 18/05/2021
@@ -14,8 +14,8 @@
     <title>Profile</title>
 </head>
 	<body>
-
-		<h1>Mon Profil</h1>
+	<jsp:include page="headerConnecte.jsp"/>
+		<h1>Mon profil</h1>
 		
 		<form action="<%=request.getContextPath() %>/updateProfile.jsp" method="post">
 			<div class="container">

@@ -1,0 +1,90 @@
+@charset "ISO-8859-1";
+
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+section {
+  margin-top: 30px;
+}
+
+
+.top-label {
+  display: block;
+  margin: 10px 0;
+}
+
+
+
+
+/* input[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+} */
+
+.side-label {
+  display: block;
+  position: relative;
+  margin: 10px 0;
+  padding-left: 35px;
+  cursor: pointer;
+}
+
+.side-label::before, .side-label::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+input[type="checkbox"] + .side-label::before,
+input[type="checkbox"] + .side-label::after {
+  border-radius: 50%;
+}
+
+.side-label::before {
+  display: block;
+  width: 20px;
+  height: 20px;
+ 
+}
+
+
+
+.side-label::after {
+  display: none;
+  width: 12px;
+  height: 12px;
+  margin: 4px;
+ 
+}
+
+input:checked + .side-label::after {
+  display: block;
+}
+
+.how-other-disclosure {
+  display: none;
+  margin: 10px 0 0 35px;
+}
+
+#how-other:checked ~ .how-other-disclosure {
+  display: block;
+}
+
+#permitted:checked ~ .blocked {
+  display: none;
+}
+
+#permitted:checked ~ button {
+  display: block;
+}
+
+
+

@@ -1,4 +1,3 @@
-<%@ page import="fr.eni.appli_enchere.bo.Utilisateur"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -12,14 +11,11 @@
 </head>
 	
 <body>
-<%
-	Utilisateur utilisateur = (Utilisateur) session.getAttribute("ConnectedUser");
-	%>
-		<h1>Modification de mon Profile</h1>
-		
-		<div class="container">
-		 <form action="<%=request.getContextPath() %>/UpdateProfileServlet" method="post">
+<jsp:include page="headerConnecte.jsp"/>
+		<h1>Modifier mon profil</h1>
 
+		 <form action="<%=request.getContextPath() %>/UpdateProfileServlet" method="post">
+			 <div class="container">
 			<div class="form-row">
 				<c:if test="${sessionScope.noUser != null}">
 					<input type="hidden" id="id" name="id"
@@ -29,8 +25,8 @@
 					<label for="pseudo">Pseudo :</label> <input class="form-control"
 						type="text" id="pseudo" name="pseudo"
 						value="${sessionScope.pseudo}" required />
-					<c:if test="${not empty requestScope.errorPseudo}">
-						<div class="text-danger">Ce pseudo est invalide / ou nonexistant.</div>
+					<c:if test="${not empty requestScope.errorPseudoDejaUtilise}">
+						<div class="text-danger">Ce pseudo est invalide ou déjà utilisé.</div>
 					</c:if>
 				</div>
 				<div class="input col">
@@ -49,8 +45,8 @@
 					<label for="mail">Email :</label> <input class="form-control"
 						type="text" id="mail" name="mail" value="${sessionScope.email}"
 						required />
-					<c:if test="${not empty requestScope.errorEmail}">
-						<div class="text-danger">Renseigner un email valide / ou existant.</div>
+					<c:if test="${not empty requestScope.errorEmailDejaUtilise}">
+						<div class="text-danger">Cet email est invalide ou déjà utilisé.</div>
 					</c:if>
 				</div>
 			</div>
@@ -95,7 +91,7 @@
 				<div class="container">
 				
 					<input class="" id="how-other" name="how" type="checkbox">
-					<label for="how-other my-2" class="">Cliquez pour changer votre
+					<label for="how-other" class="how-other">Cliquez pour changer votre
 						mot de passe ?</label>
 						<c:if test="${not empty requestScope.errorNewMdp}">
 						<!--  Show the error div with message -->
@@ -109,7 +105,7 @@
 								/>
 						</div>
 						<div class="input col">
-							<label for="how-other-explain" class="">Confirmez votre
+							<label for="confirmMdp" class="how-other-explain">Confirmez votre
 								nouveau mot de passe</label> 
 							<input class="form-control" type="password"
 								id="confirmMdp" name="confirmMdp" />
@@ -129,6 +125,8 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			 </div>
 		</form>
 	</div>
 

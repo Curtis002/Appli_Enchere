@@ -12,7 +12,8 @@
 	<title>Register</title>
 </head>
 	<body>
-		<h1>Page de création de compte</h1>
+	<jsp:include page="headerConnecte.jsp"/>
+		<h1>Créer un compte</h1>
 		
 		<div class="container">
 		 <form action="<%=request.getContextPath() %>/RegisterServlet" method="post">
@@ -77,8 +78,7 @@
 	                <label for="confirmMdp">Confirmation:</label>
                		<input class="form-control" type="password" id="confirmMdp" name="confirmMdp" required/>
 	            
-					 <c:if test="${not empty requestScope.error}">
-						 Show the error div with message
+					 <c:if test="${not empty requestScope.errormdp}">
 						 <div>Mots de passe non identiques.</div>
 					 </c:if>
 				</div>

@@ -19,7 +19,8 @@ public class UtilisateurDAOjdbcImpl implements UtilisateurDAO {
 	private static final String GETPRENOM="SELECT prenom FROM UTILISATEURS where prenom=?;";
 	private static final String REGISTERUTILISATEUR="INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 	private static final String UPDATEUTILISATEUR="UPDATE UTILISATEURS SET pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,ville=?,mot_de_passe=? WHERE no_utilisateur=?";
-
+	private static final String DELETEUTILISATEUR="DELETE FROM UTILISATEURS where no_utilisateur=?";
+	
 	private ConnectionProvider ConnectionProvider;
 
 	/**
@@ -281,6 +282,35 @@ public class UtilisateurDAOjdbcImpl implements UtilisateurDAO {
 
 		} catch (SQLException e) {
 			throw new DALException("probleme methode update utilisateur()",e);
+		}
+	}
+
+	@Override
+	public void deleteUtilisateur(Utilisateur utilisateur) throws DALException {
+		Connection cnx=null;
+		PreparedStatement stmt=null;
+		System.out.println("Passe avant le try ");
+	
+		try {
+			cnx=ConnectionProvider.getConnection();
+			//utilisateur = new Utilisateur(); 
+			stmt = cnx.prepareStatement(DELETEUTILISATEUR);
+			stmt.setInt(1,utilisateur.getNo_utilisateur());
+//			stmt.setString(1,"");
+//			stmt.setString(3, utilisateur.getNom());
+//			stmt.setString(4, utilisateur.getPrenom());
+//			stmt.setString(5, utilisateur.getEmail());
+//			stmt.setString(6, utilisateur.getTelephone());
+//			stmt.setString(7, utilisateur.getRue());
+//			stmt.setString(8, utilisateur.getCode_postal());
+//			stmt.setString(9, utilisateur.getVille());
+//			stmt.setString(10, utilisateur.getMot_de_passe());
+//			stmt.setInt(11, utilisateur.getCredit());
+			stmt.executeUpdate();
+			System.out.println("Passe dans le try ");
+
+		} catch (SQLException e) {
+			throw new DALException("probleme methode suppression utilisateur()",e);
 		}
 	}
 

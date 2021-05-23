@@ -102,7 +102,11 @@ public class Utilisateur {
     }
 
 
-    // D�finition des Getters et Setters
+    public Utilisateur(int id) {
+    	this.no_utilisateur = id;
+	}
+
+	// D�finition des Getters et Setters
     public Integer getNo_utilisateur() {
         return no_utilisateur;
     }
@@ -228,4 +232,7 @@ public class Utilisateur {
                 + ", admin= " + this.administrateur
                 ;
     }
+    
+    
+
 }

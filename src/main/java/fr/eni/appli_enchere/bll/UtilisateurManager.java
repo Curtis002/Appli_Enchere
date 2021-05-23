@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UtilisateurManager {
 
-	private UtilisateurDAO utilisateurDAO;
+	private static UtilisateurDAO utilisateurDAO;
 	
 	
 	public UtilisateurManager() {
@@ -52,4 +52,11 @@ public class UtilisateurManager {
 		System.out.println("passe par Manager updateUtilisateur");
 		utilisateurDAO.updateUtilisateur(utilisateur);
 	}
+
+	public void deleteUtilisateur(Utilisateur utilisateur) throws DALException {
+		System.out.println("passe par Manager deleteUtilisateur");
+		utilisateurDAO.deleteUtilisateur(utilisateur);
+		
+	}
+
 }

@@ -15,7 +15,7 @@
 		<h1>Modifier mon profil</h1>
 
 		 <form action="<%=request.getContextPath() %>/UpdateProfileServlet" method="post">
-			 <div class="container">
+			<div class="container">
 			<div class="form-row">
 				<c:if test="${sessionScope.noUser != null}">
 					<input type="hidden" id="id" name="id"
@@ -120,16 +120,15 @@
 							<input class="btn-secondary my-2 py-2 " type="submit"
 								value="Modifier" />
 
-							<button class="btn-secondary my-2 py-2 " type="button">
-								Supprimer</button>
+							<a href="deleteProfile.jsp">
+							<button class="btn-secondary my-2 py-2 " type="button"> 
+								Supprimer</button> </a>
 						</div>
 					</div>
 				</div>
 			</div>
 			 </div>
 		</form>
-	</div>
-
 
 </body>
 </html>

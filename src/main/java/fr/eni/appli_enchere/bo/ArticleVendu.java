@@ -4,26 +4,38 @@ import java.util.Date;
 import java.util.List;
 
 public class ArticleVendu {
-	private Integer noArticle;
-	private String nomArticle;
+	private Integer no_article;
+	private String nom_article;
 	private String description;
-	private Date dateDebutEncheres;
-	private Date dateFinEncheres;
+	private Date date_debut_encheres;
+	private Date date_fin_encheres;
 	private int miseAPrix;
 	private int prixVente;
 	private int etatVente;
 	
-	private List<Enchere> concerne;
-	private Categorie categorie;
+	private String imgLink;
+	
+	public Utilisateur utilisateur;
+	public Categorie categorie;
+	public Retrait retrait;
 	private Retrait LieuRetrait;
 	private Utilisateur achete;
 	private Utilisateur vend;
+	
+	private List<Enchere> concerne;
+	
 	
 	
 	//constructeurs
 	
 	public ArticleVendu() {
     }
+	
+	
+	public ArticleVendu(ArticleVendu articleVendu) {
+    }
+	
+	
 	
 	/**
 	 * @param noArticle
@@ -43,11 +55,11 @@ public class ArticleVendu {
 			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
 			Categorie categorie, Retrait lieuRetrait, Utilisateur achete) {
 		super();
-		this.noArticle = noArticle;
-		this.nomArticle = nomArticle;
+		this.no_article = noArticle;
+		this.nom_article = nomArticle;
 		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
+		this.date_debut_encheres = dateDebutEncheres;
+		this.date_fin_encheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
@@ -74,11 +86,11 @@ public class ArticleVendu {
 			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
 			Categorie categorie) {
 		super();
-		this.noArticle = noArticle;
-		this.nomArticle = nomArticle;
+		this.no_article = noArticle;
+		this.nom_article = nomArticle;
 		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
+		this.date_debut_encheres = dateDebutEncheres;
+		this.date_fin_encheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
@@ -103,11 +115,11 @@ public class ArticleVendu {
 			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
 			Categorie categorie, Utilisateur achete) {
 		super();
-		this.noArticle = noArticle;
-		this.nomArticle = nomArticle;
+		this.no_article = noArticle;
+		this.nom_article = nomArticle;
 		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
+		this.date_debut_encheres = dateDebutEncheres;
+		this.date_fin_encheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
@@ -129,11 +141,11 @@ public class ArticleVendu {
 	public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
 			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente) {
 		super();
-		this.noArticle = noArticle;
-		this.nomArticle = nomArticle;
+		this.no_article = noArticle;
+		this.nom_article = nomArticle;
 		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
+		this.date_debut_encheres = dateDebutEncheres;
+		this.date_fin_encheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
@@ -145,16 +157,16 @@ public class ArticleVendu {
 	// getters et setters
 	
 	public Integer getNoArticle() {
-		return noArticle;
+		return no_article;
 	}
 	public void setNoArticle(Integer noArticle) {
-		this.noArticle = noArticle;
+		this.no_article = noArticle;
 	}
 	public String getNomArticle() {
-		return nomArticle;
+		return nom_article;
 	}
 	public void setNomArticle(String nomArticle) {
-		this.nomArticle = nomArticle;
+		this.nom_article = nomArticle;
 	}
 	public String getDescription() {
 		return description;
@@ -163,16 +175,16 @@ public class ArticleVendu {
 		this.description = description;
 	}
 	public Date getDateDebutEncheres() {
-		return dateDebutEncheres;
+		return date_debut_encheres;
 	}
 	public void setDateDebutEncheres(Date dateDebutEncheres) {
-		this.dateDebutEncheres = dateDebutEncheres;
+		this.date_debut_encheres = dateDebutEncheres;
 	}
 	public Date getDateFinEncheres() {
-		return dateFinEncheres;
+		return date_fin_encheres;
 	}
 	public void setDateFinEncheres(Date dateFinEncheres) {
-		this.dateFinEncheres = dateFinEncheres;
+		this.date_fin_encheres = dateFinEncheres;
 	}
 	public int getMiseAPrix() {
 		return miseAPrix;
@@ -192,14 +204,37 @@ public class ArticleVendu {
 	public void setEtatVente(int etatVente) {
 		this.etatVente = etatVente;
 	}
-	
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
 	
 	// to string 
 	@Override
 	public String toString() {
-		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
-				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
+		return "ArticleVendu [noArticle=" + no_article + ", nomArticle=" + nom_article + ", description=" + description
+				+ ", dateDebutEncheres=" + date_debut_encheres + ", dateFinEncheres=" + date_fin_encheres + ", miseAPrix="
 				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + "]";
+	}
+
+	public String getImgLink() {
+		return imgLink;
+	}
+
+	public void setImgLink(String imgLink) {
+		this.imgLink = imgLink;
 	}
 	
 

@@ -7,6 +7,25 @@
 <meta charset="ISO-8859-1">
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <title>Nouvelle vente</title>
+<script>
+            /* Cette fonction permet d'afficher une vignette pour chaque image sélectionnée */
+            function readFilesAndDisplayPreview(files) {
+                let imageList = document.querySelector('#list'); 
+                imageList.innerHTML = "";
+                
+                for ( let file of files ) {
+                    let reader = new FileReader();
+                    
+                    reader.addEventListener( "load", function( event ) {
+                        let span = document.createElement('span');
+                        span.innerHTML = '<img height="60" src="' + event.target.result + '" />';
+                        imageList.appendChild( span );
+                    });
+
+                    reader.readAsDataURL( file );
+                }
+            }
+        </script>
 </head>
 <body class="container">
 	 <div class="row">
@@ -18,12 +37,12 @@
 	<img class="col-3" src="img/meilleur-pc-gamer.jpg" alt="">
 	
 	
-	<div class="col-9 ">
+	<form class="col-9 " method="post" action="<%=request.getContextPath() %>/VenteArticleServlet" enctype="multipart/form-data">
 		
 		<div  class="form-group row">
 			<label  class="col-2" for="nomArticle">Article : </label> 
 			<div class="col">
-				<input class="col-10 form-control"type="text" id="nomArticle" name="nomArticle"value="${getArticle.nomArticle}" />
+				<input class="col-10 form-control"type="text" id="nom_article" name="nom_article"value="${getNom_article}" />
 			</div>
 		</div>
 		
@@ -36,17 +55,23 @@
 	<div  class="form-group row">
 	<label class="col-4" for="categorie">Catégorie : </label> 
 		<select class="col-6"  name="categorie" id="categorie-select">
-			<option value="">Choisissez une categorie</option>
-			<option value="Informatique">Informatique</option>
-			<option value="Ameublement">Ameublement</option>
-			<option value="Vêtement">Vêtement</option>
-			<option value="Sports&Loisirs">Sports&Loisirs</option>
+			<option name="categorie" value="">Choisissez une categorie</option>
+			<option name="categorie" value="1">Informatique</option>
+			<option name="categorie" value="2">Ameublement</option>
+			<option name="categorie" value="3">Vêtement</option>
+			<option name="categorie" value="4">Sports & Loisirs</option>
 		</select>
 	</div>
 	<div  class="form-group row">
 		<label class="col-4" for="categorie">Photo de l'article : </label> 
-		<input class="col-6 form-control-file"  type="file"  id="fichier">
+		<input class="col-6 form-control-file"  type="file"  id="fichier" type="file" name="multiPartServlet" accept="image/*" multiple
+                   onchange="readFilesAndDisplayPreview(this.files);" /> <br/>
+        <input type="submit" value="Upload" /> <br/> 
 	</div>
+	
+	
+	
+	
 	<div  class="form-group row">
 		<label class="col-4" for="categorie">Mise à prix : </label> 
 		<input class="col-6" type="number" name="howmuch">
@@ -92,7 +117,7 @@
 								Annuler</button>
 			</div>
 	</div>
-	</div>
+	</form>
 	</div>
 	
 </body>

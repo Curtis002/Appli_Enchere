@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.appli_enchere.bo.ArticleVendu;
 import fr.eni.appli_enchere.bo.Utilisateur;
 
 public class UtilisateurDAOjdbcImpl implements UtilisateurDAO {
@@ -316,3 +317,4 @@ public class UtilisateurDAOjdbcImpl implements UtilisateurDAO {
 
 
 }
+

@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 public class ArticleVendu {
+	
+	
+
 	private Integer no_article;
 	private String nom_article;
 	private String description;
@@ -151,9 +154,58 @@ public class ArticleVendu {
 		this.etatVente = etatVente;
 	}
 	
+	/**
+	 * @param no_article
+	 * @param nom_article
+	 * @param description
+	 * @param date_debut_encheres
+	 * @param date_fin_encheres
+	 * @param miseAPrix
+	 * @param utilisateur
+	 * @param categorie
+	 */
+	public ArticleVendu(Integer no_article, String nom_article, String description, Date date_debut_encheres,
+			Date date_fin_encheres, int miseAPrix, Utilisateur utilisateur, Categorie categorie) {
+		super();
+		this.no_article = no_article;
+		this.nom_article = nom_article;
+		this.description = description;
+		this.date_debut_encheres = date_debut_encheres;
+		this.date_fin_encheres = date_fin_encheres;
+		this.miseAPrix = miseAPrix;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
+	}
 	
 	
 	
+	
+	/**
+	 * @param no_article
+	 * @param nom_article
+	 * @param description
+	 * @param date_debut_encheres
+	 * @param date_fin_encheres
+	 * @param miseAPrix
+	 * @param utilisateur
+	 * @param categorie
+	 * @param retrait
+	 */
+	public ArticleVendu(Integer no_article, String nom_article, String description, Date date_debut_encheres,
+			Date date_fin_encheres, int miseAPrix, Utilisateur utilisateur, Categorie categorie, Retrait retrait) {
+		super();
+		this.no_article = no_article;
+		this.nom_article = nom_article;
+		this.description = description;
+		this.date_debut_encheres = date_debut_encheres;
+		this.date_fin_encheres = date_fin_encheres;
+		this.miseAPrix = miseAPrix;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
+		this.retrait = retrait;
+	}
+
+
 	// getters et setters
 	
 	public Integer getNoArticle() {

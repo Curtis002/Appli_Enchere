@@ -14,15 +14,15 @@ import java.util.List;
 public class ListeEncheresServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("passe dans doget ListeEncheresServlet");
-        VenteManager venteManager = new VenteManager();
-        try {
-            request.setAttribute("listeEncheres", venteManager.selectAll());
-        } catch (DALException e) {
-            e.printStackTrace();
-        }
-        RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
-        rd.forward(request, response);
+//        System.out.println("passe dans doget ListeEncheresServlet");
+//        VenteManager venteManager = new VenteManager();
+//        try {
+//            request.setAttribute("listeEncheres", venteManager.selectAll());
+//        } catch (DALException e) {
+//            e.printStackTrace();
+//        }
+//        RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
+//        rd.forward(request, response);
     }
 
     @Override

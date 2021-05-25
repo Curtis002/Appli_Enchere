@@ -1,7 +1,8 @@
 package fr.eni.appli_enchere.bo;
 
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleVendu {
@@ -27,7 +28,8 @@ public class ArticleVendu {
 	private Utilisateur vend;
 	
 	private List<Enchere> concerne;
-	
+	private List<Categorie> listeCategorie = new ArrayList<>();
+	private List<Utilisateur> listeUtilisateur = new ArrayList<>();
 	
 	
 	//constructeurs
@@ -224,7 +226,24 @@ public class ArticleVendu {
 	
 	}
 
+	public ArticleVendu(String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int miseAPrix) {
+		this.nom_article = nom_article;
+		this.description = description;
+		this.date_debut_encheres = date_debut_encheres;
+		this.date_fin_encheres = date_fin_encheres;
+		this.miseAPrix = miseAPrix;
+	}
+
 	// getters et setters
+
+	public List<Utilisateur> getListeUtilisateur() {
+		return listeUtilisateur;
+	}
+
+	public List<Categorie> getListeCategorie() {
+		return listeCategorie;
+	}
+
 	public Integer getNoArticle() {
 		return no_article;
 	}

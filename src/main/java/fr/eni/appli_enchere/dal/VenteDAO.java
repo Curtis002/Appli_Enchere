@@ -14,6 +14,6 @@ public interface VenteDAO {
 	void ajouterVente(ArticleVendu articleVendu ) throws DALException;
 	
 	// Method lister enchères en cours
-	List<ArticleVendu> selectAll() throws DALException;
+	//List<ArticleVendu> selectAll() throws DALException;
 	
 }

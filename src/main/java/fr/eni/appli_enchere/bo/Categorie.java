@@ -1,5 +1,6 @@
 package fr.eni.appli_enchere.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Categorie {
@@ -20,6 +21,9 @@ public class Categorie {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Categorie(int noCategorie) {
+		this.noCategorie = noCategorie;
+	}
 
 	//Getter and Setter
 	public int getNoCategorie() {
@@ -38,6 +42,11 @@ public class Categorie {
 		this.libelle = libelle;
 	}
 
+
+
+	public void setNoArticle(List<ArticleVendu> noArticle) {
+		this.noArticle = noArticle;
+	}
 
 	@Override
 	public String toString() {

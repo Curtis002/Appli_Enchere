@@ -74,33 +74,37 @@ public class VenteArticleServlet extends HttpServlet {
 
 			//String prixdevente = request.getParameter("prixdevente");
 			//String imgLink = request.getParameter("imgLink");
-			
+
+			int utilisateurConnecte = (int) request.getSession().getAttribute("noUser");
 			
 			VenteManager venteManager = new VenteManager();
-			
-	        RequestDispatcher rd = request.getRequestDispatcher("/nouvelleVente.jsp");
+			ArticleVendu articleVendu;
+	        articleVendu = venteManager.addVente(nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, utilisateurConnecte, no_categorie);
+			request.setAttribute("nouvelleVente", articleVendu);
+
+			request.getRequestDispatcher("/nouvelleVente.jsp").forward(request,response);
 
 			
 				
-				session.setAttribute("nomArticle", nomArticle);
-				System.out.println("nomArticle"+ nomArticle);
-				session.setAttribute("description", description);
-				session.setAttribute("categorie", no_categorie);
-				System.out.println("categorie"+ no_categorie);
-
-				session.setAttribute("dateDebutEncheres", dateDebutEncheres);
-				session.setAttribute("dateFinEncheres", dateFinEncheres);
-				session.setAttribute("miseAPrix", miseAPrix);
+//				session.setAttribute("nomArticle", nomArticle);
+//				System.out.println("nomArticle"+ nomArticle);
+//				session.setAttribute("description", description);
+//				session.setAttribute("categorie", no_categorie);
+//				System.out.println("categorie"+ no_categorie);
+//
+//				session.setAttribute("dateDebutEncheres", dateDebutEncheres);
+//				session.setAttribute("dateFinEncheres", dateFinEncheres);
+//				session.setAttribute("miseAPrix", miseAPrix);
 				//session.setAttribute("prixdevente", prixdevente);
 				//session.setAttribute("imgLink", imgLink);
 				
 
-				ArticleVendu articleVendu = new ArticleVendu(nomArticle, description, no_categorie, dateDebutEncheres,dateFinEncheres, miseAPrix   );
-				System.out.println("articleVendu" + articleVendu);
-				venteManager.ajouterVente(articleVendu);
-				
-				request.setAttribute("validation", "annonce validé");
-                response.sendRedirect("nouvelleVente.jsp");
+//				ArticleVendu articleVendu = new ArticleVendu(nomArticle, description, no_categorie, dateDebutEncheres,dateFinEncheres, miseAPrix   );
+//				System.out.println("articleVendu COMPLET : " + articleVendu);
+//				venteManager.ajouterVente(articleVendu);
+//
+//				request.setAttribute("validation", "annonce validé");
+//                response.sendRedirect("nouvelleVente.jsp");
 
 			} catch (DALException e) {
 

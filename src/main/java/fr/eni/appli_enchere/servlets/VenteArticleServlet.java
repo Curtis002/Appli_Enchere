@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.appli_enchere.bll.RetraitManager;
 import fr.eni.appli_enchere.bll.VenteManager;
 import fr.eni.appli_enchere.bo.ArticleVendu;
 import fr.eni.appli_enchere.bo.Categorie;
+import fr.eni.appli_enchere.bo.Retrait;
 import fr.eni.appli_enchere.dal.DALException;
 
 /**
@@ -22,8 +24,7 @@ import fr.eni.appli_enchere.dal.DALException;
 @WebServlet("/VenteArticleServlet")
 public class VenteArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       private VenteManager venteManager;
-       private Categorie categorie;
+      
      
 
 	/**
@@ -37,15 +38,6 @@ public class VenteArticleServlet extends HttpServlet {
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	/**
-	 *
-	 */
-	/**
-	 *
-	 */
-	/**
-	 *
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -72,6 +64,16 @@ public class VenteArticleServlet extends HttpServlet {
 			int miseAPrix = Integer.parseInt(request.getParameter("miseAPrix"));
 			System.out.println("miseAPrix  : "+ (request.getParameter("miseAPrix")));
 
+			
+			String rue = request.getParameter("rue");
+			System.out.println("rue  : "+ rue);
+			
+			String codepostal = request.getParameter("codepostal");
+			System.out.println("codepostal  : "+ codepostal);
+			
+			String ville = request.getParameter("ville");
+			System.out.println("ville  : "+ ville);
+			
 			//String prixdevente = request.getParameter("prixdevente");
 			//String imgLink = request.getParameter("imgLink");
 
@@ -81,7 +83,12 @@ public class VenteArticleServlet extends HttpServlet {
 			ArticleVendu articleVendu;
 	        articleVendu = venteManager.addVente(nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, utilisateurConnecte, no_categorie);
 			request.setAttribute("nouvelleVente", articleVendu);
-
+			
+			RetraitManager retraitManager = new RetraitManager();
+			Retrait retrait;
+			retrait = retraitManager.addAdresse(rue, codepostal, ville,articleVendu.getNoArticle());
+			request.setAttribute("ajoutadresse", retrait);
+			
 			request.getRequestDispatcher("/nouvelleVente.jsp").forward(request,response);
 
 			

@@ -43,6 +43,20 @@
 	</div>
 	
 </div>
+
+<div class="row">
+<%--	<c:when test="${requestScope.listeEncheres.size()>0}">--%>
+		<ul class="list-group col-12">
+			<c:forEach var="c" items="${requestScope.listeEncheres}">
+				<li class="list-group-item d-flex justify-content-between align-items-center">${c.nomArticle}</li>
+			</c:forEach>
+		</ul>
+<%--	</c:when>--%>
+<%--	<c:otherwise>--%>
+<%--	<p>Pas d'enchère actuellement.<p>--%>
+<%--	</c:otherwise>--%>
+</div>
+
 <div class="border-primary row align-items-start custom-line  mx-1 my-4 ">
 	<div class="col row mx-2 py-2 ml-1 border mt-2 rounded border-secondary">
 		<img class="rounded p-2 mx-1" src="img/meilleur-pc-gamer.jpg" alt="image" height="150px" width="150px">

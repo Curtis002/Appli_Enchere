@@ -1,5 +1,6 @@
 package fr.eni.appli_enchere.bo;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -10,8 +11,8 @@ public class ArticleVendu {
 	private Integer no_article;
 	private String nom_article;
 	private String description;
-	private Date date_debut_encheres;
-	private Date date_fin_encheres;
+	private LocalDate date_debut_encheres;
+	private LocalDate date_fin_encheres;
 	private int miseAPrix;
 	private int prixVente;
 	private int etatVente;
@@ -54,8 +55,8 @@ public class ArticleVendu {
 	 * @param lieuRetrait
 	 * @param achete
 	 */
-	public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
+	public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
 			Categorie categorie, Retrait lieuRetrait, Utilisateur achete) {
 		super();
 		this.no_article = noArticle;
@@ -85,8 +86,8 @@ public class ArticleVendu {
 	 * @param concerne
 	 * @param categorie
 	 */
-	public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
+	public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
 			Categorie categorie) {
 		super();
 		this.no_article = noArticle;
@@ -114,8 +115,8 @@ public class ArticleVendu {
 	 * @param categorie
 	 * @param achete
 	 */
-	public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
+	public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int miseAPrix, int prixVente, int etatVente, List<Enchere> concerne,
 			Categorie categorie, Utilisateur achete) {
 		super();
 		this.no_article = noArticle;
@@ -141,8 +142,8 @@ public class ArticleVendu {
 	 * @param prixVente
 	 * @param etatVente
 	 */
-	public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente) {
+	public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int miseAPrix, int prixVente, int etatVente) {
 		super();
 		this.no_article = noArticle;
 		this.nom_article = nomArticle;
@@ -164,8 +165,8 @@ public class ArticleVendu {
 	 * @param utilisateur
 	 * @param categorie
 	 */
-	public ArticleVendu(Integer no_article, String nom_article, String description, Date date_debut_encheres,
-			Date date_fin_encheres, int miseAPrix, Utilisateur utilisateur, Categorie categorie) {
+	public ArticleVendu(Integer no_article, String nom_article, String description, LocalDate date_debut_encheres,
+			LocalDate date_fin_encheres, int miseAPrix, Utilisateur utilisateur, Categorie categorie) {
 		super();
 		this.no_article = no_article;
 		this.nom_article = nom_article;
@@ -191,8 +192,8 @@ public class ArticleVendu {
 	 * @param categorie
 	 * @param retrait
 	 */
-	public ArticleVendu(Integer no_article, String nom_article, String description, Date date_debut_encheres,
-			Date date_fin_encheres, int miseAPrix, Utilisateur utilisateur, Categorie categorie, Retrait retrait) {
+	public ArticleVendu(Integer no_article, String nom_article, String description, LocalDate date_debut_encheres,
+			LocalDate date_fin_encheres, int miseAPrix, Utilisateur utilisateur, Categorie categorie, Retrait retrait) {
 		super();
 		this.no_article = no_article;
 		this.nom_article = nom_article;
@@ -206,8 +207,24 @@ public class ArticleVendu {
 	}
 
 
-	// getters et setters
 	
+	
+	
+
+
+	public ArticleVendu(String nomArticle, String description, int no_categorie, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int miseAPrix) {
+		this.nom_article = nomArticle;
+		this.description = description;
+		this.categorie.noCategorie = no_categorie;
+		this.date_debut_encheres = dateDebutEncheres;
+		this.date_fin_encheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		
+	
+	}
+
+	// getters et setters
 	public Integer getNoArticle() {
 		return no_article;
 	}
@@ -226,16 +243,16 @@ public class ArticleVendu {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getDateDebutEncheres() {
+	public LocalDate getDateDebutEncheres() {
 		return date_debut_encheres;
 	}
-	public void setDateDebutEncheres(Date dateDebutEncheres) {
+	public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
 		this.date_debut_encheres = dateDebutEncheres;
 	}
-	public Date getDateFinEncheres() {
+	public LocalDate getDateFinEncheres() {
 		return date_fin_encheres;
 	}
-	public void setDateFinEncheres(Date dateFinEncheres) {
+	public void setDateFinEncheres(LocalDate dateFinEncheres) {
 		this.date_fin_encheres = dateFinEncheres;
 	}
 	public int getMiseAPrix() {

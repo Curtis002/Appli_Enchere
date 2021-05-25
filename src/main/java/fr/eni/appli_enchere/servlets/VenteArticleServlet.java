@@ -1,7 +1,7 @@
 package fr.eni.appli_enchere.servlets;
 
 import java.io.IOException;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,35 +51,51 @@ public class VenteArticleServlet extends HttpServlet {
 		try {
 		HttpSession session = request.getSession();
 			System.out.println("SERVLET VENTE ARTICLE passe dans DO POST");
-
-			String nomArticle = request.getParameter("nom_article");
+			
+		    
+			String nomArticle = request.getParameter("nomArticle");
+			System.out.println("nomArticle  : "+ (request.getParameter("nomArticle")));
 			String description = request.getParameter("description");
-			//String categorie = request.getParameter("categorie");
-			String dateDebutEncheres = request.getParameter("dateDebutEncheres");
-			String dateFinEncheres = request.getParameter("dateFinEncheres");
-			//String miseAPrix = request.getParameter("miseAPrix");
+			System.out.println("description  : "+ (request.getParameter("description")));
+			int no_categorie = Integer.parseInt(request.getParameter("categorie"));
+			System.out.println("categorie  : "+ (request.getParameter("categorie")));
+		
+			String dateDebut = request.getParameter("dateDebutEncheres");
+			System.out.println("dateDebut  : "+ dateDebut);
+			LocalDate dateDebutEncheres = LocalDate.parse(dateDebut);
+			System.out.println("dateDebutEncheres  : "+ dateDebutEncheres);
+			
+			String dateFin = request.getParameter("dateFinEncheres");
+			LocalDate dateFinEncheres =  LocalDate.parse(dateFin);
+			System.out.println("dateFinEncheres  : "+ dateFinEncheres);
+
+			int miseAPrix = Integer.parseInt(request.getParameter("miseAPrix"));
+			System.out.println("miseAPrix  : "+ (request.getParameter("miseAPrix")));
+
 			//String prixdevente = request.getParameter("prixdevente");
 			//String imgLink = request.getParameter("imgLink");
 			
 			
 			VenteManager venteManager = new VenteManager();
-			ArticleVendu articleVendu = null;
+			
 	        RequestDispatcher rd = request.getRequestDispatcher("/nouvelleVente.jsp");
 
 			
 				
-				session.setAttribute("nom_article", nomArticle);
-				System.out.println("nom_article"+ nomArticle);
+				session.setAttribute("nomArticle", nomArticle);
+				System.out.println("nomArticle"+ nomArticle);
 				session.setAttribute("description", description);
-				//session.setAttribute("categorie", categorie);
+				session.setAttribute("categorie", no_categorie);
+				System.out.println("categorie"+ no_categorie);
+
 				session.setAttribute("dateDebutEncheres", dateDebutEncheres);
 				session.setAttribute("dateFinEncheres", dateFinEncheres);
-				//session.setAttribute("miseAPrix", miseAPrix);
+				session.setAttribute("miseAPrix", miseAPrix);
 				//session.setAttribute("prixdevente", prixdevente);
 				//session.setAttribute("imgLink", imgLink);
 				
 
-				articleVendu = new ArticleVendu(articleVendu);
+				ArticleVendu articleVendu = new ArticleVendu(nomArticle, description, no_categorie, dateDebutEncheres,dateFinEncheres, miseAPrix   );
 				System.out.println("articleVendu" + articleVendu);
 				venteManager.ajouterVente(articleVendu);
 				

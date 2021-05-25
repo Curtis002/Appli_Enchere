@@ -3,7 +3,7 @@ package fr.eni.appli_enchere.bo;
 import java.util.List;
 
 public class Categorie {
-	private int noCategorie;
+	public int noCategorie;
 	private String libelle;
 	
 	private List<ArticleVendu> noArticle;
@@ -13,6 +13,11 @@ public class Categorie {
 		super();
 		this.noCategorie = noCategorie;
 		this.libelle = libelle;
+	}
+	
+
+	public Categorie() {
+		// TODO Auto-generated constructor stub
 	}
 
 

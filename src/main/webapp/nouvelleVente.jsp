@@ -90,19 +90,19 @@
 			<label class="col-4" for="rue">Rue : </label> 
 			<input class="col-6 form-control"
 								type="text" id=rue name="rue"
-								value="${getUtilisateur.rue}" />
+								value="${sessionScope.rue}" />
 		</div>
 	<div  class="form-group row">
 	<label class="col-4" for="codepostal">Code postal : </label> 
 	<input class="col-6 form-control"
 						type="text" id=codepostal name="codepostal"
-						value="${getUtilisateur.codepostal}" />
+						value="${sessionScope.code_postal}" />
 	</div>
 	<div  class="form-group row">
 	<label class="col-4" for="ville">Ville : </label> 
 	<input class="col-6 form-control"
 						type="text" id=ville name="ville"
-						value="${getUtilisateur.ville}" />
+						value="${sessionScope.ville}" />
 	</div>
 	
 	

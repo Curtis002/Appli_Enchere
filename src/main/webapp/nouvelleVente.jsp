@@ -37,29 +37,29 @@
 	<img class="col-3" src="img/meilleur-pc-gamer.jpg" alt="">
 	
 	
-	<form class="col-9 " method="post" action="<%=request.getContextPath() %>/VenteArticleServlet" enctype="multipart/form-data">
+	<form class="col-9 " method="post" action="<%=request.getContextPath() %>/VenteArticleServlet" >
 		
 		<div  class="form-group row">
 			<label  class="col-2" for="nomArticle">Article : </label> 
 			<div class="col">
-				<input class="col-10 form-control"type="text" id="nom_article" name="nom_article"value="${getNom_article}" />
+				<input class="col-10 form-control"type="text" id="nomArticle" name="nomArticle" />
 			</div>
 		</div>
 		
 	<div  class="form-group row">
 		<label class="col-2" for="description">Description : </label> 
 		<div class="col">
-			<textarea class="form-control col-10" type="text" id="description" name="description"value="${getArticle.description}"></textarea>
+			<textarea class="form-control col-10" type="text" id="description" name="description"></textarea>
 		</div>
 	</div>
 	<div  class="form-group row">
 	<label class="col-4" for="categorie">Catégorie : </label> 
-		<select class="col-6"  name="categorie" id="categorie-select">
-			<option name="categorie" value="">Choisissez une categorie</option>
-			<option name="categorie" value="1">Informatique</option>
-			<option name="categorie" value="2">Ameublement</option>
-			<option name="categorie" value="3">Vêtement</option>
-			<option name="categorie" value="4">Sports & Loisirs</option>
+		<select class="col-6"  name="categorie" id="categorie">
+			<option name="0" value="">Choisissez une categorie</option>
+			<option name="1" value="1">Informatique</option>
+			<option name="2" value="2">Ameublement</option>
+			<option name="3" value="3">Vêtement</option>
+			<option name="4" value="4">Sports & Loisirs</option>
 		</select>
 	</div>
 	<div  class="form-group row">
@@ -73,16 +73,16 @@
 	
 	
 	<div  class="form-group row">
-		<label class="col-4" for="categorie">Mise à prix : </label> 
-		<input class="col-6" type="number" name="howmuch">
+		<label class="col-4" for="miseAPrix">Mise à prix : </label> 
+		<input class="col-6" id="miseAPrix" type="number" name="miseAPrix">
 	</div>
 	<div  class="form-group row">
-		<label class="col-4" for="categorie">Début de l'enchères : </label> 
-		<input class="col-6" type="date" name="anniversaire">
+		<label class="col-4" for="dateDebutEncheres">Début de l'enchères : </label> 
+		<input class="col-6" id="dateDebutEncheres" type="date" name="dateDebutEncheres">
 	</div>
 	<div  class="form-group row">
-		<label class="col-4" for="categorie">Fin de l'enchères : </label> 
-		<input class="col-6" type="date" name="anniversaire">
+		<label class="col-4" for="dateFinEncheres">Fin de l'enchères : </label> 
+		<input class="col-6" id="dateFinEncheres" type="date" name="dateFinEncheres">
 	</div>
 	<div>
 		<h3>Lieu de Retrait</h3>

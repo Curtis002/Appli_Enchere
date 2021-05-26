@@ -59,4 +59,8 @@ public class UtilisateurManager {
 		
 	}
 
+	public Utilisateur selectUtilisateurById(int id) throws DALException {
+		return utilisateurDAO.selectUtilisateurById(id);
+	}
+
 }

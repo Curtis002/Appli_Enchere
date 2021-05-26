@@ -9,16 +9,21 @@
 <html>
 <head>
     <link rel="stylesheet" href="style/header.css">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>Eni-Enchères</title>
 </head>
 <body>
     <nav class="navbar">
         <div>
-            <h1 class="spec-h1">ENI-ENCHERES</h1>
+            <a class="nav-link" href="<%=request.getContextPath()%>/ConnectServlet" style="color: black"><h1 class="spec-h1">ENI-ENCHERES</h1></a>
+        </div>
+        <div class="btn-group" role="group" >
+        	<input class="btn btn-primary sm-2" type="button" value = "Rafraîchir" onclick="history.go(0)" /> 
+        	<input class="btn btn-primary sm-2" type="button" value = "Retour" onclick="history.go(-1)" />
         </div>
         <div class="header">
             <ul class="nav justify-content-end">
-                <li class="nav-item"><a class="nav-link" href="Enchères.jsp">Enchères</a></li>
+                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/ConnectServlet">Enchères</a></li>
                 <li class="nav-item"><a class="nav-link" href="nouvelleVente.jsp">Vendre un article</a></li>
                 <li class="nav-item"><a class="nav-link" href="profile.jsp">Mon profil</a></li>
                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/LogoutServlet">Déconnexion</a></li>

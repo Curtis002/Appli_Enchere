@@ -20,7 +20,7 @@ public class ArticleVendu {
 	
 	private String imgLink;
 	
-	public Utilisateur utilisateur;
+	public Utilisateur utilisateur = new Utilisateur();
 	public Categorie categorie;
 	public Retrait retrait;
 	private Retrait LieuRetrait;
@@ -30,7 +30,6 @@ public class ArticleVendu {
 	private List<Enchere> concerne;
 	private List<Categorie> listeCategorie = new ArrayList<>();
 	private List<Utilisateur> listeUtilisateur = new ArrayList<>();
-	
 	
 	//constructeurs
 	
@@ -145,10 +144,10 @@ public class ArticleVendu {
 	 * @param dateFinEncheres
 	 * @param miseAPrix
 	 * @param prixVente
-	 * @param etatVente
+	 * @param no_utilisateur
 	 */
 	public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int miseAPrix, int prixVente, int etatVente) {
+			LocalDate dateFinEncheres, int miseAPrix, int prixVente, int no_utilisateur) {
 		super();
 		this.no_article = noArticle;
 		this.nom_article = nomArticle;
@@ -157,7 +156,7 @@ public class ArticleVendu {
 		this.date_fin_encheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
-		this.etatVente = etatVente;
+		this.utilisateur.setNo_utilisateur(no_utilisateur);
 	}
 	
 	/**
@@ -237,7 +236,25 @@ public class ArticleVendu {
 		this.miseAPrix = miseAPrix;
 	}
 
-	// getters et setters
+	public ArticleVendu(int no_article, String nom_article, String description, LocalDate date_debut_encheres, LocalDate date_fin_encheres, int prix_initial, int prix_vente, Utilisateur utilisateur, Categorie categorie) {
+		this.no_article = no_article;
+		this.nom_article = nom_article;
+		this.description = description;
+		this.date_debut_encheres = date_debut_encheres;
+		this.date_fin_encheres = date_fin_encheres;
+		this.miseAPrix = prix_initial;
+		this.prixVente = prix_vente;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
+	}
+
+
+	public int getUtilisateurVente() {
+		return utilisateur.getNo_utilisateur();
+	}
+
+
+// getters et setters
 
 	public List<Utilisateur> getListeUtilisateur() {
 		return listeUtilisateur;

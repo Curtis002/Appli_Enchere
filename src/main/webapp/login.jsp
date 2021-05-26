@@ -16,7 +16,7 @@
     <title>Se connecter</title>
 </head>
 <body>
-    <h1 class="spec-h1">ENI-Enchères</h1>
+    <h1 class="spec-h1 mt-5">ENI-Enchères</h1>
     <div class="container-login">
         <form action="<%=request.getContextPath() %>/ConnectServlet" method="post">
             <div class="row mb-3">

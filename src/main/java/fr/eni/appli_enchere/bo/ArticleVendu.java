@@ -291,8 +291,8 @@ public class ArticleVendu {
 	public LocalDate getDateFinEncheres() {
 		return date_fin_encheres;
 	}
-	public void setDateFinEncheres(LocalDate dateFinEncheres) {
-		this.date_fin_encheres = dateFinEncheres;
+	public void setDateFinEncheres(LocalDate date_fin_encheres) {
+		this.date_fin_encheres = date_fin_encheres;
 	}
 	public int getMiseAPrix() {
 		return miseAPrix;
@@ -344,6 +344,13 @@ public class ArticleVendu {
 	public void setImgLink(String imgLink) {
 		this.imgLink = imgLink;
 	}
+
+
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
+		
+	}
+
 	
 
 	

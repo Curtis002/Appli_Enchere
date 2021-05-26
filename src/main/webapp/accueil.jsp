@@ -19,31 +19,29 @@
 </nav>
 <h2 class="text-center">Liste des enchères</h2>
 <div class="container row m-3">
-    <div class="col">
-        <div>
+    <div class="mb-3">
+        <form action="ListeEncheresServlet" method="get">
             <label for="site-search">Filtres :</label>
-            <input type="search" id="site-search" name="q"
-                   aria-label="Search through site content">
-        </div>
-        <div>
+            <input type="text" id="site-search" name="kw">
+            <input type="submit" value="Filtrer" name="action" class="mr-3">
+
             <label for="categorie-select">Categorie :</label>
             <select name="categorie" id="categorie-select">
-                <option value="">Choisissez une categorie</option>
-                <option value="Informatique">Informatique</option>
-                <option value="cat">Ameublement</option>
-                <option value="hamster">Vêtement</option>
-                <option value="parrot">Sports&Loisirs</option>
+                <option value="0">Choisissez une categorie</option>
+                <option value="1">Informatique</option>
+                <option value="2">Ameublement</option>
+                <option value="3">Vêtement</option>
+                <option value="4">Sports&Loisirs</option>
             </select>
-        </div>
-    </div>
-
-    <div class="col">
-        <button class="form-check btn-lg mb-5 py-3 ml-5">Rechercher</button>
+            <input type="submit" value="Rechercher" name="action" class="mr-5">
+            <input type="submit" value="Réinitialiser" name="initialiser">
+        </form>
     </div>
 
 </div>
+</div>
 
-<div class="row d-flex justify-content-around">
+    <div class="row d-flex justify-content-around">
     <c:forEach var="vente" items="${requestScope.listArticles}">
         <div class="card col-5 border-secondary mb-3 ">
             <div class="card-body">

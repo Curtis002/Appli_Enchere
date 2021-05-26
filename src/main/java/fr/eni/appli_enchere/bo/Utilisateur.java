@@ -17,6 +17,7 @@ public class Utilisateur {
     private Integer credit;
     private boolean administrateur;
 
+    private ArticleVendu articleVendu;
     private List<ArticleVendu> acheteArticles;
     private List<ArticleVendu> venteArticles;
     private List<Enchere> utilisateurEncherit;
@@ -92,6 +93,11 @@ public class Utilisateur {
         this.mot_de_passe = mot_de_passe;
     }
 
+    public Utilisateur(Integer no_utilisateur, String pseudo) {
+        this.no_utilisateur = no_utilisateur;
+        this.pseudo = pseudo;
+    }
+
     public Utilisateur(String pseudo, String mot_de_passe) {
         this.pseudo = pseudo;
         this.mot_de_passe = mot_de_passe;
@@ -107,6 +113,11 @@ public class Utilisateur {
 	}
 
 	// D�finition des Getters et Setters
+
+    public ArticleVendu getArticleVendu() {
+        return articleVendu;
+    }
+
     public Integer getNo_utilisateur() {
         return no_utilisateur;
     }

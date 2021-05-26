@@ -45,8 +45,8 @@ public class VenteManager {
 		return articleVendu;
 	}
 
-//	public List<ArticleVendu> selectAll() throws DALException {
-//		System.out.println("passe par manager selectall");
-//		return venteDAO.selectAll();
-//	}
+	public List<ArticleVendu> selectAll() throws DALException {
+		System.out.println("passe par manager selectall");
+		return venteDAO.selectAll();
+	}
 }

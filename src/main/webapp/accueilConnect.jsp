@@ -76,34 +76,22 @@
 	
    </div>
 </div>
-<div class="border-primary row custom-line  mx-1 my-4 d-flex justify-content-center">
-	<div class="col row mx-2 py-2 ml-1 border mt-2 rounded border-secondary" style="max-width: 540px;">
-		<img class="rounded p-2 mx-1" src="img/meilleur-pc-gamer.jpg" alt="image" height="150px" width="150px">
-		<div class="col flex-col ">
-			<h4><a href ="ficheproduit.jsp">PC Gamer pour travailler</a></h4>
-			<span class="row mx-1">Prix : 210 points</span>
-			
-			<span class="row mx-1 my-1">Fin de l'enchère : 10/08/2018</span>
-			
-			<span class="row mx-1 ">Vendeur : <a href="${pageContext.request.contextPath}/UserServlet?pseudo=durandg" title="pseudo">durandg</a>
-</span>
-		</div>
-	</div>
 
-	<div class="col row mx-2 py-2 ml-1 border mt-2 rounded border-secondary" style="max-width: 540px;">
-		<img class="rounded p-2 mx-1" src="img/Rocket_stove.jpg" alt="image" height="150px" width="150px">
-		<div class="col flex-col">
-			<h4 class=""><a href ="profilAutreUtilisateur.jsp">Rocket stove pour riz</a></h4>
-			<span class="row mx-1" >Prix : <a> 210 points</a></span>
-			
-			<span class="row mx-1 my-1" >Fin de l'enchère : <a> 10/08/2018</a></span>
-			
-			<span class="row mx-1">Vendeur : <a href ="${pageContext.request.contextPath}/UserServlet?pseudo=${sessionScope.pseudo}"><c:out value="${sessionScope.pseudo}" /></a></span>
-			
-		
+<div class="row d-flex justify-content-around">
+	<c:forEach var="vente" items="${requestScope.listArticles}">
+		<div class="card col-5 border-secondary mb-3 ">
+			<div class="card-body">
+				<h5 class="card-title">${vente.nomArticle}</h5>
+				<p class="card-text">Prix : ${vente.miseAPrix} points</p>
+				<p class="card-text">Fin de l'enchère : ${vente.dateFinEncheres}</p>
+				<p class="card-text">Vendeur : <a href="${pageContext.request.contextPath}/UserServlet?pseudo=${vente.utilisateur.pseudo}" title="pseudo">${vente.utilisateur.pseudo}</a></p>
+				<div class="d-flex justify-content-center">
+					<a href="#" class="btn btn-outline-primary">Détail de la vente</a>
+				</div>
+			</div>
 		</div>
-	</div>
-  </div>  
+	</c:forEach>
+</div>
 
 </body>
 </html>

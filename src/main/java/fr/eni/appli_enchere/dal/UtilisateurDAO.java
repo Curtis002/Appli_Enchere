@@ -25,5 +25,5 @@ public interface UtilisateurDAO {
 	List<String> selectAllPseudo() throws DALException;
 	//check email 
 	List<String> selectAllEmail() throws DALException;
-
+	Utilisateur selectUtilisateurById(int id) throws DALException;
 }

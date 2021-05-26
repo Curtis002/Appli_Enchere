@@ -1,6 +1,8 @@
 package fr.eni.appli_enchere.servlets;
 
 import fr.eni.appli_enchere.bll.UtilisateurManager;
+import fr.eni.appli_enchere.bll.VenteManager;
+import fr.eni.appli_enchere.bo.ArticleVendu;
 import fr.eni.appli_enchere.bo.Utilisateur;
 import fr.eni.appli_enchere.dal.DALException;
 
@@ -10,32 +12,33 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "ConnectServlet", urlPatterns = "/ConnectServlet")
 public class ConnectServlet extends HttpServlet {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
-            for (Cookie c:cookies) {
+            for (Cookie c : cookies) {
                 if (c.getName().equals("identifiant")) {
                     request.setAttribute("identifiant", c.getValue());
                 }
             }
         }
-        System.out.println("passe dans doGet");
-        if (request.getSession().getAttribute("pseudo") != null ) {
-        	RequestDispatcher rd = request.getRequestDispatcher("accueilConnect.jsp");
+
+        if (request.getSession().getAttribute("pseudo") != null) {
+            RequestDispatcher rd = request.getRequestDispatcher("/accueilConnect.jsp");
             rd.forward(request, response);
-        	
-        }else if(request.getSession().getAttribute("pseudo") == null ) {
-        	RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+
+        } else if (request.getSession().getAttribute("pseudo") == null) {
+            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
             rd.forward(request, response);
         }
     }
@@ -43,6 +46,7 @@ public class ConnectServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        VenteManager venteManager = new VenteManager();
         System.out.println("passe par servlet ConnectServlet doPost");
         String pseudo = request.getParameter("pseudo");
         String mot_de_passe = request.getParameter("mdp");
@@ -70,11 +74,18 @@ public class ConnectServlet extends HttpServlet {
                 session.setAttribute("ville", utilisateur.getVille());
                 session.setAttribute("mot_de_passe", utilisateur.getMot_de_passe());
                 session.setAttribute("credit", utilisateur.getCredit());
-                response.sendRedirect("accueilConnect.jsp");
-            } else if(utilisateur == null || !mot_de_passe.equals(utilisateur.getMot_de_passe())) {
+
+                List<ArticleVendu> listArticles = null;
+                listArticles = venteManager.selectAll();
+                request.setAttribute("listArticles", listArticles);
+
+                RequestDispatcher rd = request.getRequestDispatcher("/accueilConnect.jsp");
+                rd.forward(request, response);
+
+            } else if (utilisateur == null || !mot_de_passe.equals(utilisateur.getMot_de_passe())) {
                 System.out.println("passe par deuxième if");
                 request.setAttribute("error", "Erreur mot de passe");
-                RequestDispatcher rd=request.getRequestDispatcher("/login.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
                 rd.forward(request, response);
             }
         } catch (DALException e) {

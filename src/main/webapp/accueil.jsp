@@ -9,11 +9,10 @@
 <title>Accueil</title>
 </head>
 <body class="container">
-<h1>Accueil</h1>
 <nav class="navbar">
 	<div>
-	  <span>ENI-ENCHERES</span>
-	</div>
+            <a href="accueil.jsp" class="nav-link" style="color: black"><h1 class="spec-h1">ENI-ENCHERES</h1></a>
+        </div>
 	<ul class="nav justify-content-end">
 		<li class="nav-item" id="links"><a class="nav-link" href="ConnectServlet">Se connecter - S'inscrire</a></li>
 	</ul>

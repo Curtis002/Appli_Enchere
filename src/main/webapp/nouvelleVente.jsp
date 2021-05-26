@@ -18,7 +18,7 @@
                     
                     reader.addEventListener( "load", function( event ) {
                         let span = document.createElement('span');
-                        span.innerHTML = '<img height="60" src="' + event.target.result + '" />';
+                        span.innerHTML = '<img class="col-12" height="300" width="300" src="' + event.target.result + '" />';
                         imageList.appendChild( span );
                     });
 
@@ -34,22 +34,21 @@
 	</div>
 	<div class="row">
 	
-	<img class="col-3" src="img/meilleur-pc-gamer.jpg" alt="">
-	
-	
-	<form class="col-9 " method="post" action="<%=request.getContextPath() %>/VenteArticleServlet" >
+	<div class="col-4" id="list"></div>
+
+	<form class="col-8 " method="post"  enctype="multipart/form-data" action="<%=request.getContextPath() %>/VenteArticleServlet" >
 		
 		<div  class="form-group row">
 			<label  class="col-2" for="nomArticle">Article : </label> 
 			<div class="col">
-				<input class="col-10 form-control"type="text" id="nomArticle" name="nomArticle" />
+				<input class="col-10 form-control"type="text" id="nomArticle" name="nomArticle" required/>
 			</div>
 		</div>
 		
 	<div  class="form-group row">
 		<label class="col-2" for="description">Description : </label> 
 		<div class="col">
-			<textarea class="form-control col-10" type="text" id="description" name="description"></textarea>
+			<textarea class="form-control col-10" type="text" id="description" name="description"required></textarea>
 		</div>
 	</div>
 	<div  class="form-group row">
@@ -62,11 +61,22 @@
 			<option name="4" value="4">Sports & Loisirs</option>
 		</select>
 	</div>
+	
 	<div  class="form-group row">
-		<label class="col-4" for="categorie">Photo de l'article : </label> 
-		<input class="col-6 form-control-file"  type="file"  id="fichier" type="file" name="multiPartServlet" accept="image/*" multiple
+		<!-- <label class="col-4" for="photoArticle" >Photo de l'article : </label> 
+		<input class="col-6 form-control-file"  type="file"  id="photoArticle" type="file" name="multiPartServlet" accept="img/*" multiple
                    onchange="readFilesAndDisplayPreview(this.files);" /> <br/>
-        <input type="submit" value="Upload" /> <br/> 
+        <input type="submit" value="Upload" /> <br/>  -->
+	
+		<div method="post" action="UploadImageServlet" enctype="multipart/form-data">
+			Photo de l'article :            
+			<input type="file" name="photo" size="150"
+                   onchange="readFilesAndDisplayPreview(this.files);" /> <br/>
+            <input type="submit" value="Upload" /> <br/>  
+        
+            
+        </div>
+	
 	</div>
 	
 	
@@ -74,15 +84,15 @@
 	
 	<div  class="form-group row">
 		<label class="col-4" for="miseAPrix">Mise à prix : </label> 
-		<input class="col-6" id="miseAPrix" type="number" name="miseAPrix">
+		<input class="col-6" id="miseAPrix" type="number" name="miseAPrix" required>
 	</div>
 	<div  class="form-group row">
 		<label class="col-4" for="dateDebutEncheres">Début de l'enchères : </label> 
-		<input class="col-6" id="dateDebutEncheres" type="date" name="dateDebutEncheres">
+		<input class="col-6" id="dateDebutEncheres" type="date" name="dateDebutEncheres" required>
 	</div>
 	<div  class="form-group row">
 		<label class="col-4" for="dateFinEncheres">Fin de l'enchères : </label> 
-		<input class="col-6" id="dateFinEncheres" type="date" name="dateFinEncheres">
+		<input class="col-6" id="dateFinEncheres" type="date" name="dateFinEncheres" required>
 	</div>
 	<div>
 		<h3>Lieu de Retrait</h3>
@@ -90,19 +100,19 @@
 			<label class="col-4" for="rue">Rue : </label> 
 			<input class="col-6 form-control"
 								type="text" id=rue name="rue"
-								value="${sessionScope.rue}" />
+								value="${sessionScope.rue}" required/>
 		</div>
 	<div  class="form-group row">
 	<label class="col-4" for="codepostal">Code postal : </label> 
 	<input class="col-6 form-control"
 						type="text" id=codepostal name="codepostal"
-						value="${sessionScope.code_postal}" />
+						value="${sessionScope.code_postal}" required/>
 	</div>
 	<div  class="form-group row">
 	<label class="col-4" for="ville">Ville : </label> 
 	<input class="col-6 form-control"
 						type="text" id=ville name="ville"
-						value="${sessionScope.ville}" />
+						value="${sessionScope.ville}" required/>
 	</div>
 	
 	

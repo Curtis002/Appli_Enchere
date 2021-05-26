@@ -16,7 +16,6 @@ import java.util.List;
 public class ListeEncheresServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         VenteManager venteManager = new VenteManager();
         String action = request.getParameter("action");
         if (action != null) {
@@ -42,15 +41,15 @@ public class ListeEncheresServlet extends HttpServlet {
                 try {
                     if (noCategorie == 0) {
                         listArticles = venteManager.selectAll();
-                        request.setAttribute("listArticles", listArticles);
                     } else {
                         listArticles = venteManager.selectEncheresByCategorie(noCategorie);
-                        request.setAttribute("listArticles", listArticles);
                     }
+                    request.setAttribute("listArticles", listArticles);
                     RequestDispatcher rd;
                     if (request.getSession().getAttribute("pseudo") != null) {
                         rd = request.getRequestDispatcher("/accueilConnect.jsp");
                     } else {
+                        System.out.println("passe par là récupère pas la session");
                         rd = request.getRequestDispatcher("/accueil.jsp");
                     }
                     rd.forward(request, response);
@@ -60,9 +59,16 @@ public class ListeEncheresServlet extends HttpServlet {
             }
         } else {
             try {
+                System.out.println("passe dans else bas");
                 List<ArticleVendu> listArticles = venteManager.selectAll();
                 request.setAttribute("listArticles", listArticles);
-                RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
+                RequestDispatcher rd;
+                if (request.getSession().getAttribute("pseudo") != null) {
+                    rd = request.getRequestDispatcher("/accueilConnect.jsp");
+                } else {
+                    System.out.println("passe par là récupère pas la session");
+                    rd = request.getRequestDispatcher("/accueil.jsp");
+                }
                 rd.forward(request, response);
             } catch (DALException e) {
                 e.printStackTrace();

@@ -199,22 +199,22 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 			stmt.setString(1, nomArticle);
 			rs=stmt.executeQuery();
 			//System.out.println("Article  = " + nomArticle);
-			if (rs.next()){ 
+			if (rs.next()){
 				articleVendu.setNomArticle(rs.getString("nom_article"));
 				System.out.println("Article  = " + nomArticle);
 				articleVendu.setDescription(rs.getString("description"));
-				
+
 				Categorie categorie = DAOFactory.getCategorieDAO().selectCategorieById(rs.getInt("no_categorie"));
 				System.out.println(categorie);
 				articleVendu.setCategorie(categorie);
-				
+
 				articleVendu.setMiseAPrix(rs.getInt("prix_initial"));
 				articleVendu.setDateFinEncheres(LocalDate.parse(rs.getString("date_fin_encheres")));
-				
+
 				Retrait retrait = DAOFactory.getRetraitDAO().selectRetraitById(rs.getInt("no_article"));
 				System.out.println(retrait);
 				articleVendu.setRetrait(retrait);
-			
+
 				System.out.println("Article vendu = " + articleVendu);
 			}
 		}catch (SQLException e){

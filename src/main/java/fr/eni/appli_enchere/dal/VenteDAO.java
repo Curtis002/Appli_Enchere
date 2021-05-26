@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface VenteDAO {
 
-	
+	ArticleVendu selectEnchere(String nomArticle) throws DALException;
 	
 	// Method nouvelle vente
 	void ajouterVente(ArticleVendu articleVendu ) throws DALException;

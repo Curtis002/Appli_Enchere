@@ -6,4 +6,6 @@ public interface RetraitDAO {
 
 	
 	void AjouterAdresse (Retrait retrait) throws DALException;
+	
+	Retrait selectRetraitById(int id) throws DALException;
 }

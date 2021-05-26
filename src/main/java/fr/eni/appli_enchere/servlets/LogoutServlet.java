@@ -36,7 +36,7 @@ public class LogoutServlet extends HttpServlet {
             session.removeAttribute("credit");
             session.invalidate();
         }
-            RequestDispatcher rd = request.getRequestDispatcher("/accueil.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/");
             rd.forward(request,response);
         }
 

@@ -11,7 +11,7 @@
 <body class="container">
 <nav class="navbar">
     <div>
-        <a href="accueil.jsp" class="nav-link" style="color: black"><h1 class="spec-h1">ENI-ENCHERES</h1></a>
+        <a href="<%=request.getContextPath()%>" class="nav-link" style="color: black"><h1 class="spec-h1">ENI-ENCHERES</h1></a>
     </div>
     <ul class="nav justify-content-end">
         <li class="nav-item" id="links"><a class="nav-link" href="ConnectServlet">Se connecter - S'inscrire</a></li>

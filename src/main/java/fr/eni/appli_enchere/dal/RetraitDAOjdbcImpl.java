@@ -3,15 +3,16 @@ package fr.eni.appli_enchere.dal;
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
-
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import fr.eni.appli_enchere.bo.Categorie;
 import fr.eni.appli_enchere.bo.Retrait;
 
 public class RetraitDAOjdbcImpl implements RetraitDAO {
 
 	private static final String AJOUTER_ADRESSE="INSERT INTO RETRAITS ( rue, code_postal, ville, no_article ) VALUES (?, ?, ?, ?);";
-	
+	private static final String GETRETRAIT = "SELECT * FROM RETRAITS where no_article=?;";
 	
 	@Override
 	public void AjouterAdresse(Retrait retrait) throws DALException {
@@ -31,11 +32,32 @@ public class RetraitDAOjdbcImpl implements RetraitDAO {
 		} catch (SQLException e) {
 			throw new DALException("probleme methode ajouter ajout adresse retrait()",e);
 		}
-			
-			
-		
 	}
-
+		
+		public Retrait selectRetraitById(int id) throws DALException {
+			   Connection cnx = null;
+			   PreparedStatement stmt = null;
+			   ResultSet rs = null;
+			   Retrait retrait = new Retrait();
+			   
+			   try {
+			      cnx = ConnectionProvider.getConnection();
+			      stmt = cnx.prepareStatement(GETRETRAIT);
+			      stmt.setInt(1, id);
+			      rs = stmt.executeQuery();
+			      if (rs.next()) {
+			    	  retrait.setRue(rs.getString("rue"));
+			    	  retrait.setCodePostal(rs.getString("code_postal"));
+			    	  retrait.setVille(rs.getString("ville"));
+			      }
+			   } catch (SQLException throwables) {
+			      throwables.printStackTrace();
+			   }
+			   
+			   System.out.println("Retrait = " + retrait);
+			   return retrait;
+			}
 	
-	
+		
 }
+

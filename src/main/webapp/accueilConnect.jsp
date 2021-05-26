@@ -82,7 +82,7 @@
     <c:forEach var="vente" items="${requestScope.listArticles}">
         <div class="card col-5 border-secondary mb-3 ">
             <div class="card-body">
-                <h5 class="card-title">${vente.nomArticle}</h5>
+                <h5 class="card-title"><a href="${pageContext.request.contextPath}/AfficherEnchereServlet?nom_article=${vente.nomArticle}" title="nom_article">${vente.nomArticle}</a> </h5>
                 <p class="card-text">Prix : ${vente.miseAPrix} points</p>
                 <p class="card-text">Fin de l'enchère : ${vente.dateFinEncheres}</p>
                 <p class="card-text">Vendeur : <a

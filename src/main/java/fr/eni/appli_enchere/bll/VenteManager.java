@@ -57,4 +57,9 @@ public class VenteManager {
 	public List<ArticleVendu> selectEncheresByCategorie(int noCategorie) throws DALException {
 		return venteDAO.selectEncheresByCategorie(noCategorie);
 	}
+	
+	public ArticleVendu selectEnchere(String nomArticle) throws DALException {
+		System.out.println("passe par Manager selectEnchere");
+		return venteDAO.selectEnchere(nomArticle);
+	}
 }

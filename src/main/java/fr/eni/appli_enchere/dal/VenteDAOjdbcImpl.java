@@ -11,6 +11,7 @@ import java.util.List;
 
 import fr.eni.appli_enchere.bo.ArticleVendu;
 import fr.eni.appli_enchere.bo.Categorie;
+import fr.eni.appli_enchere.bo.Retrait;
 import fr.eni.appli_enchere.bo.Utilisateur;
 
 public class VenteDAOjdbcImpl implements VenteDAO {
@@ -21,7 +22,8 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 	private static final String LISTER_ENCHERES_EN_COURS="SELECT * FROM ARTICLES_VENDUS";
 	private static final String ENCHERESBYKW="SELECT * FROM ARTICLES_VENDUS WHERE nom_article LIKE ?";
 	private static final String ENCHERESBYCATEGORIE="SELECT * FROM ARTICLES_VENDUS WHERE no_categorie LIKE ?";
-
+	private static final String GETENCHERE="SELECT * FROM ARTICLES_VENDUS where nom_article=?";
+	
 	private ConnectionProvider ConnectionProvider;
 	
 	@Override
@@ -182,5 +184,42 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 			throwables.printStackTrace();
 		}
 		return listeEncheres;
+	}
+	
+	public ArticleVendu selectEnchere(String nomArticle) throws DALException {
+		Connection cnx=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		ArticleVendu articleVendu = new ArticleVendu();
+		System.out.println("Passe par le Enchere DAO JDBC");
+
+		try{
+			cnx=ConnectionProvider.getConnection();
+			stmt = cnx.prepareStatement(GETENCHERE);
+			stmt.setString(1, nomArticle);
+			rs=stmt.executeQuery();
+			//System.out.println("Article  = " + nomArticle);
+			if (rs.next()){ 
+				articleVendu.setNomArticle(rs.getString("nom_article"));
+				System.out.println("Article  = " + nomArticle);
+				articleVendu.setDescription(rs.getString("description"));
+				
+				Categorie categorie = DAOFactory.getCategorieDAO().selectCategorieById(rs.getInt("no_categorie"));
+				System.out.println(categorie);
+				articleVendu.setCategorie(categorie);
+				
+				articleVendu.setMiseAPrix(rs.getInt("prix_initial"));
+				articleVendu.setDateFinEncheres(LocalDate.parse(rs.getString("date_fin_encheres")));
+				
+				Retrait retrait = DAOFactory.getRetraitDAO().selectRetraitById(rs.getInt("no_article"));
+				System.out.println(retrait);
+				articleVendu.setRetrait(retrait);
+			
+				System.out.println("Article vendu = " + articleVendu);
+			}
+		}catch (SQLException e){
+			throw new DALException("probleme methode selectEncher()",e);
+		}
+		return articleVendu;
 	}
 }

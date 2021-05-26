@@ -27,7 +27,7 @@
 
             <label for="categorie-select">Categorie :</label>
             <select name="categorie" id="categorie-select">
-                <option value="0">Choisissez une categorie</option>
+                <option value="0">Tout</option>
                 <option value="1">Informatique</option>
                 <option value="2">Ameublement</option>
                 <option value="3">Vêtement</option>

@@ -12,23 +12,26 @@
 <body>
 <jsp:include page="headerConnecte.jsp"/>
 
-<h2 class="text-center">Liste des enchères (connecté)</h2>
+<h2 class="text-center">Liste des enchères</h2>
 <div class="container">
     <div>
         <div>
-            <label for="site-search">Filtres :</label>
-            <input type="search" id="site-search" name="q"
-                   aria-label="Search through site content">
-        </div>
-        <div>
-            <label for="categorie-select">Categorie :</label>
-            <select name="categorie" id="categorie-select">
-                <option value="">Choisissez une categorie</option>
-                <option value="Informatique">Informatique</option>
-                <option value="cat">Ameublement</option>
-                <option value="hamster">Vêtement</option>
-                <option value="parrot">Sports&Loisirs</option>
-            </select>
+            <form action="ListeEncheresServlet" method="get">
+                <label for="site-search">Filtres :</label>
+                <input type="text" id="site-search" name="kw">
+                <input type="submit" value="rechercher" name="action" class="mr-3">
+
+                <label for="categorie-select">Categorie :</label>
+                <select name="categorie" id="categorie-select">
+                    <option value="0">Catégories</option>
+                    <option value="1">Informatique</option>
+                    <option value="2">Ameublement</option>
+                    <option value="3">Vêtement</option>
+                    <option value="4">Sports&Loisirs</option>
+                </select>
+                <input type="submit" value="rechercherParCategorie" name="action" class="mr-5">
+                <input type="submit" value="Réinitialiser" name="initialiser">
+            </form>
         </div>
 
 

@@ -49,4 +49,12 @@ public class VenteManager {
 		System.out.println("passe par manager selectall");
 		return venteDAO.selectAll();
 	}
+
+	public List<ArticleVendu> selectEncheresByKw(String kw) throws DALException {
+		return venteDAO.selectEncheresByKw(kw);
+	}
+
+	public List<ArticleVendu> selectEncheresByCategorie(int noCategorie) throws DALException {
+		return venteDAO.selectEncheresByCategorie(noCategorie);
+	}
 }

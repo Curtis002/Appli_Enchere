@@ -15,5 +15,7 @@ public interface VenteDAO {
 	
 	// Method lister enchères en cours
 	List<ArticleVendu> selectAll() throws DALException;
-	
+
+	List<ArticleVendu> selectEncheresByKw(String kw) throws DALException;
+	List<ArticleVendu> selectEncheresByCategorie(int noCategorie) throws DALException;
 }

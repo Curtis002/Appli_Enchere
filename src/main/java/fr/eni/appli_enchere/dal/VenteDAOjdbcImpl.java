@@ -19,6 +19,8 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 	public Categorie categorie;
 	private static final String AJOUTER_ARTICLE="INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) VALUES  ( ?, ?, ?, ?, ?, ?, ?);";
 	private static final String LISTER_ENCHERES_EN_COURS="SELECT * FROM ARTICLES_VENDUS";
+	private static final String ENCHERESBYKW="SELECT * FROM ARTICLES_VENDUS WHERE nom_article LIKE ?";
+	private static final String ENCHERESBYCATEGORIE="SELECT * FROM ARTICLES_VENDUS WHERE no_categorie LIKE ?";
 
 	private ConnectionProvider ConnectionProvider;
 	
@@ -55,7 +57,89 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 		}
 		
 	}
-	
+
+	public List<ArticleVendu> selectEncheresByCategorie(int noCategorie) throws DALException {
+		List<ArticleVendu> listeEncheres = new ArrayList<>();
+		Connection cnx=null;
+		PreparedStatement stmt=null;
+		ResultSet rs = null;
+		Utilisateur utilisateurVente = null;
+		ArticleVendu articleVendu = null;
+		Categorie categorie = new Categorie();
+
+		try {
+			cnx=ConnectionProvider.getConnection();
+			stmt = cnx.prepareStatement(ENCHERESBYCATEGORIE);
+			stmt.setInt(1, noCategorie);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				int no_article = rs.getInt("no_article");
+				String nom_article = rs.getString("nom_article");
+				String description = rs.getString("description");
+				LocalDate dateDebut = LocalDate.parse(rs.getString("date_debut_encheres"));
+				LocalDate dateFin = LocalDate.parse(rs.getString("date_fin_encheres"));
+				int miseAPrix = rs.getInt("prix_initial");
+				int prixVente = rs.getInt("prix_vente");
+
+				utilisateurVente = DAOFactory.getUtilisateurDAO().selectUtilisateurById(rs.getInt("no_utilisateur"));
+				System.out.println(utilisateurVente);
+				categorie = new Categorie(rs.getInt("no_categorie"));
+
+				articleVendu = new ArticleVendu(no_article,nom_article,description,dateDebut,dateFin,miseAPrix,prixVente,utilisateurVente,categorie);
+
+				System.out.println(articleVendu);
+				listeEncheres.add(articleVendu);
+			}
+
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+
+		return listeEncheres;
+	}
+
+	public List<ArticleVendu> selectEncheresByKw(String kw) throws DALException {
+		List<ArticleVendu> listeEncheres = new ArrayList<>();
+		Connection cnx=null;
+		PreparedStatement stmt=null;
+		ResultSet rs = null;
+		Utilisateur utilisateurVente = null;
+		ArticleVendu articleVendu = null;
+		Categorie categorie = new Categorie();
+
+		try {
+			cnx=ConnectionProvider.getConnection();
+			stmt = cnx.prepareStatement(ENCHERESBYKW);
+			stmt.setString(1, "%" + kw + "%");
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				int no_article = rs.getInt("no_article");
+				String nom_article = rs.getString("nom_article");
+				String description = rs.getString("description");
+				LocalDate dateDebut = LocalDate.parse(rs.getString("date_debut_encheres"));
+				LocalDate dateFin = LocalDate.parse(rs.getString("date_fin_encheres"));
+				int miseAPrix = rs.getInt("prix_initial");
+				int prixVente = rs.getInt("prix_vente");
+
+				utilisateurVente = DAOFactory.getUtilisateurDAO().selectUtilisateurById(rs.getInt("no_utilisateur"));
+				System.out.println(utilisateurVente);
+				categorie = new Categorie(rs.getInt("no_categorie"));
+
+				articleVendu = new ArticleVendu(no_article,nom_article,description,dateDebut,dateFin,miseAPrix,prixVente,utilisateurVente,categorie);
+
+				System.out.println(articleVendu);
+				listeEncheres.add(articleVendu);
+			}
+
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+
+		return listeEncheres;
+	}
+
 	public List<ArticleVendu> selectAll() throws DALException {
 		List<ArticleVendu> listeEncheres = new ArrayList<>();
 		Utilisateur utilisateurVente = null;

@@ -83,10 +83,15 @@ public class VenteArticleServlet extends HttpServlet {
 			ArticleVendu articleVendu;
 	        articleVendu = venteManager.addVente(nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, utilisateurConnecte, no_categorie);
 			request.setAttribute("nouvelleVente", articleVendu);
+
+			
+			Integer no_article = (Integer)(articleVendu.getNoArticle());
+			System.out.println("no_article  dans servlet  :" + no_article);
 			
 			RetraitManager retraitManager = new RetraitManager();
 			Retrait retrait;
-			retrait = retraitManager.addAdresse(rue, codepostal, ville,articleVendu.getNoArticle());
+			retrait = retraitManager.addAdresse(rue, codepostal, ville, no_article);
+			System.out.println(" voir l adresse de retrait :  " + retrait);
 			request.setAttribute("ajoutadresse", retrait);
 			
 			request.getRequestDispatcher("/nouvelleVente.jsp").forward(request,response);

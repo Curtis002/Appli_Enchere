@@ -23,14 +23,17 @@ public class RetraitManager {
 		
 	}
 
-	public Retrait addAdresse(String rue, String codepostal, String ville, int noArticle ) throws DALException{
+	public Retrait addAdresse(  String rue, String codepostal, String ville, int noArticle ) throws DALException{
 	Retrait retrait = new Retrait( rue,  codepostal,  ville);
 	retrait.setRue(rue);
 	retrait.setCodePostal(codepostal);
 	retrait.setVille(ville);
 	
-	
 	ArticleVendu articleVendu = new ArticleVendu(noArticle);
+	//articleVendu.getListeCategorie();
+
+	//System.out.println("verif constructeur num article par get : "+ articleVendu.getNoArticle());
+	System.out.println("verif constructeur noArticle "+ noArticle);
 	retrait.getListeArticleVendu().add(articleVendu);
 	
 	this.retraitDAO.AjouterAdresse(retrait);

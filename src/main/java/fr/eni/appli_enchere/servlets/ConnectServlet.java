@@ -32,6 +32,15 @@ public class ConnectServlet extends HttpServlet {
                 }
             }
         }
+        VenteManager venteManager = new VenteManager();
+
+        List<ArticleVendu> listArticles = null;
+        try {
+            listArticles = venteManager.selectAll();
+            request.setAttribute("listArticles", listArticles);
+        } catch (DALException e) {
+            e.printStackTrace();
+        }
 
         if (request.getSession().getAttribute("pseudo") != null) {
             RequestDispatcher rd = request.getRequestDispatcher("/accueilConnect.jsp");

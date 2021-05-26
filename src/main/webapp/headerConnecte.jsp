@@ -23,7 +23,7 @@
         </div>
         <div class="header">
             <ul class="nav justify-content-end">
-                <li class="nav-item"><a class="nav-link" href="Enchères.jsp">Enchères</a></li>
+                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/ConnectServlet">Enchères</a></li>
                 <li class="nav-item"><a class="nav-link" href="nouvelleVente.jsp">Vendre un article</a></li>
                 <li class="nav-item"><a class="nav-link" href="profile.jsp">Mon profil</a></li>
                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/LogoutServlet">Déconnexion</a></li>

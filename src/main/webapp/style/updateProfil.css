@@ -14,7 +14,7 @@ html {
 
 .container {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 5px auto;
   padding: 10px 20px 40px;
   color: #fff;
   background-color: rgba(0, 0, 0, .6);
@@ -82,7 +82,7 @@ input:checked + .side-label::after {
 
 .how-other-disclosure {
   display: none;
-  margin: 10px 0 0 35px;
+  margin: 10px 0 0 0px;
 }
 
 #how-other:checked ~ .how-other-disclosure {

@@ -37,7 +37,10 @@ public class ArticleVendu {
     }
 	
 	
-	public ArticleVendu(ArticleVendu articleVendu) {
+	public ArticleVendu(Integer noArticle) {
+		
+		super();
+		this.no_article = noArticle;
     }
 	
 	

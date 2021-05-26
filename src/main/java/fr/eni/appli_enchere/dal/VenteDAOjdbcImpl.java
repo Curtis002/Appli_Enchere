@@ -45,6 +45,8 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 			if(rs.next()){
 				System.out.println("RENTRE DANS IF ATTRIBUER UN NO ARTICLE AV INTEGER");
 				articleVendu.setNoArticle(rs.getInt(1));
+				
+		
 			}
 		
 		} catch (SQLException e) {

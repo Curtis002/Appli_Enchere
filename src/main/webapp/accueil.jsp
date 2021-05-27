@@ -39,7 +39,7 @@
     </div>
 
 </div>
-</div>
+
 
     <div class="row d-flex justify-content-around">
     <c:forEach var="vente" items="${requestScope.listArticles}">

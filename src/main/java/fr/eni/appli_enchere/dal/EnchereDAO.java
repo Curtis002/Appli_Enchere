@@ -9,5 +9,5 @@ public interface EnchereDAO {
     void ajouterEnchere(Enchere enchere) throws DALException;
     
     
-    List<Enchere> AfficherAllEncheres( ) throws DALException;
+    List<Enchere> AfficherAllEncheres() throws DALException;
 }

@@ -2,6 +2,7 @@ package fr.eni.appli_enchere.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,17 +34,12 @@ public class AfficherEnchereServlet extends HttpServlet {
 
         RequestDispatcher rd = request.getRequestDispatcher("/afficherEnchere.jsp");
 
-        HttpSession session = request.getSession();
-        Enchere enchere = new Enchere();
         EnchereManager enchereManager = new EnchereManager();
-
-        
-        List<Enchere> selectAllEncheres = new ArrayList<Enchere>();
+        List<Enchere> selectAllEncheres = null;
 
         try {
         	selectAllEncheres = enchereManager.AfficherAllEncheres();
             System.out.println("---selectAllEncheres--   :   " + selectAllEncheres);
-            System.out.println("Max val: " + Collections.max(selectAllEncheres,null));   
 
         } catch (DALException e1) {
             e1.printStackTrace();
@@ -51,20 +47,17 @@ public class AfficherEnchereServlet extends HttpServlet {
         System.out.println("---selectAllEncheres--   :   " + selectAllEncheres);
     	//int montant_enchere = Integer.valueOf(request.getParameter("montant_enchere"));
     	//System.out.println("montant_enchere" + montant_enchere);
-     
-    	
+
     	request.setAttribute("montant_enchere", selectAllEncheres);
-    
-    	
+
         VenteManager venteManager = new VenteManager();
 	    String nomArticle = request.getParameter("nom_article");
 	    System.out.println("nom article = " + nomArticle);
-        rd.forward(request,response);
+
 	     try {
 	         ArticleVendu articleVendu = venteManager.selectEnchere(nomArticle);
 	         request.setAttribute("articleVendu", articleVendu);
-	         
-	        
+
 	     } catch (DALException e) {
 	         e.printStackTrace();
 	     }

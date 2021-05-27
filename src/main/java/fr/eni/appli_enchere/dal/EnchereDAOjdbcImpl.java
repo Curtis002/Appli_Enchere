@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import fr.eni.appli_enchere.bo.ArticleVendu;
@@ -16,7 +17,7 @@ import fr.eni.appli_enchere.bo.Utilisateur;
 public class EnchereDAOjdbcImpl implements EnchereDAO {
 
     private static final String INSERTENCHERE = "INSERT INTO ENCHERES (date_enchere,montant_enchere,no_article,no_utilisateur) VALUES (?,?,?,?);";
-	private static final String GET_LIST_ENCHERE="SELECT * FROM ENCHERES";
+	private static final String GET_LIST_ENCHERE="SELECT * FROM ENCHERES where no_article=?";
 
     @Override
     public void ajouterEnchere(Enchere enchere) throws DALException {
@@ -45,7 +46,7 @@ public class EnchereDAOjdbcImpl implements EnchereDAO {
     }
 
 	public List<Enchere> AfficherAllEncheres() throws DALException {
-		List<Enchere> listeDesEncheres = new ArrayList<>();
+		List<Enchere> listeDesEncheres = new ArrayList<Enchere>();
 		Connection cnx = null;
 		PreparedStatement stmt = null;
 		Utilisateur utilisateurNum = null;
@@ -58,6 +59,7 @@ public class EnchereDAOjdbcImpl implements EnchereDAO {
 				try {
 					cnx=ConnectionProvider.getConnection();
 					stmt = cnx.prepareStatement(GET_LIST_ENCHERE);
+//					stmt.setInt(1, no_article);
 					ResultSet rs = stmt.executeQuery();
 
 					
@@ -70,23 +72,17 @@ public class EnchereDAOjdbcImpl implements EnchereDAO {
 						int montant_enchere = rs.getInt("montant_enchere");	
 						System.out.println("------montant_enchere est : " + montant_enchere);
 
-						int no_article = rs.getInt("no_article");	
-						System.out.println("------no_article est : " + no_article);
+						int num_article = rs.getInt("no_article");
+						System.out.println("------no_article est : " + num_article);
 
 						int no_utilisateur = rs.getInt("no_utilisateur");	
 						System.out.println("------no_utilisateur est : " + no_utilisateur);
 
-						
-						//utilisateurNum = DAOFactory.getUtilisateurDAO().selectUtilisateurById(rs.getInt("no_utilisateur"));
-						//System.out.println(utilisateurNum);
-						
-						//articleVendu = new ArticleVendu()
-						
-						enchere = new Enchere(no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur);
+						enchere = new Enchere(no_enchere, date_enchere, montant_enchere, num_article, no_utilisateur);
 						
 						listeDesEncheres.add(enchere);
-						
-					
+//						Enchere max = Collections.max(listeDesEncheres);
+//						System.out.println("--------- max value enchere =   " +max);
 					System.out.println("c'est mon enchere   :   "+ enchere);
 					}
 				} catch (SQLException e) {

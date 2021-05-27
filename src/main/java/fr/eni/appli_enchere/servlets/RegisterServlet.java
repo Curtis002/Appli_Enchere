@@ -120,35 +120,5 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("errormdp", "Veuillez renseigner un mot de passe valide");
             rd.forward(request, response);
         }
-
-
-//        if (!matcher.matches() || allPseudo.contains(pseudo)) {
-//            request.setAttribute("errorPseudo", "Veuillez renseigner un pseudo valide");
-//            rd.forward(request, response);
-//            if (!email.contains("@") || allEmail.contains(email)) {
-//                request.setAttribute("errorEmail", "Veuillez renseigner un email valide");
-//                rd.forward(request, response);
-//            }
-//            if (telephone.length() != 10) {
-//                request.setAttribute("errorTel", "Veuillez renseigner un téléphone valide");
-//                rd.forward(request, response);
-//            }
-//            if (codepostal.length() != 5) {
-//                request.setAttribute("errorcp", "Veuillez renseigner un code postal valide");
-//                rd.forward(request, response);
-//            }
-//        } else if (mdp.equals(mdpConf)) {
-//            utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, codepostal, ville, mdp, 0, false);
-//            System.out.println(utilisateur);
-//            try {
-//                utilisateurManager.registerUtilisateur(utilisateur);
-//                response.sendRedirect("profile.jsp");
-//            } catch (DALException e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//            request.setAttribute("errorcp", "Veuillez renseigner un code postal valide");
-//            rd.forward(request, response);
-//        }
     }
 }

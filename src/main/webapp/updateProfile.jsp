@@ -90,8 +90,8 @@
 				</div>
 				<div class="container">
 				
-					<input class="" id="how-other" name="how" type="checkbox">
-					<label for="how-other" class="how-other">Cliquez pour changer votre
+					<%-- <input class="" id="how-other" name="how" type="checkbox">
+					<label for="how-other" class="how-other side-label">Cliquez pour changer votre
 						mot de passe ?</label>
 						<c:if test="${not empty requestScope.errorNewMdp}">
 						<!--  Show the error div with message -->
@@ -100,21 +100,46 @@
 			
 					<div class="form-row how-other-disclosure">
 						<div class="input col">
-							<label for="mdp">Nouveau Mot de passe :</label> <input
-								class="form-control" type="password" id="mdpNew" name="mdpNew"
+							<label for="mdp how-other-explain">Nouveau Mot de passe :</label> <input
+								class="form-control" type="password" id="mdpNew how-other-explain" name="mdpNew"
 								/>
+						</div> --%>
+						
+    				<input id="how-other" name="how" type="checkbox">
+   					 <label for="how-other" class="side-label">Cliquez pour changer votre
+						mot de passe ?</label>
+						<c:if test="${not empty requestScope.errorNewMdp}">
+						<!--  Show the error div with message -->
+						 <div class="text-danger">Nouveau Mot de passe et Confirmation non identiques..</div>
+					 </c:if>
+     			
+    				<div class="how-other-disclosure">
+    				
+      			
+					<div class="form-row">
+					
+      					<div class="input col">
+							<label for="mdp how-other-explain">Nouveau Mot de passe :</label> 
+							<input class="form-control" type="password" id="mdpNew" name="mdpNew"/>
 						</div>
+					
 						<div class="input col">
-							<label for="confirmMdp" class="how-other-explain">Confirmez votre
+							<label for="confirmMdp how-other-explain" >Confirmez votre
 								nouveau mot de passe</label> 
-							<input class="form-control" type="password"
-								id="confirmMdp" name="confirmMdp" />
+							<input class="form-control" type="password" id="confirmMdp" name="confirmMdp" />
 							<c:if test="${not empty requestScope.errorNewMdp}">
 								<!--  Show the error div with message -->
 						 		<div class="text-danger">Nouveau Mot de passe et Confirmation non identiques.</div>
 					 		</c:if>
 						</div>
 					</div>
+						
+						
+						
+    				</div>
+					</div>
+					
+					
 					<div  class="form-row ">
 						<div class="inputSubmit col text-center ">
 							<input class="btn-secondary my-2 py-2 " type="submit"

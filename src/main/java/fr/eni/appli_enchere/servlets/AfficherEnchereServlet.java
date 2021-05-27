@@ -1,6 +1,8 @@
 package fr.eni.appli_enchere.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,10 +11,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import fr.eni.appli_enchere.bll.EnchereManager;
 import fr.eni.appli_enchere.bll.UtilisateurManager;
 import fr.eni.appli_enchere.bll.VenteManager;
 import fr.eni.appli_enchere.bo.ArticleVendu;
+import fr.eni.appli_enchere.bo.Enchere;
 import fr.eni.appli_enchere.bo.Utilisateur;
 import fr.eni.appli_enchere.dal.DALException;
 
@@ -25,19 +30,44 @@ public class AfficherEnchereServlet extends HttpServlet {
  
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("passe dans doget AfficherEncheresServlet");
 
-		VenteManager venteManager = new VenteManager();
+        RequestDispatcher rd = request.getRequestDispatcher("/afficherEnchere.jsp");
+
+        HttpSession session = request.getSession();
+        Enchere enchere = new Enchere();
+        EnchereManager enchereManager = new EnchereManager();
+
+        
+        List<Enchere> selectAllEncheres = new ArrayList<Enchere>();
+
+        try {
+        	selectAllEncheres = enchereManager.AfficherAllEncheres();
+            System.out.println("---selectAllEncheres--   :   " + selectAllEncheres);
+            System.out.println("Max val: " + Collections.max(selectAllEncheres,null));   
+
+        } catch (DALException e1) {
+            e1.printStackTrace();
+        }
+        System.out.println("---selectAllEncheres--   :   " + selectAllEncheres);
+    	//int montant_enchere = Integer.valueOf(request.getParameter("montant_enchere"));
+    	//System.out.println("montant_enchere" + montant_enchere);
+     
+    	
+    	request.setAttribute("montant_enchere", selectAllEncheres);
+    
+    	
+        VenteManager venteManager = new VenteManager();
 	    String nomArticle = request.getParameter("nom_article");
 	    System.out.println("nom article = " + nomArticle);
+        rd.forward(request,response);
 	     try {
 	         ArticleVendu articleVendu = venteManager.selectEnchere(nomArticle);
 	         request.setAttribute("articleVendu", articleVendu);
+	         
 	        
 	     } catch (DALException e) {
 	         e.printStackTrace();
 	     }
-	     RequestDispatcher rd = request.getRequestDispatcher("/afficherEnchere.jsp");
 	     rd.forward(request,response);
 
  }

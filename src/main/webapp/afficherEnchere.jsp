@@ -20,7 +20,7 @@
 			<div >
 			
 				<div>
-					<p><c:out value="${requestScope.articleVendu.nomArticle}" /></p>
+					<p>Produit : <c:out value="${requestScope.articleVendu.nomArticle}" /></p>
 				</div>
 				<div>
 					<p>Description : <c:out value="${requestScope.articleVendu.description}" /></p>
@@ -38,7 +38,7 @@
 					<p>Fin de l'enchère : <c:out value="${requestScope.articleVendu.dateFinEncheres}" /></p>
 				</div>
 				<div>
-					<p>Retrait : <c:out value="${}" /></p>
+					<p>Retrait : <c:out value="${requestScope.articleVendu.retrait.rue}" /><span> </span> <c:out value="${requestScope.articleVendu.retrait.ville}" /><span> </span><c:out value="${requestScope.articleVendu.retrait.codePostal}" /></p>
 				</div>
 				<div>
 					<p>Vendeur : <c:out value="${requestScope.articleVendu.utilisateur.pseudo}" /></p>

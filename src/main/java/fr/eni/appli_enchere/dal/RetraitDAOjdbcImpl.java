@@ -38,7 +38,7 @@ public class RetraitDAOjdbcImpl implements RetraitDAO {
 			   Connection cnx = null;
 			   PreparedStatement stmt = null;
 			   ResultSet rs = null;
-			   Retrait retrait = new Retrait();
+			   Retrait retrait = null;
 			   
 			   try {
 			      cnx = ConnectionProvider.getConnection();
@@ -46,9 +46,10 @@ public class RetraitDAOjdbcImpl implements RetraitDAO {
 			      stmt.setInt(1, id);
 			      rs = stmt.executeQuery();
 			      if (rs.next()) {
-			    	  retrait.setRue(rs.getString("rue"));
-			    	  retrait.setCodePostal(rs.getString("code_postal"));
-			    	  retrait.setVille(rs.getString("ville"));
+			      	retrait = new Retrait(rs.getString("rue"),rs.getString("code_postal"),rs.getString("ville"));
+//			    	  retrait.setRue(rs.getString("rue"));
+//			    	  retrait.setCodePostal(rs.getString("code_postal"));
+//			    	  retrait.setVille(rs.getString("ville"));
 			      }
 			   } catch (SQLException throwables) {
 			      throwables.printStackTrace();

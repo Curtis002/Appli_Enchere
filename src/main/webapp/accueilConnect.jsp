@@ -87,9 +87,6 @@
                 <p class="card-text">Vendeur : <a
                         href="${pageContext.request.contextPath}/UserServlet?pseudo=${vente.utilisateur.pseudo}"
                         title="pseudo">${vente.utilisateur.pseudo}</a></p>
-                <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-outline-primary">Détail de la vente</a>
-                </div>
             </div>
         </div>
     </c:forEach>

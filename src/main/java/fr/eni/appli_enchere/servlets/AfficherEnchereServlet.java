@@ -43,7 +43,6 @@ public class AfficherEnchereServlet extends HttpServlet {
 	    System.out.println("nom article = " + nomArticle);
 	     try {
 	         ArticleVendu articleVendu = venteManager.selectEnchere(nomArticle);
-	         System.out.println("nom article = " + articleVendu);
 	         request.setAttribute("articleVendu", articleVendu);
 	        
 	     } catch (DALException e) {

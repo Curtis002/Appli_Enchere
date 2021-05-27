@@ -190,7 +190,7 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 		Connection cnx=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		ArticleVendu articleVendu = new ArticleVendu();
+		ArticleVendu articleVendu = null;
 		System.out.println("Passe par le Enchere DAO JDBC");
 
 		try{
@@ -200,20 +200,36 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 			rs=stmt.executeQuery();
 			//System.out.println("Article  = " + nomArticle);
 			if (rs.next()){
-				articleVendu.setNomArticle(rs.getString("nom_article"));
-				System.out.println("Article  = " + nomArticle);
-				articleVendu.setDescription(rs.getString("description"));
+				String nom_article = rs.getString("nom_article");
+				String description = rs.getString("description");
+				LocalDate dateFin = LocalDate.parse(rs.getString("date_fin_encheres"));
+				int miseAPrix = rs.getInt("prix_initial");
+				int prixVente = rs.getInt("prix_vente");
 
+				Utilisateur utilisateurVente = DAOFactory.getUtilisateurDAO().selectUtilisateurById(rs.getInt("no_utilisateur"));
 				Categorie categorie = DAOFactory.getCategorieDAO().selectCategorieById(rs.getInt("no_categorie"));
-				System.out.println(categorie);
-				articleVendu.setCategorie(categorie);
-
-				articleVendu.setMiseAPrix(rs.getInt("prix_initial"));
-				articleVendu.setDateFinEncheres(LocalDate.parse(rs.getString("date_fin_encheres")));
-
 				Retrait retrait = DAOFactory.getRetraitDAO().selectRetraitById(rs.getInt("no_article"));
+				System.out.println("numero article récupéré pour retrait : "+rs.getInt("no_article"));
 				System.out.println(retrait);
-				articleVendu.setRetrait(retrait);
+
+				articleVendu = new ArticleVendu(nom_article,description,dateFin,miseAPrix,prixVente,utilisateurVente,categorie,retrait);
+
+
+//				articleVendu.setNomArticle(rs.getString("nom_article"));
+//				System.out.println("Article  = " + nomArticle);
+//				articleVendu.setDescription(rs.getString("description"));
+//
+//				Categorie categorie = DAOFactory.getCategorieDAO().selectCategorieById(rs.getInt("no_categorie"));
+//				System.out.println(categorie);
+//				articleVendu.setCategorie(categorie);
+//
+//				articleVendu.setMiseAPrix(rs.getInt("prix_initial"));
+//				articleVendu.setDateFinEncheres(LocalDate.parse(rs.getString("date_fin_encheres")));
+//
+//				System.out.println("no_article = " + rs.getInt("no_article"));
+//				Retrait retrait = DAOFactory.getRetraitDAO().selectRetraitById(rs.getInt("no_article"));
+//				System.out.println(retrait);
+//				articleVendu.setRetrait(retrait);
 
 				System.out.println("Article vendu = " + articleVendu);
 			}

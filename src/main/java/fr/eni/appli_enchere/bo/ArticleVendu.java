@@ -181,43 +181,21 @@ public class ArticleVendu {
 		this.utilisateur = utilisateur;
 		this.categorie = categorie;
 	}
-	
-	
-	
-	
-	/**
-	 * @param no_article
-	 * @param nom_article
-	 * @param description
-	 * @param date_debut_encheres
-	 * @param date_fin_encheres
-	 * @param miseAPrix
-	 * @param utilisateur
-	 * @param categorie
-	 * @param retrait
-	 */
-	public ArticleVendu(Integer no_article, String nom_article, String description, LocalDate date_debut_encheres,
-			LocalDate date_fin_encheres, int miseAPrix, Utilisateur utilisateur, Categorie categorie, Retrait retrait) {
-		super();
-		this.no_article = no_article;
+
+
+	public ArticleVendu(String nom_article, String description, LocalDate date_fin_encheres, int miseAPrix, int prixVente, Utilisateur utilisateur, Categorie categorie, Retrait retrait) {
 		this.nom_article = nom_article;
 		this.description = description;
-		this.date_debut_encheres = date_debut_encheres;
 		this.date_fin_encheres = date_fin_encheres;
 		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
 		this.utilisateur = utilisateur;
 		this.categorie = categorie;
 		this.retrait = retrait;
 	}
 
-
-	
-	
-	
-
-
 	public ArticleVendu(String nomArticle, String description, int no_categorie, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int miseAPrix) {
+						LocalDate dateFinEncheres, int miseAPrix) {
 		this.nom_article = nomArticle;
 		this.description = description;
 		this.categorie.noCategorie = no_categorie;
@@ -255,6 +233,10 @@ public class ArticleVendu {
 
 
 // getters et setters
+
+	public Retrait getRetrait() {
+		return retrait;
+	}
 
 	public List<Utilisateur> getListeUtilisateur() {
 		return listeUtilisateur;

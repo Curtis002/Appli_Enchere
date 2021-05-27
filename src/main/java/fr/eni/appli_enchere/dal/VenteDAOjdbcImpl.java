@@ -200,6 +200,7 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 			rs=stmt.executeQuery();
 			//System.out.println("Article  = " + nomArticle);
 			if (rs.next()){
+				int no_article = rs.getInt("no_article");
 				String nom_article = rs.getString("nom_article");
 				String description = rs.getString("description");
 				LocalDate dateFin = LocalDate.parse(rs.getString("date_fin_encheres"));
@@ -212,7 +213,7 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 				System.out.println("numero article récupéré pour retrait : "+rs.getInt("no_article"));
 				System.out.println(retrait);
 
-				articleVendu = new ArticleVendu(nom_article,description,dateFin,miseAPrix,prixVente,utilisateurVente,categorie,retrait);
+				articleVendu = new ArticleVendu(no_article,nom_article,description,dateFin,miseAPrix,prixVente,utilisateurVente,categorie,retrait);
 
 
 //				articleVendu.setNomArticle(rs.getString("nom_article"));

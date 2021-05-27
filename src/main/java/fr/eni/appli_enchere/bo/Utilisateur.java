@@ -1,5 +1,6 @@
 package fr.eni.appli_enchere.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Utilisateur {
@@ -18,12 +19,17 @@ public class Utilisateur {
     private boolean administrateur;
 
     private ArticleVendu articleVendu;
-    private List<ArticleVendu> acheteArticles;
-    private List<ArticleVendu> venteArticles;
-    private List<Enchere> utilisateurEncherit;
+    private List<ArticleVendu> acheteArticles= new ArrayList<>();
+    private List<ArticleVendu> venteArticles= new ArrayList<>();
+    private List<Enchere> utilisateurEncherit= new ArrayList<>();
 
     // Constructeurs
     public Utilisateur() {
+    }
+
+    public Utilisateur(Integer no_utilisateur) {
+        super();
+        this.no_utilisateur = no_utilisateur;
     }
 
     public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String code_postal, String ville, String mot_de_passe, Integer credit, boolean administrateur) {
@@ -231,6 +237,7 @@ public class Utilisateur {
     @Override
     public String toString() {
         return "Utilisateur ["
+                + "no_utilisateur= " + this.no_utilisateur
                 + "pseudo= " + this.pseudo
                 + ", nom= " + this.nom
                 + ", prenom= " + this.prenom

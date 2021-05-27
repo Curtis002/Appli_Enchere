@@ -11,14 +11,14 @@
 	<body>
 		<jsp:include page="headerConnecte.jsp"/>
 		<h1>Détails du produit</h1>
-		
-		<form action="">
+
 		<div class="container">
 			<div>
 				<img class="col-3" src="img/meilleur-pc-gamer.jpg" alt="">
 			</div>
 			<div >
-			
+				<form action="<%=request.getContextPath() %>/EncherirServlet" method="post">
+					<input type="hidden" id="numArticleVente" name="numArticleVente" value="${requestScope.articleVendu.noArticle}">
 				<div>
 					<p>Produit : <c:out value="${requestScope.articleVendu.nomArticle}" /></p>
 				</div>
@@ -43,17 +43,14 @@
 				<div>
 					<p>Vendeur : <c:out value="${requestScope.articleVendu.utilisateur.pseudo}" /></p>
 				</div>
-				<div>
-					<p>Ma proposition : <input class="col-3" id="miseAPrix" type="number" name="miseAPrix"> </p>
-				</div>
-				<div>
-					<p><button class="btn-secondary my-2 py-2 " type="button">Enchérir</button></p>
-				</div>
-		
+					<div>
+						<p>Ma proposition : <input class="col-3" id="proposition-enchere" type="number" name="proposition-enchere" required> </p>
+					</div>
+					<div>
+						<p><input class="btn-secondary my-2 py-2 " type="submit" value="Enchérir" /></p>
+					</div>
+				</form>
 			</div>
-		</div>		
-		</form>
-		
-		
+		</div>
 	</body>
 </html>

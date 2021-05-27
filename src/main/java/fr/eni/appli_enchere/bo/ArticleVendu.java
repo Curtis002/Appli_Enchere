@@ -27,7 +27,7 @@ public class ArticleVendu {
 	private Utilisateur achete;
 	private Utilisateur vend;
 	
-	private List<Enchere> concerne;
+	private List<Enchere> concerne = new ArrayList<>();
 	private List<Categorie> listeCategorie = new ArrayList<>();
 	private List<Utilisateur> listeUtilisateur = new ArrayList<>();
 	
@@ -38,7 +38,7 @@ public class ArticleVendu {
 	
 	
 	public ArticleVendu(Integer noArticle) {
-		
+
 		super();
 		this.no_article = noArticle;
     }
@@ -183,7 +183,8 @@ public class ArticleVendu {
 	}
 
 
-	public ArticleVendu(String nom_article, String description, LocalDate date_fin_encheres, int miseAPrix, int prixVente, Utilisateur utilisateur, Categorie categorie, Retrait retrait) {
+	public ArticleVendu(int no_article,String nom_article, String description, LocalDate date_fin_encheres, int miseAPrix, int prixVente, Utilisateur utilisateur, Categorie categorie, Retrait retrait) {
+		this.no_article = no_article;
 		this.nom_article = nom_article;
 		this.description = description;
 		this.date_fin_encheres = date_fin_encheres;
@@ -233,6 +234,10 @@ public class ArticleVendu {
 
 
 // getters et setters
+
+	public List<Enchere> getConcerne() {
+		return concerne;
+	}
 
 	public Retrait getRetrait() {
 		return retrait;

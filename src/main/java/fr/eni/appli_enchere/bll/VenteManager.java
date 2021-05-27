@@ -20,7 +20,7 @@ public class VenteManager {
 		this.venteDAO = DAOFactory.getArticleVenduDAO();
 	}
 	
-	public void ajouterVente (ArticleVendu articleVendu ) throws DALException
+	public void ajouterVente(ArticleVendu articleVendu ) throws DALException
 	{
 		System.out.println("passe par Manager.ajouterVente");
 		venteDAO.ajouterVente(articleVendu);

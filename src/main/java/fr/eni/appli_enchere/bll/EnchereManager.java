@@ -8,6 +8,7 @@ import fr.eni.appli_enchere.dal.DAOFactory;
 import fr.eni.appli_enchere.dal.EnchereDAO;
 
 import java.util.Date;
+import java.util.List;
 
 public class EnchereManager {
     private EnchereDAO enchereDAO;
@@ -33,4 +34,12 @@ public class EnchereManager {
         this.enchereDAO.ajouterEnchere(enchere);
         return enchere;
     }
+    
+    public List<Enchere> AfficherAllEncheres ( ) throws DALException {
+		System.out.println("---passe par manager select all ENCHERES--");
+
+         return enchereDAO.AfficherAllEncheres();
+    	
+    }
+
 }

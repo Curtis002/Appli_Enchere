@@ -41,7 +41,7 @@
 			<div class="col">
 				<input class="col-10 form-control"type="text" id="nomArticle" name="nomArticle" required/>
 			 	<c:if test="${not empty requestScope.errornArticle}">
-                <div>Veuillez renseigner un nom d'article</div>
+                <div class="text-danger">Veuillez renseigner un nom d'article</div>
                 </c:if>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 		<div class="col">
 			<textarea class="form-control col-10" type="text" id="description" name="description" required></textarea>
 			<c:if test="${not empty requestScope.errorDescription}">
-                <div>Veuillez renseigner une description</div>
+                <div class="text-danger">Veuillez renseigner une description</div>
                 </c:if>
 		</div>
 	</div>
@@ -115,7 +115,7 @@
 								type="text" id=rue name="rue"
 								value="${sessionScope.rue}" required/>
 		<c:if test="${not empty requestScope.errorRue}">
-                <div>Veuillez renseigner un nom de rue valide</div>
+                <div class="text-danger">Veuillez renseigner un nom de rue valide</div>
         </c:if>
 		</div>
 	<div  class="form-group row">
@@ -124,7 +124,7 @@
 							type="text" id=codepostal name="codepostal"
 							value="${sessionScope.code_postal}" required/>
 		<c:if test="${not empty requestScope.errorcp}">
-	    	<div>Veuillez renseigner un code postal valide</div>
+	    	<div class="text-danger">Veuillez renseigner un code postal valide</div>
 	    </c:if>
 	</div>
 	<div  class="form-group row">
@@ -133,7 +133,7 @@
 							type="text" id=ville name="ville"
 							value="${sessionScope.ville}" required/>
 		<c:if test="${not empty requestScope.errorVille}">
-	    	<div>Veuillez renseigner un nom de ville</div>
+	    	<div class="text-danger">Veuillez renseigner un nom de ville</div>
 	    </c:if>
 	
 	</div>

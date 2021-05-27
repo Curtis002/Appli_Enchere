@@ -19,6 +19,7 @@
 			<div >
 				<form action="<%=request.getContextPath() %>/EncherirServlet" method="post">
 					<input type="hidden" id="numArticleVente" name="numArticleVente" value="${requestScope.articleVendu.noArticle}">
+					<input type="hidden" id="nomArticle" name="nomArticle" value="${requestScope.articleVendu.nomArticle}">
 				<div>
 					<p>Produit : <c:out value="${requestScope.articleVendu.nomArticle}" /></p>
 				</div>

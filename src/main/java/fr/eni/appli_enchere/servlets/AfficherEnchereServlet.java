@@ -25,19 +25,8 @@ public class AfficherEnchereServlet extends HttpServlet {
  
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 System.out.println("passe dans doget AfficherEncheresServlet");
-//	        VenteManager venteManager = new VenteManager();
-//	        try {
-//	            List<ArticleVendu> listArticles = venteManager.selectAll();
-//	            request.setAttribute("listArticles", listArticles);
-//	            RequestDispatcher rd = request.getRequestDispatcher("/afficherEnchere.jsp");
-//	            rd.forward(request, response);
-//	        } catch (DALException e) {
-//	            e.printStackTrace();
-//	        }
-//	    }
-	
-	
+		System.out.println("passe dans doget AfficherEncheresServlet");
+
 		VenteManager venteManager = new VenteManager();
 	    String nomArticle = request.getParameter("nom_article");
 	    System.out.println("nom article = " + nomArticle);

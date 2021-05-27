@@ -1,6 +1,8 @@
 package fr.eni.appli_enchere.servlets;
 
 import fr.eni.appli_enchere.bll.EnchereManager;
+import fr.eni.appli_enchere.bll.VenteManager;
+import fr.eni.appli_enchere.bo.ArticleVendu;
 import fr.eni.appli_enchere.bo.Enchere;
 import fr.eni.appli_enchere.dal.DALException;
 
@@ -15,6 +17,12 @@ import java.util.Date;
 public class EncherirServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("passe par doget Encherir servlet après enchere");
+        String nomArticle = request.getParameter("nom_article");
+        System.out.println("nom article = " + nomArticle);
+        RequestDispatcher rd = request.getRequestDispatcher("/afficherEnchere.jsp");
+        rd.forward(request,response);
+
 
     }
 
@@ -29,6 +37,7 @@ public class EncherirServlet extends HttpServlet {
         System.out.println("utilisateur connecté : "+utilisateurConnecte);
         int numArticleVente = Integer.parseInt(request.getParameter("numArticleVente"));
         System.out.println("numero article récupéré : "+numArticleVente);
+        String nomArticle = request.getParameter("nomArticle");
 
         EnchereManager enchereManager = new EnchereManager();
         Enchere enchere;
@@ -39,8 +48,8 @@ public class EncherirServlet extends HttpServlet {
                 enchere = enchereManager.addEnchere(date,propEnchere,numArticleVente,utilisateurConnecte);
                 System.out.println("enchere = " +enchere);
                 request.setAttribute("encherir",enchere);
-                RequestDispatcher rd = request.getRequestDispatcher("/afficherEnchere.jsp");
-                rd.forward(request, response);
+                response.sendRedirect("AfficherEnchereServlet?nom_article="+nomArticle);
+
             } catch (DALException e) {
                 e.printStackTrace();
             }

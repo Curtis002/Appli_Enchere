@@ -20,7 +20,6 @@ public class EncherirServlet extends HttpServlet {
         System.out.println("passe par doget Encherir servlet après enchere");
         String nomArticle = request.getParameter("nom_article");
 
-        // AJOUT 28/05
         VenteManager venteManager = new VenteManager();
 
         try {
@@ -53,7 +52,9 @@ public class EncherirServlet extends HttpServlet {
         EnchereManager enchereManager = new EnchereManager();
         Enchere enchere;
 
-        if (propEnchere != 0) {
+        int enchereHaute = Integer.parseInt(request.getParameter("enchereHaute").trim());
+
+        if (propEnchere != 0 && propEnchere > enchereHaute) {
             System.out.println("passe par if propenchere");
             try {
                 enchere = enchereManager.addEnchere(date,propEnchere,numArticleVente,utilisateurConnecte);
@@ -64,7 +65,10 @@ public class EncherirServlet extends HttpServlet {
             } catch (DALException e) {
                 e.printStackTrace();
             }
-
+        } else {
+            request.setAttribute("errorEnchere", "Enchère trop basse");
+            RequestDispatcher rd = request.getRequestDispatcher("/AfficherEnchereServlet?nom_article="+nomArticle+"&num_article="+numArticleVente);
+            rd.forward(request, response);
         }
     }
 }

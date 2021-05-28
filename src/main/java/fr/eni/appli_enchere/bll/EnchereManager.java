@@ -35,7 +35,7 @@ public class EnchereManager {
         return enchere;
     }
     
-    public List<Enchere> AfficherAllEncheres (int no_article) throws DALException {
+    public Enchere AfficherAllEncheres (int no_article) throws DALException {
 		System.out.println("---passe par manager select all ENCHERES--");
 
          return enchereDAO.AfficherAllEncheres(no_article);

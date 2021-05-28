@@ -12,7 +12,7 @@
 	
 <body>
 <jsp:include page="headerConnecte.jsp"/>
-		<h1>Modifier mon profil</h1>
+		<h1 class="text-center mb-3">Modifier mon profil</h1>
 
 		 <form action="<%=request.getContextPath() %>/UpdateProfileServlet" method="post">
 			<div class="container">

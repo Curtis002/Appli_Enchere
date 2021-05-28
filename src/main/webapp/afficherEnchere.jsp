@@ -13,9 +13,7 @@
 		<h1>Détails du produit</h1>
 
 		<div class="container">
-			<div>
-				<img class="col-3" src="img/meilleur-pc-gamer.jpg" alt="">
-			</div>
+
 			<div >
 				<form action="<%=request.getContextPath() %>/EncherirServlet" method="post">
 					<input type="hidden" id="numArticleVente" name="numArticleVente" value="${requestScope.articleVendu.noArticle}">
@@ -30,7 +28,8 @@
 					<p>Catégorie : <c:out value="${requestScope.articleVendu.categorie.libelle}" /></p>
 				</div>
 				<div>
-					<p>Meilleure offre : <c:out value="${requestScope.montant_enchere}" />points par <c:out value="${requestScope.articleApresEnchere.utilisateur.pseudo}" /></p>
+					<p>Meilleure offre : <c:out value="${requestScope.montant_enchere}" />points</p>
+					<input type="hidden" id="enchereHaute" name="enchereHaute" value="${requestScope.montant_enchere}">
 				</div>
 				<div>
 					<p>Mise à prix : <c:out value="${requestScope.articleVendu.miseAPrix}" /> points</p>
@@ -46,6 +45,9 @@
 				</div>
 					<div>
 						<p>Ma proposition : <input class="col-3" id="proposition-enchere" type="number" name="proposition-enchere" required> </p>
+						<c:if test="${not empty requestScope.errorEnchere}">
+							<div class="text-danger">Enchère trop basse, radin !</div>
+						</c:if>
 					</div>
 					<div>
 						<p><input class="btn-secondary my-2 py-2 " type="submit" value="Enchérir" /></p>

@@ -7,7 +7,7 @@ import fr.eni.appli_enchere.bo.Enchere;
 public interface EnchereDAO {
 
     void ajouterEnchere(Enchere enchere) throws DALException;
-    
-    
-    List<Enchere> AfficherAllEncheres(int no_article) throws DALException;
+
+
+    Enchere AfficherAllEncheres(int no_article) throws DALException;
 }

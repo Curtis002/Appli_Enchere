@@ -27,9 +27,9 @@
             }
         </script>
 </head>
-<body class="container">
+<body>
 	<jsp:include page="headerConnecte.jsp"/>
-	 
+<div class="container">
 	<div class="row">
 	
 	<div class="col-4" id="list"></div>
@@ -149,6 +149,6 @@
 	</div>
 	</form>
 	</div>
-	
+</div>
 </body>
 </html>

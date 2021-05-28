@@ -35,7 +35,7 @@ public class AfficherEnchereServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/afficherEnchere.jsp");
 
         EnchereManager enchereManager = new EnchereManager();
-        List<Enchere> selectAllEncheres = null;
+		Enchere selectAllEncheres = null;
 
 		int numeroArticle = Integer.parseInt(request.getParameter("num_article"));
 		System.out.println("---------- num article recup "+numeroArticle);
@@ -65,6 +65,10 @@ public class AfficherEnchereServlet extends HttpServlet {
 	         e.printStackTrace();
 	     }
 	     rd.forward(request,response);
-
  }
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 }

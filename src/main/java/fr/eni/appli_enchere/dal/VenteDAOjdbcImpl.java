@@ -239,4 +239,5 @@ public class VenteDAOjdbcImpl implements VenteDAO {
 		}
 		return articleVendu;
 	}
+
 }

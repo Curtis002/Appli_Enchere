@@ -45,7 +45,7 @@ public class EnchereDAOjdbcImpl implements EnchereDAO {
         }
     }
 
-	public List<Enchere> AfficherAllEncheres() throws DALException {
+	public List<Enchere> AfficherAllEncheres(int no_article) throws DALException {
 		List<Enchere> listeDesEncheres = new ArrayList<Enchere>();
 		Connection cnx = null;
 		PreparedStatement stmt = null;
@@ -59,7 +59,7 @@ public class EnchereDAOjdbcImpl implements EnchereDAO {
 				try {
 					cnx=ConnectionProvider.getConnection();
 					stmt = cnx.prepareStatement(GET_LIST_ENCHERE);
-//					stmt.setInt(1, no_article);
+					stmt.setInt(1, no_article);
 					ResultSet rs = stmt.executeQuery();
 
 					
@@ -81,8 +81,8 @@ public class EnchereDAOjdbcImpl implements EnchereDAO {
 						enchere = new Enchere(no_enchere, date_enchere, montant_enchere, num_article, no_utilisateur);
 						
 						listeDesEncheres.add(enchere);
-//						Enchere max = Collections.max(listeDesEncheres);
-//						System.out.println("--------- max value enchere =   " +max);
+						Enchere enchereMax = Collections.max(listeDesEncheres);
+						System.out.println("--------- max value enchere =   " +enchereMax);
 					System.out.println("c'est mon enchere   :   "+ enchere);
 					}
 				} catch (SQLException e) {
@@ -94,5 +94,5 @@ public class EnchereDAOjdbcImpl implements EnchereDAO {
 		return listeDesEncheres;
 	
 	}
-	
+
 }  

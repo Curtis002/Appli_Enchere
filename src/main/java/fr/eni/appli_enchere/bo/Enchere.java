@@ -66,8 +66,7 @@ public class Enchere implements Comparable<Enchere>{
 
 	@Override
 	public String toString() {
-		return "Enchere [date=" + date
-				+ ", montantEnchere=" + montantEnchere + "]";
+		return " " + montantEnchere + " ";
 	}
 
 	/**

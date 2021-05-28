@@ -19,6 +19,17 @@ public class EncherirServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("passe par doget Encherir servlet après enchere");
         String nomArticle = request.getParameter("nom_article");
+
+        // AJOUT 28/05
+        VenteManager venteManager = new VenteManager();
+
+        try {
+            ArticleVendu articleVendu = venteManager.selectEnchere(nomArticle);
+            request.setAttribute("articleApresEnchere", articleVendu);
+        } catch (DALException e) {
+            e.printStackTrace();
+        }
+
         System.out.println("nom article = " + nomArticle);
         RequestDispatcher rd = request.getRequestDispatcher("/afficherEnchere.jsp");
         rd.forward(request,response);
@@ -36,7 +47,7 @@ public class EncherirServlet extends HttpServlet {
         int utilisateurConnecte = (int) request.getSession().getAttribute("noUser");
         System.out.println("utilisateur connecté : "+utilisateurConnecte);
         int numArticleVente = Integer.parseInt(request.getParameter("numArticleVente"));
-        System.out.println("numero article récupéré : "+numArticleVente);
+        System.out.println("ICI ----------- numero article récupéré : "+numArticleVente);
         String nomArticle = request.getParameter("nomArticle");
 
         EnchereManager enchereManager = new EnchereManager();
@@ -48,7 +59,7 @@ public class EncherirServlet extends HttpServlet {
                 enchere = enchereManager.addEnchere(date,propEnchere,numArticleVente,utilisateurConnecte);
                 System.out.println("enchere = " +enchere);
                 request.setAttribute("encherir",enchere);
-                response.sendRedirect("AfficherEnchereServlet?nom_article="+nomArticle);
+                response.sendRedirect("AfficherEnchereServlet?nom_article="+nomArticle+"&num_article="+numArticleVente);
 
             } catch (DALException e) {
                 e.printStackTrace();

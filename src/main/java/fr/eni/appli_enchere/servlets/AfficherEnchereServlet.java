@@ -37,14 +37,17 @@ public class AfficherEnchereServlet extends HttpServlet {
         EnchereManager enchereManager = new EnchereManager();
         List<Enchere> selectAllEncheres = null;
 
+		int numeroArticle = Integer.parseInt(request.getParameter("num_article"));
+		System.out.println("---------- num article recup "+numeroArticle);
+
         try {
-        	selectAllEncheres = enchereManager.AfficherAllEncheres();
+        	selectAllEncheres = enchereManager.AfficherAllEncheres(numeroArticle);
             System.out.println("---selectAllEncheres--   :   " + selectAllEncheres);
 
         } catch (DALException e1) {
             e1.printStackTrace();
         }
-        System.out.println("---selectAllEncheres--   :   " + selectAllEncheres);
+
     	//int montant_enchere = Integer.valueOf(request.getParameter("montant_enchere"));
     	//System.out.println("montant_enchere" + montant_enchere);
 

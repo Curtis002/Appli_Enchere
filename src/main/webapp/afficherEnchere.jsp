@@ -30,7 +30,7 @@
 					<p>Catégorie : <c:out value="${requestScope.articleVendu.categorie.libelle}" /></p>
 				</div>
 				<div>
-					<p>Meilleur offre : <c:out value="${requestScope.montant_enchere}" /></p>
+					<p>Meilleure offre : <c:out value="${requestScope.montant_enchere}" />points par <c:out value="${requestScope.articleApresEnchere.utilisateur.pseudo}" /></p>
 				</div>
 				<div>
 					<p>Mise à prix : <c:out value="${requestScope.articleVendu.miseAPrix}" /> points</p>
